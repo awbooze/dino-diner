@@ -1,4 +1,4 @@
-﻿/*  Fryceritops.cs
+﻿/*  Triceritots.cs
 *   Author: Andrew Booze
 */
 
@@ -7,9 +7,9 @@ using System.Collections.Generic;
 namespace DinoDiner.Menu.Sides
 {
     /// <summary>
-    /// A class which represents a side of Fryceritops.
+    /// A class which represents a side of Triceritots.
     /// </summary>
-    public class Fryceritops : Side
+    public class Triceritots : Side
     {
         /// <summary>
         /// A variable storing the size of the entree.
@@ -28,22 +28,22 @@ namespace DinoDiner.Menu.Sides
                 {
                     case Size.Small:
                         Price = 0.99;
-                        Calories = 222;
+                        Calories = 352;
                         break;
                     case Size.Medium:
                         Price = 1.45;
-                        Calories = 365;
+                        Calories = 410;
                         break;
                     case Size.Large:
                         Price = 1.95;
-                        Calories = 480;
+                        Calories = 590;
                         break;
                 }
             }
         }
 
         /// <summary>
-        /// The list of ingrediants for the Fryceritops.
+        /// The list of ingrediants for the Triceritots.
         /// </summary>
         public override List<string> Ingredients
         {
@@ -55,11 +55,11 @@ namespace DinoDiner.Menu.Sides
         }
 
         /// <summary>
-        /// The constructor for the Fryceritops side. Sets the calories and price to the values for the small side.
+        /// The constructor for the Triceritots side. Sets the calories and price to the values for the small side.
         /// </summary>
-        public Fryceritops()
+        public Triceritots()
         {
-            Calories = 222;
+            Calories = 352;
             Price = 0.99;
         }
     }
