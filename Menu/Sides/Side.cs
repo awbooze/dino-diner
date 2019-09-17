@@ -1,4 +1,4 @@
-﻿/*  Fryceritops.cs
+﻿/*  Side.cs
 *   Modified by: Andrew Booze
 */
 
@@ -16,26 +16,29 @@ namespace DinoDiner.Menu.Sides
         Large
     }
 
+    /// <summary>
+    /// The abstract base class for all sides.
+    /// </summary>
     public abstract class Side
     {
         /// <summary>
-        /// Gets and sets the price
+        /// Gets and sets the price of this side.
         /// </summary>
         public double Price { get; set; }
 
         /// <summary>
-        /// Gets and sets the calories
+        /// Gets and sets the calories of this side.
         /// </summary>
         public uint Calories { get; set; }
 
         /// <summary>
-        /// Gets the ingredients list
+        /// Gets the ingredients list of this side.
         /// </summary>
-        public List<string> Ingredients { get; }
+        public abstract List<string> Ingredients { get; }
 
         /// <summary>
-        /// Gets or sets the size
+        /// Gets or sets the size of this side.
         /// </summary>
-        public Size Size { get; set; }
+        public abstract Size Size { get; set; }
     }
 }
