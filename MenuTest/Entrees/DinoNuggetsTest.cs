@@ -47,7 +47,7 @@ namespace MenuTest.Entrees
             {
                 if (ingredient.Equals("Chicken Nugget")) nuggetCount++;
             }
-            Assert.Equal(7, nuggetCount);
+            Assert.Equal<int>(7, nuggetCount);
             Assert.Equal<int>(7, dn.Ingredients.Count);
 
             dn.AddNugget();
@@ -57,7 +57,7 @@ namespace MenuTest.Entrees
             {
                 if (ingredient.Equals("Chicken Nugget")) nuggetCount++;
             }
-            Assert.Equal(8, nuggetCount);
+            Assert.Equal<int>(8, nuggetCount);
             Assert.Equal<int>(8, dn.Ingredients.Count);
 
         }
@@ -67,11 +67,11 @@ namespace MenuTest.Entrees
         {
             DinoNuggets dn = new DinoNuggets();
             dn.AddNugget();
-            Assert.Equal(dn.Price, 4.50);
+            Assert.Equal(dn.Price, 4.50, 2);
             dn.AddNugget();
-            Assert.Equal(dn.Price, 4.75);
+            Assert.Equal(dn.Price, 4.75, 2);
             dn.AddNugget();
-            Assert.Equal(dn.Price, 5.0);
+            Assert.Equal(dn.Price, 5.0, 2);
         }
 
         [Fact]
