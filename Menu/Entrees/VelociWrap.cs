@@ -55,7 +55,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldDressing()
         {
-            this.dressing = false;
+            dressing = false;
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldLettuce()
         {
-            this.lettuce = false;
+            lettuce = false;
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldCheese()
         {
-            this.cheese = false;
+            cheese = false;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// A class that represents a T-Rex King Burger entree.
     /// </summary>
-    public class TRexKingBurger
+    public class TRexKingBurger : Entree
     {
         /// <summary>
         /// Whether or not the bun is included in this entree.
@@ -52,19 +52,9 @@ namespace DinoDiner.Menu.Entrees
         private bool mayo = true;
 
         /// <summary>
-        /// The price of this entree.
-        /// </summary>
-        public double Price { get; set; }
-        
-        /// <summary>
-        /// The number of calories in this entree.
-        /// </summary>
-        public uint Calories { get; set; }
-
-        /// <summary>
         /// The list of ingredients for this entree.
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -86,8 +76,8 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public TRexKingBurger()
         {
-            this.Price = 8.45;
-            this.Calories = 728;
+            Price = 8.45;
+            Calories = 728;
         }
 
         /// <summary>
@@ -95,7 +85,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldBun()
         {
-            this.bun = false;
+            bun = false;
         }
 
         /// <summary>
@@ -103,7 +93,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldLettuce()
         {
-            this.lettuce = false;
+            lettuce = false;
         }
 
         /// <summary>
@@ -111,7 +101,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldTomato()
         {
-            this.tomato = false;
+            tomato = false;
         }
 
         /// <summary>
@@ -119,7 +109,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldOnion()
         {
-            this.onion = false;
+            onion = false;
         }
 
         /// <summary>
@@ -127,7 +117,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldPickle()
         {
-            this.pickle = false;
+            pickle = false;
         }
 
         /// <summary>
@@ -135,7 +125,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldKetchup()
         {
-            this.ketchup = false;
+            ketchup = false;
         }
 
         /// <summary>
@@ -143,7 +133,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldMustard()
         {
-            this.mustard = false;
+            mustard = false;
         }
 
         /// <summary>
@@ -151,7 +141,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldMayo()
         {
-            this.mayo = false;
+            mayo = false;
         }
     }
 }

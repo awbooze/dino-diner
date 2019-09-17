@@ -9,7 +9,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// A class that represents a Brontowurst entree.
     /// </summary>
-    public class Brontowurst
+    public class Brontowurst : Entree
     {
         /// <summary>
         /// Whether or not the bun is included in the brontowurst.
@@ -27,19 +27,9 @@ namespace DinoDiner.Menu.Entrees
         private bool onions = true;
 
         /// <summary>
-        /// The price of the brontowurst.
-        /// </summary>
-        public double Price { get; set; }
-        
-        /// <summary>
-        /// The number of calories in the brontowurst.
-        /// </summary>
-        public uint Calories { get; set; }
-
-        /// <summary>
         /// The list of ingredients for the brontowurst.
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -56,8 +46,8 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public Brontowurst()
         {
-            this.Price = 5.36;
-            this.Calories = 498;
+            Price = 5.36;
+            Calories = 498;
         }
 
         /// <summary>
@@ -65,7 +55,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldBun()
         {
-            this.bun = false;
+            bun = false;
         }
 
         /// <summary>
@@ -73,7 +63,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldPeppers()
         {
-            this.peppers = false;
+            peppers = false;
         }
 
         /// <summary>
@@ -81,7 +71,7 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public void HoldOnion()
         {
-            this.onions = false;
+            onions = false;
         }
     }
 }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*  Fryceritops.cs
+*   Modified by: Andrew Booze
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -33,6 +37,5 @@ namespace DinoDiner.Menu.Sides
         /// Gets or sets the size
         /// </summary>
         public Size Size { get; set; }
-
     }
 }

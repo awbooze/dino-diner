@@ -9,24 +9,14 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// A class that represents an entree of Dino Nuggets.
     /// </summary>
-    public class DinoNuggets
+    public class DinoNuggets : Entree
     {
         private uint numberOfNuggets;
 
         /// <summary>
-        /// The price of this entree.
+        /// The list of ingredients for the dino nuggets.
         /// </summary>
-        public double Price { get; set; }
-        
-        /// <summary>
-        /// The number of calories in this entree.
-        /// </summary>
-        public uint Calories { get; set; }
-
-        /// <summary>
-        /// The list of ingredients for this entree.
-        /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -45,16 +35,19 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public DinoNuggets()
         {
-            this.numberOfNuggets = 6;
-            this.Price = 4.25;
-            this.Calories = 59 * numberOfNuggets;
+            numberOfNuggets = 6;
+            Price = 4.25;
+            Calories = 59 * numberOfNuggets;
         }
 
+        /// <summary>
+        /// Function that allows the user to add a nugget for an additional cost.
+        /// </summary>
         public void AddNugget()
         {
             numberOfNuggets++;
-            this.Price += 0.25;
-            this.Calories += 59;
+            Price += 0.25;
+            Calories += 59;
         }
     }
 }
