@@ -2,17 +2,28 @@
 *   Modified by: Andrew Booze
 */
 
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DinoDiner.Menu.Sides
 {
-
+    /// <summary>
+    /// An enum with one of three side sizes: small, medium, or large.
+    /// </summary>
     public enum Size
     {
+        /// <summary>
+        /// The small size.
+        /// </summary>
         Small,
-        Medium, 
+
+        /// <summary>
+        /// The medium size.
+        /// </summary>
+        Medium,
+
+        /// <summary>
+        /// The large size.
+        /// </summary>
         Large
     }
 

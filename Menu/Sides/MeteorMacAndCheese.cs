@@ -1,4 +1,4 @@
-﻿/*  Triceritots.cs
+﻿/*  MeteorMacAndCheese.cs
 *   Author: Andrew Booze
 */
 
@@ -9,7 +9,7 @@ namespace DinoDiner.Menu.Sides
     /// <summary>
     /// A class which represents a side of Triceritots.
     /// </summary>
-    public class Triceritots : Side
+    public class MeteorMacAndCheese : Side
     {
         private Size size;
 
@@ -30,15 +30,15 @@ namespace DinoDiner.Menu.Sides
                 {
                     case Size.Small:
                         Price = 0.99;
-                        Calories = 352;
+                        Calories = 420;
                         break;
                     case Size.Medium:
                         Price = 1.45;
-                        Calories = 410;
+                        Calories = 490;
                         break;
                     case Size.Large:
                         Price = 1.95;
-                        Calories = 590;
+                        Calories = 520;
                         break;
                 }
             }
@@ -51,7 +51,7 @@ namespace DinoDiner.Menu.Sides
         {
             get
             {
-                List<string> ingredients = new List<string>() { "Potato", "Salt", "Vegetable Oil" };
+                List<string> ingredients = new List<string>() { "Macaroni Noodles", "Cheese Product", "Pork Sausage" };
                 return ingredients;
             }
         }
@@ -59,9 +59,9 @@ namespace DinoDiner.Menu.Sides
         /// <summary>
         /// The constructor for the Triceritots side. Sets the calories and price to the values for the small side.
         /// </summary>
-        public Triceritots()
+        public MeteorMacAndCheese()
         {
-            Calories = 352;
+            Calories = 420;
             Price = 0.99;
         }
     }

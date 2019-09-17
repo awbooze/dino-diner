@@ -11,6 +11,8 @@ namespace DinoDiner.Menu.Sides
     /// </summary>
     public class Fryceritops : Side
     {
+        private Size size;
+
         /// <summary>
         /// A variable storing the size of the entree.
         /// </summary>
@@ -18,11 +20,11 @@ namespace DinoDiner.Menu.Sides
         {
             get
             {
-                return Size;
+                return size;
             }
             set
             {
-                Size = value;
+                size = value;
 
                 switch (value)
                 {

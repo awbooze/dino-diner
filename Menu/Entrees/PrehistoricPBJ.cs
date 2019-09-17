@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace DinoDiner.Menu.Entrees
 {
     /// <summary>
-    /// An entree class for the Prehistoric PB&J.
+    /// An entree class for the Prehistoric PB and J.
     /// </summary>
     public class PrehistoricPBJ : Entree
     {
@@ -15,7 +15,7 @@ namespace DinoDiner.Menu.Entrees
         private bool jelly = true;
 
         /// <summary>
-        /// The list of ingrediants for this PB&J.
+        /// The list of ingrediants for this PB and J.
         /// </summary>
         public override List<string> Ingredients
         {
@@ -29,7 +29,7 @@ namespace DinoDiner.Menu.Entrees
         }
 
         /// <summary>
-        /// The constructor for this PB&J
+        /// The constructor for this PB and J
         /// </summary>
         public PrehistoricPBJ()
         {
@@ -38,7 +38,7 @@ namespace DinoDiner.Menu.Entrees
         }
 
         /// <summary>
-        /// Allows the user to remove the peanut butter from this PB&J.
+        /// Allows the user to remove the peanut butter from this PB and J.
         /// </summary>
         public void HoldPeanutButter()
         {
@@ -46,7 +46,7 @@ namespace DinoDiner.Menu.Entrees
         }
 
         /// <summary>
-        /// Allows the user to remove the jelly from this PB&J.
+        /// Allows the user to remove the jelly from this PB and J.
         /// </summary>
         public void HoldJelly()
         {
