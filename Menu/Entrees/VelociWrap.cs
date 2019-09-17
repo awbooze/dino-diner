@@ -9,7 +9,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// A class that represents a VelociWrap entree.
     /// </summary>
-    public class VelociWrap
+    public class VelociWrap : Entree
     {
         /// <summary>
         /// Whether or not the dressing is included in this entree.
@@ -27,19 +27,9 @@ namespace DinoDiner.Menu.Entrees
         private bool cheese = true;
 
         /// <summary>
-        /// The price of this entree.
-        /// </summary>
-        public double Price { get; set; }
-        
-        /// <summary>
-        /// The number of calories in this entree.
-        /// </summary>
-        public uint Calories { get; set; }
-
-        /// <summary>
         /// The list of ingredients for this entree.
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -56,8 +46,8 @@ namespace DinoDiner.Menu.Entrees
         /// </summary>
         public VelociWrap()
         {
-            this.Price = 6.86;
-            this.Calories = 356;
+            Price = 6.86;
+            Calories = 356;
         }
 
         /// <summary>
