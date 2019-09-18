@@ -71,22 +71,7 @@
         </member>
         <member name="T:DinoDiner.Menu.Entrees.Entree">
             <summary>
-            The base class for all entrees. Provides Price, Calories, and abstract Ingredent list to entrees. 
-            </summary>
-        </member>
-        <member name="P:DinoDiner.Menu.Entrees.Entree.Price">
-            <summary>
-            The price of this entree.
-            </summary>
-        </member>
-        <member name="P:DinoDiner.Menu.Entrees.Entree.Calories">
-            <summary>
-            The number of calories in this entree.
-            </summary>
-        </member>
-        <member name="P:DinoDiner.Menu.Entrees.Entree.Ingredients">
-            <summary>
-            The list of ingredients for this entree.
+            The base class for all entrees.
             </summary>
         </member>
         <member name="T:DinoDiner.Menu.Entrees.PrehistoricPBJ">
@@ -324,6 +309,26 @@
             Allows the user to remove the onions from this entree.
             </summary>
         </member>
+        <member name="T:DinoDiner.Menu.MenuItem">
+            <summary>
+            The base class for all menu items. Provides Price, Calories, and abstract Ingredent list. 
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.MenuItem.Price">
+            <summary>
+            The price of this menu item.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.MenuItem.Calories">
+            <summary>
+            The number of calories in this menu item.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.MenuItem.Ingredients">
+            <summary>
+            The list of ingredients for this menu item.
+            </summary>
+        </member>
         <member name="T:DinoDiner.Menu.Sides.Fryceritops">
             <summary>
             A class which represents a side of Fryceritops.
@@ -407,21 +412,6 @@
         <member name="T:DinoDiner.Menu.Sides.Side">
             <summary>
             The abstract base class for all sides.
-            </summary>
-        </member>
-        <member name="P:DinoDiner.Menu.Sides.Side.Price">
-            <summary>
-            Gets and sets the price of this side.
-            </summary>
-        </member>
-        <member name="P:DinoDiner.Menu.Sides.Side.Calories">
-            <summary>
-            Gets and sets the calories of this side.
-            </summary>
-        </member>
-        <member name="P:DinoDiner.Menu.Sides.Side.Ingredients">
-            <summary>
-            Gets the ingredients list of this side.
             </summary>
         </member>
         <member name="P:DinoDiner.Menu.Sides.Side.Size">

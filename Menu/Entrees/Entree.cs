@@ -1,25 +1,12 @@
-﻿using System.Collections.Generic;
-
-namespace DinoDiner.Menu.Entrees
+﻿namespace DinoDiner.Menu.Entrees
 {
     /// <summary>
-    /// The base class for all entrees. Provides Price, Calories, and abstract Ingredent list to entrees. 
+    /// The base class for all entrees.
     /// </summary>
-    public abstract class Entree
+    public abstract class Entree : MenuItem
     {
-        /// <summary>
-        /// The price of this entree.
-        /// </summary>
-        public double Price { get; set; }
-
-        /// <summary>
-        /// The number of calories in this entree.
-        /// </summary>
-        public uint Calories { get; set; }
-
-        /// <summary>
-        /// The list of ingredients for this entree.
-        /// </summary>
-        public abstract List<string> Ingredients { get; }
+        // This isn't really useful because nothing is in the entree that isn't in the menu item at this time.
+        // Since it inherits from MenuItem, it still provides price, calories, and ingrediants to Entrees and so 
+        // satisfies the requirements for this class.
     }
 }
