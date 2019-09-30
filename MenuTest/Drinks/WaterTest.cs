@@ -1,4 +1,4 @@
-﻿/*  TyrannoteaTest.cs
+﻿/*  WaterTest.cs
 *   Author: Andrew Booze
 */
 
@@ -9,9 +9,9 @@ using Xunit;
 namespace MenuTest.Drinks
 {
     /// <summary>
-    /// Unit tests for Tyrannotea drinks.
+    /// Unit tests for "Water" drinks.
     /// </summary>
-    public class TyrannoteaTest
+    public class WaterTest
     {
         /// <summary>
         /// Tests whether the drink has the correct default calories
@@ -19,8 +19,8 @@ namespace MenuTest.Drinks
         [Fact]
         public void HasCorrectDefaultCalories()
         {
-            Tyrannotea drink = new Tyrannotea();
-            Assert.Equal<uint>(8, drink.Calories);
+            Water drink = new Water();
+            Assert.Equal<uint>(0, drink.Calories);
         }
 
         /// <summary>
@@ -29,8 +29,8 @@ namespace MenuTest.Drinks
         [Fact]
         public void HasCorrectDefaultPrice()
         {
-            Tyrannotea drink = new Tyrannotea();
-            Assert.Equal<double>(0.99, drink.Price);
+            Water drink = new Water();
+            Assert.Equal<double>(0.10, drink.Price);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace MenuTest.Drinks
         [Fact]
         public void HasCorrectDefaultIce()
         {
-            Tyrannotea drink = new Tyrannotea();
+            Water drink = new Water();
             Assert.True(drink.Ice);
         }
 
@@ -49,18 +49,8 @@ namespace MenuTest.Drinks
         [Fact]
         public void HasCorrectDefaultSize()
         {
-            Tyrannotea drink = new Tyrannotea();
+            Water drink = new Water();
             Assert.Equal<Size>(Size.Small, drink.Size);
-        }
-
-        /// <summary>
-        /// Tests whether the drink has the correct default sweetness
-        /// </summary>
-        [Fact]
-        public void HasCorrectDefaultSweetness()
-        {
-            Tyrannotea drink = new Tyrannotea();
-            Assert.False(drink.Sweet);
         }
 
         /// <summary>
@@ -69,7 +59,7 @@ namespace MenuTest.Drinks
         [Fact]
         public void HasCorrectDefaultLemon()
         {
-            Tyrannotea drink = new Tyrannotea();
+            Water drink = new Water();
             Assert.False(drink.Lemon);
         }
 
@@ -79,28 +69,12 @@ namespace MenuTest.Drinks
         [Fact]
         public void CorrectCaloriesAfterSettingSmall()
         {
-            Tyrannotea drink = new Tyrannotea
+            Water drink = new Water
             {
                 Size = Size.Medium
             };
             drink.Size = Size.Small;
-            Assert.Equal<uint>(8, drink.Calories);
-        }
-
-        /// <summary>
-        /// Tests whether the drink has the correct default calories after setting the small size 
-        /// and sweetening it
-        /// </summary>
-        [Fact]
-        public void CorrectCaloriesAfterSettingSmallAndSweet()
-        {
-            Tyrannotea drink = new Tyrannotea
-            {
-                Size = Size.Medium
-            };
-            drink.Size = Size.Small;
-            drink.MakeSweet();
-            Assert.Equal<uint>(16, drink.Calories);
+            Assert.Equal<uint>(0, drink.Calories);
         }
 
         /// <summary>
@@ -109,12 +83,12 @@ namespace MenuTest.Drinks
         [Fact]
         public void CorrectPriceAfterSettingSmall()
         {
-            Tyrannotea drink = new Tyrannotea
+            Water drink = new Water
             {
                 Size = Size.Medium
             };
             drink.Size = Size.Small;
-            Assert.Equal<double>(0.99, drink.Price);
+            Assert.Equal<double>(0.10, drink.Price);
         }
 
         /// <summary>
@@ -123,26 +97,11 @@ namespace MenuTest.Drinks
         [Fact]
         public void CorrectCaloriesAfterSettingMedium()
         {
-            Tyrannotea drink = new Tyrannotea
+            Water drink = new Water
             {
                 Size = Size.Medium
             };
-            Assert.Equal<uint>(16, drink.Calories);
-        }
-
-        /// <summary>
-        /// Tests whether the drink has the correct default calories after setting the medium size 
-        /// and sweetening it
-        /// </summary>
-        [Fact]
-        public void CorrectCaloriesAfterSettingMediumAndSweet()
-        {
-            Tyrannotea drink = new Tyrannotea
-            {
-                Size = Size.Medium
-            };
-            drink.MakeSweet();
-            Assert.Equal<uint>(32, drink.Calories);
+            Assert.Equal<uint>(0, drink.Calories);
         }
 
         /// <summary>
@@ -151,11 +110,11 @@ namespace MenuTest.Drinks
         [Fact]
         public void CorrectPriceAfterSettingMedium()
         {
-            Tyrannotea drink = new Tyrannotea
+            Water drink = new Water
             {
                 Size = Size.Medium
             };
-            Assert.Equal<double>(1.49, drink.Price);
+            Assert.Equal<double>(0.10, drink.Price);
         }
 
         /// <summary>
@@ -164,26 +123,11 @@ namespace MenuTest.Drinks
         [Fact]
         public void CorrectCaloriesAfterSettingLarge()
         {
-            Tyrannotea drink = new Tyrannotea
+            Water drink = new Water
             {
                 Size = Size.Large
             };
-            Assert.Equal<uint>(32, drink.Calories);
-        }
-
-        /// <summary>
-        /// Tests whether the drink has the correct default calories after setting the large size 
-        /// and sweetening it
-        /// </summary>
-        [Fact]
-        public void CorrectCaloriesAfterSettingLargeAndSweet()
-        {
-            Tyrannotea drink = new Tyrannotea
-            {
-                Size = Size.Large
-            };
-            drink.MakeSweet();
-            Assert.Equal<uint>(64, drink.Calories);
+            Assert.Equal<uint>(0, drink.Calories);
         }
 
         /// <summary>
@@ -192,11 +136,11 @@ namespace MenuTest.Drinks
         [Fact]
         public void CorrectPriceAfterSettingLarge()
         {
-            Tyrannotea drink = new Tyrannotea
+            Water drink = new Water
             {
                 Size = Size.Large
             };
-            Assert.Equal<double>(1.99, drink.Price);
+            Assert.Equal<double>(0.10, drink.Price);
         }
 
         /// <summary>
@@ -205,7 +149,7 @@ namespace MenuTest.Drinks
         [Fact]
         public void HoldIceSetsIceToFalse()
         {
-            Tyrannotea drink = new Tyrannotea();
+            Water drink = new Water();
             drink.HoldIce();
             Assert.False(drink.Ice);
         }
@@ -216,7 +160,7 @@ namespace MenuTest.Drinks
         [Fact]
         public void AddLemonAddsLemon()
         {
-            Tyrannotea drink = new Tyrannotea();
+            Water drink = new Water();
             drink.AddLemon();
             Assert.True(drink.Lemon);
         }
@@ -227,15 +171,10 @@ namespace MenuTest.Drinks
         [Fact]
         public void ShouldListCorrectDefaultIngredients()
         {
-            Tyrannotea drink = new Tyrannotea();
+            Water drink = new Water();
             List<string> ingredients = drink.Ingredients;
             Assert.Contains<string>("Water", ingredients);
-            Assert.Contains<string>("Tea", ingredients);
-            Assert.Equal<int>(2, ingredients.Count);
+            Assert.Single<string>(ingredients);
         }
-
-        // Because I created my properties with protected or private sets, it is impossible for the program 
-        // to set the sweet property to false after it is set to true. Therefore, I do not need to test it 
-        // for this milestone.
     }
 }
