@@ -7,6 +7,9 @@ using System.Collections.Generic;
 
 namespace DinoDiner.Menu.Drinks
 {
+    /// <summary>
+    /// A drink class that represents a cup of tea.
+    /// </summary>
     public class Tyrannotea : Drink
     {
         private Size size;

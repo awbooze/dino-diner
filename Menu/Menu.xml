@@ -166,6 +166,11 @@
             Grape flavor
             </summary>
         </member>
+        <member name="T:DinoDiner.Menu.Drinks.Tyrannotea">
+            <summary>
+            A drink class that represents a cup of tea.
+            </summary>
+        </member>
         <member name="P:DinoDiner.Menu.Drinks.Tyrannotea.Size">
             <summary>
             An enum variable which stores the size of this drink.

@@ -1,4 +1,8 @@
-﻿using DinoDiner.Menu.Drinks;
+﻿/*  SodasaurusTest.cs
+*   Author: Andrew Booze
+*/
+
+using DinoDiner.Menu.Drinks;
 using System.Collections.Generic;
 using Xunit;
 
@@ -259,10 +263,10 @@ namespace MenuTest.Drinks
         }
 
         /// <summary>
-        /// Tests whether the drink has the correct ingredients
+        /// Tests whether the drink has the correct default ingredients
         /// </summary>
         [Fact]
-        public void ShouldListCorrectIngredients()
+        public void ShouldListCorrectDefaultIngredients()
         {
             Sodasaurus soda = new Sodasaurus();
             List<string> ingredients = soda.Ingredients;
