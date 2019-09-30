@@ -2,7 +2,6 @@
 *   Author: Andrew Booze
 */
 
-using System;
 using System.Collections.Generic;
 
 namespace DinoDiner.Menu.Drinks
@@ -59,7 +58,7 @@ namespace DinoDiner.Menu.Drinks
         /// Whether the server should leave room for cream in this coffee. 
         /// Sadly, does not decrease the price. Defaults to false.
         /// </summary>
-        public bool RoomForCream { get; protected set; } = false;
+        public bool RoomForCream { get; private set; } = false;
 
         /// <summary>
         /// Whether this coffee is decalf. Defaults to false.

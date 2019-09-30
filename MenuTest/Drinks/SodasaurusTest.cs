@@ -21,8 +21,10 @@ namespace MenuTest.Drinks
         {
             Sodasaurus soda = new Sodasaurus
             {
-                Flavor = SodasaurusFlavor.Cola
+                Flavor = SodasaurusFlavor.Vanilla
             };
+
+            soda.Flavor = SodasaurusFlavor.Cola;
 
             Assert.Equal(SodasaurusFlavor.Cola, soda.Flavor);
         }
