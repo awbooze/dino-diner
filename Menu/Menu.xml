@@ -4,25 +4,56 @@
         <name>Menu</name>
     </assembly>
     <members>
-        <member name="T:DinoDiner.Menu.Drinks.Size">
+        <member name="T:DinoDiner.Menu.CretaceousCombo">
             <summary>
-            An enum with three drink sizes: small, medium, and large.
+            A class representing a combo meal.
             </summary>
         </member>
-        <member name="F:DinoDiner.Menu.Drinks.Size.Small">
+        <member name="P:DinoDiner.Menu.CretaceousCombo.Drink">
             <summary>
-            The small size.
+            Gets and sets the drink
             </summary>
         </member>
-        <member name="F:DinoDiner.Menu.Drinks.Size.Medium">
+        <member name="P:DinoDiner.Menu.CretaceousCombo.Entree">
             <summary>
-            The medium size.
+            Gets and sets the entree
             </summary>
         </member>
-        <member name="F:DinoDiner.Menu.Drinks.Size.Large">
+        <member name="P:DinoDiner.Menu.CretaceousCombo.Side">
             <summary>
-            The large size.
+            Gets and sets the side
             </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.CretaceousCombo.Toy">
+            <summary>
+            Gets the toy
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.CretaceousCombo.Ingredients">
+            <summary>
+            Gets a list of ingredients for the combo
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.CretaceousCombo.Price">
+            <summary>
+            Gets the price of the combo.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.CretaceousCombo.Calories">
+            <summary>
+            Get the calories of the combo.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.CretaceousCombo.Size">
+            <summary>       
+            Gets or sets the size of the combo        
+            </summary>        
+        </member>
+        <member name="M:DinoDiner.Menu.CretaceousCombo.#ctor(DinoDiner.Menu.Entrees.Entree)">
+            <summary>
+            Constructs a new combo with the specified entree.
+            </summary>
+            <param name="entree">The entree to use.</param>
         </member>
         <member name="T:DinoDiner.Menu.Drinks.Drink">
             <summary>
@@ -622,26 +653,6 @@
             The constructor for the Triceritots side. Sets the calories and price to the values for the small side.
             </summary>
         </member>
-        <member name="T:DinoDiner.Menu.Sides.Size">
-            <summary>
-            An enum with one of three side sizes: small, medium, or large.
-            </summary>
-        </member>
-        <member name="F:DinoDiner.Menu.Sides.Size.Small">
-            <summary>
-            The small size.
-            </summary>
-        </member>
-        <member name="F:DinoDiner.Menu.Sides.Size.Medium">
-            <summary>
-            The medium size.
-            </summary>
-        </member>
-        <member name="F:DinoDiner.Menu.Sides.Size.Large">
-            <summary>
-            The large size.
-            </summary>
-        </member>
         <member name="T:DinoDiner.Menu.Sides.Side">
             <summary>
             The abstract base class for all sides.
@@ -670,6 +681,26 @@
         <member name="M:DinoDiner.Menu.Sides.Triceritots.#ctor">
             <summary>
             The constructor for the Triceritots side. Sets the calories and price to the values for the small side.
+            </summary>
+        </member>
+        <member name="T:DinoDiner.Menu.Size">
+            <summary>
+            An enum with three drink and size sizes: small, medium, and large.
+            </summary>
+        </member>
+        <member name="F:DinoDiner.Menu.Size.Small">
+            <summary>
+            The small size.
+            </summary>
+        </member>
+        <member name="F:DinoDiner.Menu.Size.Medium">
+            <summary>
+            The medium size.
+            </summary>
+        </member>
+        <member name="F:DinoDiner.Menu.Size.Large">
+            <summary>
+            The large size.
             </summary>
         </member>
     </members>
