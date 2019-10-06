@@ -3,7 +3,6 @@
 */
 
 using DinoDiner.Menu;
-using DinoDiner.Menu.Drinks;
 using System.Collections.Generic;
 using Xunit;
 

@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// A drink class that represents a cup of tea.
@@ -80,7 +80,7 @@ namespace DinoDiner.Menu.Drinks
         /// Whether or not this tea is sweet. Defaults to false, although in other parts of the country 
         /// it would likely be better to default to true.
         /// </summary>
-        public bool Sweet { get; private set; } = false;
+        public bool Sweet { get; set; } = false;
 
         /// <summary>
         /// The constructor for the Tyrannotea drink.

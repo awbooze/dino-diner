@@ -2,7 +2,7 @@
 *   Author: Andrew Booze
 */
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// The base drink class. Extends MenuItem, so inherits Price, Calories, and Ingredients.

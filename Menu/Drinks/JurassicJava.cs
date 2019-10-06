@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// A drink class that represents a cup of coffee.
@@ -63,7 +63,7 @@ namespace DinoDiner.Menu.Drinks
         /// <summary>
         /// Whether this coffee is decalf. Defaults to false.
         /// </summary>
-        public bool Decalf { get; private set; } = false;
+        public bool Decaf { get; set; } = false;
 
         /// <summary>
         /// The constructor for the JurassicJava drink.
@@ -93,9 +93,9 @@ namespace DinoDiner.Menu.Drinks
         /// <summary>
         /// Makes this coffee decalf.
         /// </summary>
-        public void MakeDecalf()
+        public void MakeDecaf()
         {
-            Decalf = true;
+            Decaf = true;
         }
     }
 }

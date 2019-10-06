@@ -4,7 +4,7 @@
 
 using System;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// An enum which expresses which flavor the soda is. Can be used as bit flags.

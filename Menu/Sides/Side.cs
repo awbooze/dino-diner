@@ -2,7 +2,7 @@
 *   Modified by: Andrew Booze
 */
 
-namespace DinoDiner.Menu.Sides
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// The abstract base class for all sides.
