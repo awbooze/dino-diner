@@ -21,7 +21,7 @@ namespace MenuTest
         {
 
             DinoNuggets dn = new DinoNuggets();
-            Assert.Equal("Dino-Nuggets", dn.ToString());
+            Assert.Equal("Dino Nuggets", dn.ToString());
         }
 
 
@@ -72,7 +72,7 @@ namespace MenuTest
         {
             Fryceritops ft = new Fryceritops();
             ft.Size = size;
-            Assert.Equal($"{size} Friceritops", ft.ToString());
+            Assert.Equal($"{size} Fryceritops", ft.ToString());
         }
 
         [Theory]
@@ -192,7 +192,7 @@ namespace MenuTest
 
         [Theory]
         [InlineData(typeof(Brontowurst), "Brontowurst Combo")]
-        [InlineData(typeof(DinoNuggets), "Dino-Nuggets Combo")]
+        [InlineData(typeof(DinoNuggets), "Dino Nuggets Combo")]
         [InlineData(typeof(PrehistoricPBJ), "Prehistoric PB&J Combo")]
         [InlineData(typeof(PterodactylWings), "Pterodactyl Wings Combo")]
         [InlineData(typeof(SteakosaurusBurger), "Steakosaurus Burger Combo")]

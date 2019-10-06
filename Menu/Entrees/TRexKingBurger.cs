@@ -143,5 +143,14 @@ namespace DinoDiner.Menu
         {
             mayo = false;
         }
+
+        /// <summary>
+        /// Creates and returns a string representation of this object.
+        /// </summary>
+        /// <returns>A string representation of this object.</returns>
+        public override string ToString()
+        {
+            return "T-Rex King Burger";
+        }
     }
 }

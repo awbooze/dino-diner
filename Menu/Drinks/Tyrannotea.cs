@@ -109,5 +109,20 @@ namespace DinoDiner.Menu
             // Double calorie values if sweet
             Calories *= 2;
         }
+
+        /// <summary>
+        /// Creates and returns a string representation of this object.
+        /// </summary>
+        /// <returns>A string representation of this object.</returns>
+        public override string ToString()
+        {
+            string toReturn = Size.ToString();
+            if (Sweet)
+            {
+                toReturn += " Sweet";
+            }
+            toReturn += " Tyrannotea";
+            return toReturn;
+        }
     }
 }

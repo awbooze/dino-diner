@@ -2,6 +2,7 @@
 *   Author: Andrew Booze
 */
 
+using System;
 using System.Collections.Generic;
 
 namespace DinoDiner.Menu
@@ -62,6 +63,51 @@ namespace DinoDiner.Menu
         {
             Price = 1.50;
             Calories = 112;
+        }
+
+        /// <summary>
+        /// Creates and returns a string representation of this object.
+        /// </summary>
+        /// <returns>A string representation of this object.</returns>
+        public override string ToString()
+        {
+            string toReturn = Size.ToString();
+
+            if (Flavor.HasFlag(SodasaurusFlavor.Cola))
+            {
+                toReturn += " Cola";
+            }
+            if (Flavor.HasFlag(SodasaurusFlavor.Orange))
+            {
+                toReturn += " Orange";
+            }
+            if (Flavor.HasFlag(SodasaurusFlavor.Vanilla))
+            {
+                toReturn += " Vanilla";
+            }
+            if (Flavor.HasFlag(SodasaurusFlavor.Chocolate))
+            {
+                toReturn += " Chocolate";
+            }
+            if (Flavor.HasFlag(SodasaurusFlavor.RootBeer))
+            {
+                toReturn += " RootBeer";
+            }
+            if (Flavor.HasFlag(SodasaurusFlavor.Cherry))
+            {
+                toReturn += " Cherry";
+            }
+            if (Flavor.HasFlag(SodasaurusFlavor.Lime))
+            {
+                toReturn += " Lime";
+            }
+            if (Flavor.HasFlag(SodasaurusFlavor.Grape))
+            {
+                toReturn += " Grape";
+            }
+
+            toReturn += " Sodasaurus";
+            return toReturn;
         }
     }
 }

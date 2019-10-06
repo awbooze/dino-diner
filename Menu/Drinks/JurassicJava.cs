@@ -97,5 +97,20 @@ namespace DinoDiner.Menu
         {
             Decaf = true;
         }
+
+        /// <summary>
+        /// Creates and returns a string representation of this object.
+        /// </summary>
+        /// <returns>A string representation of this object.</returns>
+        public override string ToString()
+        {
+            string toReturn = Size.ToString();
+            if (Decaf)
+            {
+                toReturn += " Decaf";
+            }
+            toReturn += " Jurassic Java";
+            return toReturn;
+        }
     }
 }

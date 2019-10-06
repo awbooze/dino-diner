@@ -64,5 +64,14 @@ namespace DinoDiner.Menu
             Calories = 540;
             Price = 0.99;
         }
+
+        /// <summary>
+        /// Creates and returns a string representation of this object.
+        /// </summary>
+        /// <returns>A string representation of this object.</returns>
+        public override string ToString()
+        {
+            return Size.ToString() + " Mezzorella Sticks";
+        }
     }
 }

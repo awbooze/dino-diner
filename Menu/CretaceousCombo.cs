@@ -90,5 +90,14 @@ namespace DinoDiner.Menu
             Entree = entree;
             Toy = "Dinosaur Toy";
         }
+
+        /// <summary>
+        /// Creates and returns a string representation of this object.
+        /// </summary>
+        /// <returns>A string representation of this object.</returns>
+        public override string ToString()
+        {
+            return Entree.ToString() + " Combo";
+        }
     }
 }

@@ -55,6 +55,12 @@
             </summary>
             <param name="entree">The entree to use.</param>
         </member>
+        <member name="M:DinoDiner.Menu.CretaceousCombo.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
+        </member>
         <member name="T:DinoDiner.Menu.Drink">
             <summary>
             The base drink class. Extends MenuItem, so inherits Price, Calories, and Ingredients.
@@ -126,6 +132,12 @@
             Makes this coffee decalf.
             </summary>
         </member>
+        <member name="M:DinoDiner.Menu.JurassicJava.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
+        </member>
         <member name="T:DinoDiner.Menu.Sodasaurus">
             <summary>
             A drink class that represents a cup of various types of soda.
@@ -151,6 +163,12 @@
             <summary>
             The constructor for the Sodasaurus drink.
             </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.Sodasaurus.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
         </member>
         <member name="T:DinoDiner.Menu.SodasaurusFlavor">
             <summary>
@@ -238,6 +256,12 @@
             Allows the user to make the tea sweet.
             </summary>
         </member>
+        <member name="M:DinoDiner.Menu.Tyrannotea.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
+        </member>
         <member name="T:DinoDiner.Menu.Water">
             <summary>
             A drink class that represents a cup of water.
@@ -267,6 +291,12 @@
             <summary>
             Allows the user to add lemon to the water.
             </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.Water.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
         </member>
         <member name="T:DinoDiner.Menu.Brontowurst">
             <summary>
@@ -313,6 +343,12 @@
             Allows the user to remove the onions from this entree.
             </summary>
         </member>
+        <member name="M:DinoDiner.Menu.Brontowurst.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
+        </member>
         <member name="T:DinoDiner.Menu.DinoNuggets">
             <summary>
             A class that represents an entree of Dino Nuggets.
@@ -332,6 +368,12 @@
             <summary>
             Function that allows the user to add a nugget for an additional cost.
             </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.DinoNuggets.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
         </member>
         <member name="T:DinoDiner.Menu.Entree">
             <summary>
@@ -363,6 +405,12 @@
             Allows the user to remove the jelly from this PB and J.
             </summary>
         </member>
+        <member name="M:DinoDiner.Menu.PrehistoricPBJ.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
+        </member>
         <member name="T:DinoDiner.Menu.PterodactylWings">
             <summary>
             A class that represents an entree of Pterodactyl Wings.
@@ -377,6 +425,12 @@
             <summary>
             The constructor for this entree. Sets the price and the calories.
             </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.PterodactylWings.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
         </member>
         <member name="T:DinoDiner.Menu.SteakosaurusBurger">
             <summary>
@@ -432,6 +486,12 @@
             <summary>
             Allows the user to remove the mustard from this entree.
             </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.SteakosaurusBurger.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
         </member>
         <member name="T:DinoDiner.Menu.TRexKingBurger">
             <summary>
@@ -528,6 +588,12 @@
             Allows the user to remove the mayo from this entree.
             </summary>
         </member>
+        <member name="M:DinoDiner.Menu.TRexKingBurger.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
+        </member>
         <member name="T:DinoDiner.Menu.VelociWrap">
             <summary>
             A class that represents a VelociWrap entree.
@@ -572,6 +638,12 @@
             <summary>
             Allows the user to remove the onions from this entree.
             </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.VelociWrap.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
         </member>
         <member name="T:DinoDiner.Menu.IMenuItem">
             <summary>
@@ -633,6 +705,12 @@
             The constructor for the Fryceritops side. Sets the calories and price to the values for the small side.
             </summary>
         </member>
+        <member name="M:DinoDiner.Menu.Fryceritops.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
+        </member>
         <member name="T:DinoDiner.Menu.MeteorMacAndCheese">
             <summary>
             A class which represents a side of Triceritots.
@@ -653,6 +731,12 @@
             The constructor for the Triceritots side. Sets the calories and price to the values for the small side.
             </summary>
         </member>
+        <member name="M:DinoDiner.Menu.MeteorMacAndCheese.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
+        </member>
         <member name="T:DinoDiner.Menu.MezzorellaSticks">
             <summary>
             A class which represents a side of Triceritots.
@@ -672,6 +756,12 @@
             <summary>
             The constructor for the Triceritots side. Sets the calories and price to the values for the small side.
             </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.MezzorellaSticks.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
         </member>
         <member name="T:DinoDiner.Menu.Side">
             <summary>
@@ -702,6 +792,12 @@
             <summary>
             The constructor for the Triceritots side. Sets the calories and price to the values for the small side.
             </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.Triceritots.ToString">
+            <summary>
+            Creates and returns a string representation of this object.
+            </summary>
+            <returns>A string representation of this object.</returns>
         </member>
         <member name="T:DinoDiner.Menu.Size">
             <summary>
