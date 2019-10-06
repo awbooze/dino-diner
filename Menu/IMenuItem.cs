@@ -1,4 +1,4 @@
-﻿/*  MenuItem.cs
+﻿/*  IMenuItem.cs
 *   Author: Andrew Booze
 */
 
@@ -7,23 +7,23 @@ using System.Collections.Generic;
 namespace DinoDiner.Menu
 {
     /// <summary>
-    /// The base class for all menu items. Provides Price, Calories, and an abstract list of ingredients.
+    /// An interface that all menu items need to implement through the MenuItem base class.
     /// </summary>
-    public abstract class MenuItem : IMenuItem
+    public interface IMenuItem
     {
         /// <summary>
         /// The price of this menu item.
         /// </summary>
-        public virtual double Price { get; set; }
+        double Price { get; }
 
         /// <summary>
         /// The number of calories in this menu item.
         /// </summary>
-        public virtual uint Calories { get; set; }
+        uint Calories { get; }
 
         /// <summary>
         /// The list of ingredients for this menu item.
         /// </summary>
-        public abstract List<string> Ingredients { get; }
+        List<string> Ingredients { get; }
     }
 }
