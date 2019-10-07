@@ -392,7 +392,7 @@
         </member>
         <member name="M:DinoDiner.Menu.PrehistoricPBJ.#ctor">
             <summary>
-            The constructor for this PB and J
+            The constructor for this entree. Sets the price and the calories.
             </summary>
         </member>
         <member name="M:DinoDiner.Menu.PrehistoricPBJ.HoldPeanutButter">
@@ -664,6 +664,42 @@
             <summary>
             The list of ingredients for this menu item.
             </summary>
+        </member>
+        <member name="T:DinoDiner.Menu.Menu">
+            <summary>
+            A class which represents the entire menu.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Menu.AvailableMenuItems">
+            <summary>
+            Generates and returns a list of all available menu items.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Menu.AvailableEntrees">
+            <summary>
+            Generates and returns a list of all available entrees on the menu.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Menu.AvailableSides">
+            <summary>
+            Generates and returns a list of all available sides on the menu.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Menu.AvailableDrinks">
+            <summary>
+            Generates and returns a list of all available drinks on the menu.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Menu.AvailableCombos">
+            <summary>
+            Generates and returns a list of all available combos on the menu.
+            </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.Menu.ToString">
+            <summary>
+            Returns the entire contents of the menu separated by new line characters.
+            </summary>
+            <returns>A list of all menu contents separated by new line characters.</returns>
         </member>
         <member name="T:DinoDiner.Menu.MenuItem">
             <summary>

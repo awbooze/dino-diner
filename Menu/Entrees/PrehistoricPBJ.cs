@@ -29,7 +29,7 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
-        /// The constructor for this PB and J
+        /// The constructor for this entree. Sets the price and the calories.
         /// </summary>
         public PrehistoricPBJ()
         {

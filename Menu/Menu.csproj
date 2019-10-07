@@ -13,4 +13,8 @@
     <Folder Include="Milestones\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.6.0" />
+  </ItemGroup>
+
 </Project>
