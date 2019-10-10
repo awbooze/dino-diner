@@ -68,7 +68,7 @@ namespace MenuTest
         [InlineData(Size.Small)]
         [InlineData(Size.Medium)]
         [InlineData(Size.Large)]
-        public void FriceritopsToStringShouldGiveNameForSize(Size size)
+        public void FryceritopsToStringShouldGiveNameForSize(Size size)
         {
             Fryceritops ft = new Fryceritops();
             ft.Size = size;
