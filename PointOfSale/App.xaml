@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:PointOfSale"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="Margin" Value="10, 10, 10, 10"/>
+            <Setter Property="MaxHeight" Value="350"/>
+            <Setter Property="MaxWidth" Value="400"/>
+        </Style>
     </Application.Resources>
 </Application>

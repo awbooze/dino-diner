@@ -13,5 +13,9 @@ namespace PointOfSale
     /// </summary>
     public partial class App : Application
     {
+        public static string CreateValidIdString(string id)
+        {
+            return id.Replace(' ', '_').Replace('-', '_').Replace('&', '_');
+        }
     }
 }
