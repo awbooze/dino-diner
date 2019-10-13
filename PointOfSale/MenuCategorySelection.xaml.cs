@@ -34,7 +34,7 @@ namespace PointOfSale
             }
             else if (buttonClicked.Name == "EntreeButton")
             {
-                throw new NotImplementedException();
+                NavigationService.Navigate(new EntreeSelection());
             }
             else if (buttonClicked.Name == "SideButton")
             {
