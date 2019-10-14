@@ -30,16 +30,14 @@ namespace PointOfSale
 
             foreach (Drink drink in menu.AvailableDrinks)
             {
-                TextBlock textBlock = new TextBlock
-                {
-                    Text = App.CorrectDrinkAndEntreeNames(drink.ToString()),
-                    TextWrapping = TextWrapping.Wrap,
-                    TextAlignment = TextAlignment.Center
-                };
-
                 Button button = new Button
                 {
-                    Content = textBlock,
+                    Content = new TextBlock
+                    {
+                        Text = App.CorrectDrinkAndEntreeNames(drink.ToString()),
+                        TextWrapping = TextWrapping.Wrap,
+                        TextAlignment = TextAlignment.Center
+                    },
                     Name = App.CreateValidIdString(drink.ToString())
                 };
 
@@ -59,7 +57,8 @@ namespace PointOfSale
                 RadioButton radioButton = new RadioButton
                 {
                     Content = size.ToString(),
-                    Name = size.ToString()
+                    Name = size.ToString(),
+                    IsChecked = (size.ToString() == "Small")
                 };
 
                 SizeGrid.ColumnDefinitions.Add(new ColumnDefinition());
@@ -68,8 +67,6 @@ namespace PointOfSale
 
                 SizeGrid.Children.Add(radioButton);
             }
-
-            ResponsiveButton.Content = "Choose a drink";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

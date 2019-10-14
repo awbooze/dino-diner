@@ -1,17 +1,9 @@
-﻿using System;
+﻿using DinoDiner.Menu;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Menu = DinoDiner.Menu;
 
 namespace PointOfSale
 {
@@ -23,6 +15,68 @@ namespace PointOfSale
         public SideSelection()
         {
             InitializeComponent();
+
+            List<Menu.Size> sizes = new List<Menu.Size>
+            {
+                Menu.Size.Small,
+                Menu.Size.Medium,
+                Menu.Size.Large
+            };
+
+            // Adds buttons for each entree to the menu programatically.
+            Menu.Menu menu = new Menu.Menu();
+            int x = 0;
+            int y = 0;
+
+            foreach (Side side in menu.AvailableSides)
+            {
+                Button button = new Button
+                {
+                    Content = new TextBlock
+                    {
+                        Text = App.CorrectDrinkAndEntreeNames(side.ToString()),
+                        TextWrapping = TextWrapping.Wrap,
+                        TextAlignment = TextAlignment.Center
+                    },
+                    Name = App.CreateValidIdString(side.ToString())
+                };
+
+                button.SetValue(Grid.ColumnProperty, x++);
+                button.SetValue(Grid.RowProperty, y);
+
+                if (x >= 2)
+                {
+                    y++;
+                    x = 0;
+                }
+
+                button.Click += new RoutedEventHandler(Button_Click);
+                SideGrid.Children.Add(button);
+            }
+
+            SizeGrid.RowDefinitions.Add(new RowDefinition());
+            x = 0;
+
+            foreach (Menu.Size size in sizes)
+            {
+                RadioButton radioButton = new RadioButton
+                {
+                    Content = size.ToString(),
+                    Name = size.ToString(),
+                    IsChecked = (size.ToString() == "Small")
+                };
+
+                SizeGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                radioButton.SetValue(Grid.ColumnProperty, x++);
+                radioButton.SetValue(Grid.RowProperty, 0);
+
+                SizeGrid.Children.Add(radioButton);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

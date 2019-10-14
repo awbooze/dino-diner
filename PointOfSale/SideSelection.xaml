@@ -9,6 +9,26 @@
       Title="Side Selection">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="SideGrid" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid x:Name="SizeGrid" Grid.Column="0" Grid.Row="2">
+            
+        </Grid>
     </Grid>
 </Page>
