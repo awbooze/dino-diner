@@ -34,7 +34,7 @@ namespace PointOfSale
                 {
                     Content = new TextBlock
                     {
-                        Text = App.CorrectDrinkAndEntreeNames(side.ToString()),
+                        Text = App.CorrectDrinkAndSideNames(side.ToString()),
                         TextWrapping = TextWrapping.Wrap,
                         TextAlignment = TextAlignment.Center
                     },

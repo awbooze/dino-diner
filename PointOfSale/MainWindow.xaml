@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PointOfSale"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Dino Diner POS" Height="450" Width="800">
     <DockPanel>
         <TextBlock DockPanel.Dock="Right" Width="200" TextAlignment="Center" Background="LightSteelBlue">// TODO: Order</TextBlock>
         <Frame Source="MenuCategorySelection.xaml"></Frame>
