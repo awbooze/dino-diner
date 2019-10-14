@@ -17,5 +17,10 @@ namespace PointOfSale
         {
             return id.Replace(' ', '_').Replace('-', '_').Replace('&', '_');
         }
+
+        public static string CorrectDrinkAndEntreeNames(string name)
+        {
+            return name.Replace("Small ", "");
+        }
     }
 }

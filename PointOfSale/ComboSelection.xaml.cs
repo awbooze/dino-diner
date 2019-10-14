@@ -1,7 +1,6 @@
-﻿using System;
+﻿using DinoDiner.Menu;
 using System.Windows;
 using System.Windows.Controls;
-using DinoDiner.Menu;
 using Menu = DinoDiner.Menu.Menu;
 
 namespace PointOfSale
@@ -51,7 +50,11 @@ namespace PointOfSale
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            // Placeholder for adding combo information later.
+            Button buttonClicked = sender as Button;
+
+            // No matter what, go to the customize combo screen
+            NavigationService.Navigate(new CustomizeCombo());
         }
     }
 }

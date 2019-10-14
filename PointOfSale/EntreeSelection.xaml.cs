@@ -15,7 +15,7 @@ namespace PointOfSale
         {
             InitializeComponent();
 
-            // Adds buttons for each entree to the menu programattically.
+            // Adds buttons for each entree to the menu programatically.
             Menu menu = new Menu();
             int x = 0;
             int y = 0;

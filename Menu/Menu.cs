@@ -73,8 +73,8 @@ namespace DinoDiner.Menu
             {
                 return new List<Drink>
                 {
-                    new JurassicJava(),
                     new Sodasaurus(),
+                    new JurassicJava(),
                     new Tyrannotea(),
                     new Water()
                 };

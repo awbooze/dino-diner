@@ -11,5 +11,11 @@
             <Setter Property="MaxHeight" Value="350"/>
             <Setter Property="MaxWidth" Value="400"/>
         </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="Margin" Value="10, 10, 10, 10"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
     </Application.Resources>
 </Application>
