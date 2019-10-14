@@ -35,7 +35,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button x:Name="ResponsiveButton" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" Content="Choose a Drink"/>
+            <Button x:Name="RemovableButton" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" Content="Choose a Drink"/>
         </Grid>
     </Grid>
 </Page>

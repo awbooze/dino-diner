@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿/*  MenuCategorySelection.xaml.cs
+*   Author: Andrew Booze
+*/
+
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
@@ -9,12 +13,16 @@ namespace PointOfSale
     /// </summary>
     public partial class MenuCategorySelection : Page
     {
+        /// <summary>
+        /// The constructor for this page. Intitializes all components defined in MainCategorySelection.xaml.
+        /// </summary>
         public MenuCategorySelection()
         {
             InitializeComponent();
         }
 
-        public void Button_Click(object sender, RoutedEventArgs args)
+        // Navigates to the right page depending on the button clicked
+        private void Button_Click(object sender, RoutedEventArgs args)
         {
             Button buttonClicked = sender as Button;
             if (buttonClicked.Name == "ComboButton")

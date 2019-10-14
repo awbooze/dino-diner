@@ -1,4 +1,8 @@
-﻿using DinoDiner.Menu;
+﻿/*  FlavorSelection.xaml.cs
+*   Author: Andrew Booze
+*/
+
+using DinoDiner.Menu;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -11,11 +15,14 @@ namespace PointOfSale
     /// </summary>
     public partial class FlavorSelection : Page
     {
+        /// <summary>
+        /// The constructor for this page. Adds a button for each flavor.
+        /// </summary>
         public FlavorSelection()
         {
             InitializeComponent();
 
-            // Adds buttons for each flavor to the menu programattically.
+            // Adds buttons for each flavor to the menu programatically.
             List<SodasaurusFlavor> sodasaurusFlavors = new List<SodasaurusFlavor>
             {
                 SodasaurusFlavor.Cola,
@@ -59,6 +66,7 @@ namespace PointOfSale
             }
         }
 
+        // Preforms any actions necessary when a flavor button is clicked
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();

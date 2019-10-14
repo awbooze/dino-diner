@@ -1,4 +1,8 @@
-﻿using DinoDiner.Menu;
+﻿/*  ComboSelection.xaml.cs
+*   Author: Andrew Booze
+*/
+
+using DinoDiner.Menu;
 using System.Windows;
 using System.Windows.Controls;
 using Menu = DinoDiner.Menu.Menu;
@@ -10,11 +14,14 @@ namespace PointOfSale
     /// </summary>
     public partial class ComboSelection : Page
     {
+        /// <summary>
+        /// The constructor for this page. Adds a button for each combo.
+        /// </summary>
         public ComboSelection()
         {
             InitializeComponent();
 
-            // Adds buttons for each combo to the menu programattically.
+            // Adds buttons for each combo to the menu programatically.
             Menu menu = new Menu();
             int x = 0;
             int y = 0;
@@ -48,6 +55,7 @@ namespace PointOfSale
             }
         }
 
+        // Navigates to the CustomizeCombo screen when any button pressed.
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // Placeholder for adding combo information later.

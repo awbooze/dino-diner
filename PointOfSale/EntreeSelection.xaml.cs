@@ -1,4 +1,8 @@
-﻿using DinoDiner.Menu;
+﻿/*  EntreeSelection.xaml.cs
+*   Author: Andrew Booze
+*/
+
+using DinoDiner.Menu;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +15,9 @@ namespace PointOfSale
     /// </summary>
     public partial class EntreeSelection : Page
     {
+        /// <summary>
+        /// The constructor for this page. Adds a button for each entree.
+        /// </summary>
         public EntreeSelection()
         {
             InitializeComponent();
@@ -49,6 +56,7 @@ namespace PointOfSale
             }
         }
 
+        // Performs any actions necessary when an entree button is clicked
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();

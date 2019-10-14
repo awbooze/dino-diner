@@ -1,4 +1,8 @@
-﻿using DinoDiner.Menu;
+﻿/*  DrinkSelection.xaml.cs
+*   Author: Andrew Booze
+*/
+
+using DinoDiner.Menu;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -12,6 +16,9 @@ namespace PointOfSale
     /// </summary>
     public partial class DrinkSelection : Page
     {
+        /// <summary>
+        /// The constructor for this page. Adds a button for each drink and the radio buttons for the sizes.
+        /// </summary>
         public DrinkSelection()
         {
             InitializeComponent();
@@ -69,6 +76,12 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Removes all buttons in the third row of the app, then re-adds buttons that are applicable to the 
+        /// current drink.
+        /// </summary>
+        /// <param name="sender">The button that was pressed.</param>
+        /// <param name="e">Any arguments about the event.</param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
@@ -134,7 +147,7 @@ namespace PointOfSale
                 addIceButton.SetValue(Grid.ColumnProperty, 0);
                 addIceButton.SetValue(Grid.ColumnSpanProperty, 2);
 
-                addIceButton.Click += JJava_Click;
+                addIceButton.Click += Java_Click;
                 SpecialGrid.Children.Add(addIceButton);
 
                 Button roomForCreamButton = new Button
@@ -151,7 +164,7 @@ namespace PointOfSale
                 roomForCreamButton.SetValue(Grid.ColumnProperty, 2);
                 roomForCreamButton.SetValue(Grid.ColumnSpanProperty, 2);
 
-                roomForCreamButton.Click += JJava_Click;
+                roomForCreamButton.Click += Java_Click;
                 SpecialGrid.Children.Add(roomForCreamButton);
 
                 Button decalfButton = new Button
@@ -168,7 +181,7 @@ namespace PointOfSale
                 decalfButton.SetValue(Grid.ColumnProperty, 4);
                 decalfButton.SetValue(Grid.ColumnSpanProperty, 2);
 
-                decalfButton.Click += JJava_Click;
+                decalfButton.Click += Java_Click;
                 SpecialGrid.Children.Add(decalfButton);
             }
             else if (button.Name == App.CreateValidIdString(new Tyrannotea().ToString()))
@@ -272,6 +285,7 @@ namespace PointOfSale
             }
         }
 
+        // Performs soda-related actions when soda-related buttons are clicked
         private void Soda_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
@@ -281,16 +295,19 @@ namespace PointOfSale
             }
         }
 
-        private void JJava_Click(object sender, RoutedEventArgs e)
+        // Performs java-related actions when java-related buttons are clicked
+        private void Java_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }
 
+        // Performs tea-related actions when tea-related buttons are clicked
         private void Tea_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }
 
+        // Performs water-related actions when water-related buttons are clicked
         private void Water_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();

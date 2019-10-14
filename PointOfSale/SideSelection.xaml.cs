@@ -1,4 +1,8 @@
-﻿using DinoDiner.Menu;
+﻿/*  SideSelection.xaml.cs
+*   Author: Andrew Booze
+*/
+
+using DinoDiner.Menu;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -12,6 +16,9 @@ namespace PointOfSale
     /// </summary>
     public partial class SideSelection : Page
     {
+        /// <summary>
+        /// The constructor for this page. Adds buttons for all the sides and radio buttons for the sizes.
+        /// </summary>
         public SideSelection()
         {
             InitializeComponent();
@@ -74,6 +81,7 @@ namespace PointOfSale
             }
         }
 
+        // Performs any action required by clicking on one of the sides
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
