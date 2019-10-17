@@ -48,6 +48,26 @@ namespace DinoDiner.Menu
             numberOfNuggets++;
             Price += 0.25;
             Calories += 59;
+
+            if (special.Count > 0)
+            {
+                special.RemoveAt(0);
+            }
+
+            if (numberOfNuggets == 7)
+            {
+                special.Add("1 Extra Nugget");
+            }
+            else if (numberOfNuggets > 7)
+            {
+                special.Add($"{numberOfNuggets - 6} Extra Nuggets");
+            }
+
+            // Notify that properties have changed
+            NotifyOfPropertyChanged("Special");
+            NotifyOfPropertyChanged("Price");
+            NotifyOfPropertyChanged("Calories");
+            NotifyOfPropertyChanged("Ingredients");
         }
 
         /// <summary>

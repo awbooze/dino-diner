@@ -43,6 +43,7 @@ namespace DinoDiner.Menu
         public void HoldPeanutButter()
         {
             peanutButter = false;
+            special.Add("Hold Peanut Butter");
         }
 
         /// <summary>
@@ -51,6 +52,7 @@ namespace DinoDiner.Menu
         public void HoldJelly()
         {
             jelly = false;
+            special.Add("Hold Jelly");
         }
 
         /// <summary>

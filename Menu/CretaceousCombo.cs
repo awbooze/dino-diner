@@ -82,6 +82,25 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
+        /// Any special requirements for this order. Collects the specials when called instead of 
+        /// when things are changed because the combo has multiple parts, which are hard to keep 
+        /// track of simultaniously.
+        /// </summary>
+        public override string[] Special 
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                special.AddRange(Entree.Special);
+                special.Add(Side.Description);
+                special.AddRange(Side.Special);
+                special.Add(Drink.Description);
+                special.AddRange(Drink.Special);
+                return special.ToArray();
+            }
+        }
+
+        /// <summary>
         /// Constructs a new combo with the specified entree.
         /// </summary>
         /// <param name="entree">The entree to use.</param>
