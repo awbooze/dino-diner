@@ -110,7 +110,7 @@ namespace MenuTest.Entrees
             {
                 if (extraNuggets == 1)
                 {
-                    Assert.Equal($"{extraNuggets} Extra Nugget", item);
+                    Assert.Equal($"{extraNuggets} Extra Nuggets", item);
                 }
                 else
                 {
