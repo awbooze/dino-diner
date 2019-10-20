@@ -12,7 +12,9 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Sodasaurus : Drink
     {
+        // Private backing variables
         private Size size;
+        private SodasaurusFlavor flavor;
 
         /// <summary>
         /// An enum variable which stores the size of this drink.
@@ -42,6 +44,11 @@ namespace DinoDiner.Menu
                         Calories = 208;
                         break;
                 }
+
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Description");
             }
         }
 
@@ -54,7 +61,19 @@ namespace DinoDiner.Menu
         /// The flavor or flavors of this soda. Use the bitwise OR operator to set multiple flavors.
         /// Defaults to the generic cola flavor only.
         /// </summary>
-        public SodasaurusFlavor Flavor { get; set; } = SodasaurusFlavor.Cola;
+        public SodasaurusFlavor Flavor 
+        {
+            get 
+            {
+                return flavor;
+            }
+            set
+            {
+                flavor = value;
+                NotifyOfPropertyChanged("Flavor");
+                NotifyOfPropertyChanged("Description");
+            } 
+        }
 
         /// <summary>
         /// The constructor for the Sodasaurus drink.
@@ -63,6 +82,7 @@ namespace DinoDiner.Menu
         {
             Price = 1.50;
             Calories = 112;
+            Flavor = SodasaurusFlavor.Cola;
         }
 
         /// <summary>

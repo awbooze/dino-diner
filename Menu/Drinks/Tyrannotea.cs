@@ -11,6 +11,7 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Tyrannotea : Drink
     {
+        // Private backing variable
         private Size size;
 
         /// <summary>
@@ -47,6 +48,11 @@ namespace DinoDiner.Menu
                 {
                     Calories *= 2;
                 }
+
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Description");
             }
         }
 
@@ -96,7 +102,13 @@ namespace DinoDiner.Menu
         /// </summary>
         public void AddLemon()
         {
-            Lemon = true;
+            if (!Lemon)
+            {
+                Lemon = true;
+                special.Add("Add Lemon");
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+            }
         }
 
         /// <summary>
@@ -104,10 +116,17 @@ namespace DinoDiner.Menu
         /// </summary>
         public void MakeSweet()
         {
-            Sweet = true;
+            if (!Sweet)
+            {
+                Sweet = true;
 
-            // Double calorie values if sweet
-            Calories *= 2;
+                // Double calorie values if sweet
+                Calories *= 2;
+
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Description");
+            }
         }
 
         /// <summary>

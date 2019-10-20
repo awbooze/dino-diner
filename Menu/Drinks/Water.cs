@@ -11,10 +11,23 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Water : Drink
     {
+        // Private backing variables
+        private Size size;
+
         /// <summary>
         /// An enum variable which stores the size of this drink.
         /// </summary>
-        public override Size Size { get; set; }
+        public override Size Size {
+            get
+            {
+                return size;
+            }
+            set
+            {
+                size = value;
+                NotifyOfPropertyChanged("Size");
+            }
+        }
 
         /// <summary>
         /// A list of ingredients for this drink.
@@ -52,7 +65,13 @@ namespace DinoDiner.Menu
         /// </summary>
         public void AddLemon()
         {
-            Lemon = true;
+            if (!Lemon)
+            {
+                Lemon = true;
+                special.Add("Add Lemon");
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+            }
         }
 
         /// <summary>

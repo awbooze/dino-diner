@@ -24,7 +24,13 @@ namespace DinoDiner.Menu
         /// </summary>
         public virtual void HoldIce()
         {
-            Ice = false;
+            if (Ice)
+            {
+                Ice = false;
+                special.Add("Hold Ice");
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+            }
         }
     }
 }

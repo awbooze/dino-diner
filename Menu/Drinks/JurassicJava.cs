@@ -11,6 +11,7 @@ namespace DinoDiner.Menu
     /// </summary>
     public class JurassicJava : Drink
     {
+        // Private backing variable
         private Size size;
 
         /// <summary>
@@ -41,6 +42,11 @@ namespace DinoDiner.Menu
                         Calories = 8;
                         break;
                 }
+
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Description");
             }
         }
 
@@ -79,7 +85,12 @@ namespace DinoDiner.Menu
         /// </summary>
         public void AddIce()
         {
-            Ice = true;
+            if (!Ice)
+            {
+                Ice = true;
+                special.Add("Add Ice");
+                NotifyOfPropertyChanged("Special");
+            }
         }
 
         /// <summary>
@@ -87,7 +98,12 @@ namespace DinoDiner.Menu
         /// </summary>
         public void LeaveRoomForCream()
         {
-            RoomForCream = true;
+            if (!RoomForCream)
+            {
+                RoomForCream = true;
+                special.Add("Leave Room For Cream");
+                NotifyOfPropertyChanged("Special");
+            }
         }
 
         /// <summary>
@@ -95,7 +111,11 @@ namespace DinoDiner.Menu
         /// </summary>
         public void MakeDecaf()
         {
-            Decaf = true;
+            if (!Decaf)
+            {
+                Decaf = true;
+                NotifyOfPropertyChanged("Description");
+            }
         }
 
         /// <summary>
