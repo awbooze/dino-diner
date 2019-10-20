@@ -11,6 +11,7 @@ namespace DinoDiner.Menu
     /// </summary>
     public class MeteorMacAndCheese : Side
     {
+        // Private backing variable
         private Size size;
 
         /// <summary>
@@ -41,6 +42,11 @@ namespace DinoDiner.Menu
                         Calories = 520;
                         break;
                 }
+
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Description");
             }
         }
 
