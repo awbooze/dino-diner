@@ -38,7 +38,8 @@ namespace DinoDiner.Menu
         public abstract List<string> Ingredients { get; }
 
         /// <summary>
-        /// The description for this menu item.
+        /// The description for this menu item. Relies on all derived classes overriding the ToString method 
+        /// in their class.
         /// </summary>
         public virtual string Description => ToString();
 

@@ -56,7 +56,7 @@ namespace DinoDiner.Menu
 
             if (numberOfNuggets == 7)
             {
-                special.Add("1 Extra Nugget");
+                special.Add("1 Extra Nuggets");
             }
             else if (numberOfNuggets > 7)
             {

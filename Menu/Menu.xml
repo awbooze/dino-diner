@@ -706,6 +706,16 @@
             The base class for all menu items. Provides Price, Calories, and an abstract list of ingredients.
             </summary>
         </member>
+        <member name="F:DinoDiner.Menu.MenuItem.special">
+            <summary>
+            Powers the ability to add special requirements to the order.
+            </summary>
+        </member>
+        <member name="E:DinoDiner.Menu.MenuItem.PropertyChanged">
+            <summary>
+            The PropertyChangedEventHandler for NotifyOfPropertyChanged.
+            </summary>
+        </member>
         <member name="P:DinoDiner.Menu.MenuItem.Price">
             <summary>
             The price of this menu item.
@@ -720,6 +730,22 @@
             <summary>
             The list of ingredients for this menu item.
             </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.MenuItem.Description">
+            <summary>
+            The description for this menu item.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.MenuItem.Special">
+            <summary>
+            Any special requirements for this order.
+            </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.MenuItem.NotifyOfPropertyChanged(System.String)">
+            <summary>
+            Call to notify other listeners that a property described by the property name has changed.
+            </summary>
+            <param name="propertyName">The name of the property that has changed.</param>
         </member>
         <member name="T:DinoDiner.Menu.Fryceritops">
             <summary>

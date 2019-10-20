@@ -61,7 +61,13 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldBun()
         {
-            bun = false;
+            if (bun)
+            {
+                bun = false;
+                special.Add("Hold Bun");
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+            }
         }
 
         /// <summary>
@@ -69,7 +75,13 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldPickle()
         {
-            pickle = false;
+            if (pickle)
+            {
+                pickle = false;
+                special.Add("Hold Pickle");
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+            }
         }
 
         /// <summary>
@@ -77,7 +89,13 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldKetchup()
         {
-            ketchup = false;
+            if (ketchup)
+            {
+                ketchup = false;
+                special.Add("Hold Ketchup");
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+            }
         }
 
         /// <summary>
@@ -85,7 +103,13 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldMustard()
         {
-            mustard = false;
+            if (mustard)
+            {
+                mustard = false;
+                special.Add("Hold Mustard");
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+            }
         }
 
         /// <summary>

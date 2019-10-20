@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿/*  IOrderItem.cs
+*   Author: Andrew Booze
+*/
 
 namespace DinoDiner.Menu
 {
@@ -13,9 +13,9 @@ namespace DinoDiner.Menu
         /// The price of this order item.
         /// </summary>
         double Price { get; }
-        
+
         /// <summary>
-        /// The description of this order item
+        /// The description of this order item.
         /// </summary>
         string Description { get; }
 

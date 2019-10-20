@@ -24,7 +24,7 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Whether or not the onions are included in the brontowurst.
         /// </summary>
-        private bool onions = true;
+        private bool onion = true;
 
         /// <summary>
         /// The list of ingredients for the brontowurst.
@@ -36,7 +36,7 @@ namespace DinoDiner.Menu
                 List<string> ingredients = new List<string>() { "Brautwurst" };
                 if (bun) ingredients.Add("Whole Wheat Bun");
                 if (peppers) ingredients.Add("Peppers");
-                if (onions) ingredients.Add("Onion");
+                if (onion) ingredients.Add("Onion");
                 return ingredients;
             }
         }
@@ -55,7 +55,13 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldBun()
         {
-            bun = false;
+            if (bun)
+            {
+                bun = false;
+                special.Add("Hold Bun");
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+            }
         }
 
         /// <summary>
@@ -63,7 +69,13 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldPeppers()
         {
-            peppers = false;
+            if (peppers)
+            {
+                peppers = false;
+                special.Add("Hold Peppers");
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+            }
         }
 
         /// <summary>
@@ -71,7 +83,13 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldOnion()
         {
-            onions = false;
+            if (onion)
+            {
+                onion = false;
+                special.Add("Hold Onion");
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+            }
         }
 
         /// <summary>
