@@ -288,5 +288,63 @@ namespace MenuTest.Drinks
             Assert.Equal("Add Lemon", drink.Special[0]);
             Assert.Equal("Hold Ice", drink.Special[1]);
         }
+
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        [InlineData("Description")]
+        public void ChangingSizeShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Tyrannotea drink = new Tyrannotea();
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Size = Size.Medium;
+            });
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Size = Size.Large;
+            });
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Size = Size.Small;
+            });
+        }
+
+        [Theory]
+        [InlineData("Ingredients")]
+        [InlineData("Special")]
+        public void AddLemonShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Tyrannotea drink = new Tyrannotea();
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.AddLemon();
+            });
+        }
+
+        [Theory]
+        [InlineData("Ingredients")]
+        [InlineData("Calories")]
+        [InlineData("Description")]
+        public void MakeSweetShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Tyrannotea drink = new Tyrannotea();
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.MakeSweet();
+            });
+        }
+
+        [Theory]
+        [InlineData("Special")]
+        public void HoldingIceShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Tyrannotea drink = new Tyrannotea();
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.HoldIce();
+            });
+        }
     }
 }

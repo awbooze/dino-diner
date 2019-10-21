@@ -324,5 +324,78 @@ namespace MenuTest.Drinks
             drink.HoldIce();
             Assert.Equal("Hold Ice", drink.Special[0]);
         }
+
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        [InlineData("Description")]
+        public void ChangingSizeShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Sodasaurus drink = new Sodasaurus();
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Size = Size.Medium;
+            });
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Size = Size.Large;
+            });
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Size = Size.Small;
+            });
+        }
+
+        [Theory]
+        [InlineData("Flavor")]
+        [InlineData("Description")]
+        public void ChangingFlavorShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Sodasaurus drink = new Sodasaurus();
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Flavor = SodasaurusFlavor.Orange;
+            });
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Flavor = SodasaurusFlavor.Vanilla;
+            });
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Flavor = SodasaurusFlavor.Chocolate;
+            });
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Flavor = SodasaurusFlavor.RootBeer;
+            });
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Flavor = SodasaurusFlavor.Cherry;
+            });
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Flavor = SodasaurusFlavor.Lime;
+            });
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Flavor = SodasaurusFlavor.Grape;
+            });
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Flavor = SodasaurusFlavor.Cola;
+            });
+        }
+
+        [Theory]
+        [InlineData("Special")]
+        public void HoldingIceShouldNotifyOfPropertyChange(string propertyName)
+        {
+            Sodasaurus drink = new Sodasaurus();
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.HoldIce();
+            });
+        }
     }
 }

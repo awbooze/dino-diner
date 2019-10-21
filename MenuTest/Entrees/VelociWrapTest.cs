@@ -106,5 +106,25 @@ namespace MenuTest.Entrees
             Assert.Equal("Hold Lettuce", entree.Special[1]);
             Assert.Equal("Hold Cheese", entree.Special[2]);
         }
+
+        [Theory]
+        [InlineData("Special")]
+        [InlineData("Ingredients")]
+        public void HoldingIngredientsShouldNotifyOfPropertyChange(string propertyName)
+        {
+            VelociWrap entree = new VelociWrap();
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldDressing();
+            });
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldLettuce();
+            });
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldCheese();
+            });
+        }
     }
 }

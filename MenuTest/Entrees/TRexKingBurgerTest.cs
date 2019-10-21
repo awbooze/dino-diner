@@ -270,5 +270,45 @@ namespace MenuTest.Entrees
             Assert.Equal("Hold Mustard", entree.Special[6]);
             Assert.Equal("Hold Mayo", entree.Special[7]);
         }
+
+        [Theory]
+        [InlineData("Special")]
+        [InlineData("Ingredients")]
+        public void HoldingIngredientsShouldNotifyOfPropertyChange(string propertyName)
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldBun();
+            });
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldLettuce();
+            });
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldTomato();
+            });
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldOnion();
+            });
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldPickle();
+            });
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldKetchup();
+            });
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldMustard();
+            });
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldMayo();
+            });
+        }
     }
 }

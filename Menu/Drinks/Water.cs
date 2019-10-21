@@ -26,6 +26,7 @@ namespace DinoDiner.Menu
             {
                 size = value;
                 NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Description");
             }
         }
 
@@ -58,6 +59,7 @@ namespace DinoDiner.Menu
         {
             Price = 0.1;
             Calories = 0;
+            Lemon = false;
         }
 
         /// <summary>

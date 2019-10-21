@@ -144,5 +144,29 @@ namespace MenuTest.Entrees
             Assert.Equal("Hold Ketchup", entree.Special[2]);
             Assert.Equal("Hold Mustard", entree.Special[3]);
         }
+
+        [Theory]
+        [InlineData("Special")]
+        [InlineData("Ingredients")]
+        public void HoldingIngredientsShouldNotifyOfPropertyChange(string propertyName)
+        {
+            SteakosaurusBurger entree = new SteakosaurusBurger();
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldBun();
+            });
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldPickle();
+            });
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldKetchup();
+            });
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldMustard();
+            });
+        }
     }
 }

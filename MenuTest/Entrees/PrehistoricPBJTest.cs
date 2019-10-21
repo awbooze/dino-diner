@@ -86,5 +86,21 @@ namespace MenuTest.Entrees
             Assert.Equal("Hold Peanut Butter", entree.Special[0]);
             Assert.Equal("Hold Jelly", entree.Special[1]);
         }
+
+        [Theory]
+        [InlineData("Special")]
+        [InlineData("Ingredients")]
+        public void HoldingIngredientsShouldNotifyOfPropertyChange(string propertyName)
+        {
+            PrehistoricPBJ entree = new PrehistoricPBJ();
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldPeanutButter();
+            });
+            Assert.PropertyChanged(entree, propertyName, () =>
+            {
+                entree.HoldJelly();
+            });
+        }
     }
 }

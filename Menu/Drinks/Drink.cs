@@ -28,7 +28,6 @@ namespace DinoDiner.Menu
             {
                 Ice = false;
                 special.Add("Hold Ice");
-                NotifyOfPropertyChanged("Ingredients");
                 NotifyOfPropertyChanged("Special");
             }
         }

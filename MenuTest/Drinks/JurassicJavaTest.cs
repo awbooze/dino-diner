@@ -228,5 +228,38 @@ namespace MenuTest.Drinks
             Assert.Equal("Add Ice", drink.Special[0]);
             Assert.Equal("Leave Room For Cream", drink.Special[1]);
         }
+
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        [InlineData("Description")]
+        public void ChangingSizeShouldNotifyOfPropertyChange(string propertyName)
+        {
+            JurassicJava drink = new JurassicJava();
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Size = Size.Medium;
+            });
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Size = Size.Large;
+            });
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.Size = Size.Small;
+            });
+        }
+
+        [Theory]
+        [InlineData("Special")]
+        public void AddingIceShouldNotifyOfPropertyChange(string propertyName)
+        {
+            JurassicJava drink = new JurassicJava();
+            Assert.PropertyChanged(drink, propertyName, () =>
+            {
+                drink.AddIce();
+            });
+        }
     }
 }

@@ -103,5 +103,27 @@ namespace MenuTest.Sides
             MezzorellaSticks ms = new MezzorellaSticks();
             Assert.Empty(ms.Special);
         }
+
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        [InlineData("Description")]
+        public void ChangingSizeShouldNotifyOfPropertyChange(string propertyName)
+        {
+            MezzorellaSticks side = new MezzorellaSticks();
+            Assert.PropertyChanged(side, propertyName, () =>
+            {
+                side.Size = Size.Medium;
+            });
+            Assert.PropertyChanged(side, propertyName, () =>
+            {
+                side.Size = Size.Large;
+            });
+            Assert.PropertyChanged(side, propertyName, () =>
+            {
+                side.Size = Size.Small;
+            });
+        }
     }
 }
