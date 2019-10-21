@@ -177,5 +177,30 @@ namespace MenuTest.Drinks
             Assert.Contains<string>("Coffee", ingredients);
             Assert.Equal<int>(2, ingredients.Count);
         }
+
+        [Theory]
+        [InlineData(Size.Small, false)]
+        [InlineData(Size.Medium, false)]
+        [InlineData(Size.Large, false)]
+        [InlineData(Size.Small, true)]
+        [InlineData(Size.Medium, true)]
+        [InlineData(Size.Large, true)]
+        public void DescriptionShouldGiveNameForSizeAndDecaf(Size size, bool decaf)
+        {
+            JurassicJava drink = new JurassicJava
+            {
+                Size = size,
+                Decaf = decaf
+            };
+            if (decaf) Assert.Equal($"{size} Decaf Jurassic Java", drink.Description);
+            else Assert.Equal($"{size} Jurassic Java", drink.Description);
+        }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            JurassicJava drink = new JurassicJava();
+            Assert.Empty(drink.Special);
+        }
     }
 }

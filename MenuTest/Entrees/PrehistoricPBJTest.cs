@@ -48,10 +48,17 @@ namespace MenuTest.Entrees
         }
 
         [Fact] 
-        public void ShouldProvideCorrectDescription()
+        public void ShouldHaveCorrectDescription()
         {
             PrehistoricPBJ pbj = new PrehistoricPBJ();
             Assert.Equal("Prehistoric PB&J", pbj.Description);
+        }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            PrehistoricPBJ pbj = new PrehistoricPBJ();
+            Assert.Empty(pbj.Special);
         }
     }
 }

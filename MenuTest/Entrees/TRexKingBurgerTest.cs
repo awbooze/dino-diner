@@ -107,6 +107,18 @@ namespace MenuTest.Entrees
             Assert.DoesNotContain<string>("Mayo", trex.Ingredients);
         }
 
-    }
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            TRexKingBurger trex = new TRexKingBurger();
+            Assert.Equal("T-Rex King Burger", trex.Description);
+        }
 
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            TRexKingBurger trex = new TRexKingBurger();
+            Assert.Empty(trex.Special);
+        }
+    }
 }

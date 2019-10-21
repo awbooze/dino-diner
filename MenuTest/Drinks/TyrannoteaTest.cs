@@ -237,5 +237,30 @@ namespace MenuTest.Drinks
         // Because I created my properties with protected or private sets, it is impossible for the program 
         // to set the sweet property to false after it is set to true. Therefore, I do not need to test it 
         // for this milestone.
+
+        [Theory]
+        [InlineData(Size.Small, false)]
+        [InlineData(Size.Medium, false)]
+        [InlineData(Size.Large, false)]
+        [InlineData(Size.Small, true)]
+        [InlineData(Size.Medium, true)]
+        [InlineData(Size.Large, true)]
+        public void TyrannoTeaToStringShouldGiveNameForSizeAndSweetness(Size size, bool sweet)
+        {
+            Tyrannotea drink = new Tyrannotea
+            {
+                Size = size,
+                Sweet = sweet
+            };
+            if (sweet) Assert.Equal($"{size} Sweet Tyrannotea", drink.Description);
+            else Assert.Equal($"{size} Tyrannotea", drink.Description);
+        }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            Tyrannotea drink = new Tyrannotea();
+            Assert.Empty(drink.Special);
+        }
     }
 }

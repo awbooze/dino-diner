@@ -87,6 +87,13 @@ namespace MenuTest.Entrees
         }
 
         [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            DinoNuggets dn = new DinoNuggets();
+            Assert.Equal("Dino Nuggets", dn.Description);
+        }
+
+        [Fact]
         public void ShouldHaveEmptySpecialByDefault()
         {
             DinoNuggets dn = new DinoNuggets();

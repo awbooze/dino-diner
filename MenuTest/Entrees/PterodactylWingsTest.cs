@@ -1,4 +1,8 @@
-﻿using DinoDiner.Menu;
+﻿/*  SteakosaurusBurgerTest.cs
+*   Author: Andrew Booze
+*/
+
+using DinoDiner.Menu;
 using System.Collections.Generic;
 using Xunit;
 
@@ -30,5 +34,18 @@ namespace MenuTest.Entrees
             Assert.Equal<int>(2, ingredients.Count);
         }
 
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            PterodactylWings pw = new PterodactylWings();
+            Assert.Equal("Pterodactyl Wings", pw.Description);
+        }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            PterodactylWings pw = new PterodactylWings();
+            Assert.Empty(pw.Special);
+        }
     }
 }

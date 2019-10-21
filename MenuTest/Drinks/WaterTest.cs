@@ -176,5 +176,25 @@ namespace MenuTest.Drinks
             Assert.Contains<string>("Water", ingredients);
             Assert.Single<string>(ingredients);
         }
+
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void DescriptionShouldGiveNameForSize(Size size)
+        {
+            Water water = new Water
+            {
+                Size = size
+            };
+            Assert.Equal($"{size} Water", water.Description);
+        }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            Water drink = new Water();
+            Assert.Empty(drink.Special);
+        }
     }
 }
