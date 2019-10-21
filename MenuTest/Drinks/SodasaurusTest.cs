@@ -316,5 +316,13 @@ namespace MenuTest.Drinks
             Sodasaurus drink = new Sodasaurus();
             Assert.Empty(drink.Special);
         }
+
+        [Fact]
+        public void HoldIceAddsHoldIceToSpecial()
+        {
+            Sodasaurus drink = new Sodasaurus();
+            drink.HoldIce();
+            Assert.Equal("Hold Ice", drink.Special[0]);
+        }
     }
 }

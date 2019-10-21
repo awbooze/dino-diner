@@ -262,5 +262,31 @@ namespace MenuTest.Drinks
             Tyrannotea drink = new Tyrannotea();
             Assert.Empty(drink.Special);
         }
+
+        [Fact]
+        public void HoldIceAddsHoldIceToSpecial()
+        {
+            Tyrannotea drink = new Tyrannotea();
+            drink.HoldIce();
+            Assert.Equal("Hold Ice", drink.Special[0]);
+        }
+
+        [Fact]
+        public void AddLemonAddsLemonToSpecial()
+        {
+            Tyrannotea drink = new Tyrannotea();
+            drink.AddLemon();
+            Assert.Equal("Add Lemon", drink.Special[0]);
+        }
+
+        [Fact]
+        public void AllSpecialsAddedToSpecial()
+        {
+            Tyrannotea drink = new Tyrannotea();
+            drink.AddLemon();
+            drink.HoldIce();
+            Assert.Equal("Add Lemon", drink.Special[0]);
+            Assert.Equal("Hold Ice", drink.Special[1]);
+        }
     }
 }

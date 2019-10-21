@@ -69,5 +69,41 @@ namespace MenuTest.Entrees
             Brontowurst bw = new Brontowurst();
             Assert.Empty(bw.Special);
         }
+
+        [Fact]
+        public void HoldBunAddsHoldBunToSpecial()
+        {
+            Brontowurst entree = new Brontowurst();
+            entree.HoldBun();
+            Assert.Equal("Hold Bun", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldPeppersAddsHoldPeppersToSpecial()
+        {
+            Brontowurst entree = new Brontowurst();
+            entree.HoldPeppers();
+            Assert.Equal("Hold Peppers", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldOnionAddsHoldOnionToSpecial()
+        {
+            Brontowurst entree = new Brontowurst();
+            entree.HoldOnion();
+            Assert.Equal("Hold Onion", entree.Special[0]);
+        }
+
+        [Fact]
+        public void AddAllSpecialsToSpecial()
+        {
+            Brontowurst entree = new Brontowurst();
+            entree.HoldBun();
+            entree.HoldPeppers();
+            entree.HoldOnion();
+            Assert.Equal("Hold Bun", entree.Special[0]);
+            Assert.Equal("Hold Peppers", entree.Special[1]);
+            Assert.Equal("Hold Onion", entree.Special[2]);
+        }
     }
 }

@@ -202,5 +202,31 @@ namespace MenuTest.Drinks
             JurassicJava drink = new JurassicJava();
             Assert.Empty(drink.Special);
         }
+
+        [Fact]
+        public void AddIceAddsIceToSpecial()
+        {
+            JurassicJava drink = new JurassicJava();
+            drink.AddIce();
+            Assert.Equal("Add Ice", drink.Special[0]);
+        }
+
+        [Fact]
+        public void LeaveRoomForCreamAddsRoomForCreamToSpecial()
+        {
+            JurassicJava drink = new JurassicJava();
+            drink.LeaveRoomForCream();
+            Assert.Equal("Leave Room For Cream", drink.Special[0]);
+        }
+
+        [Fact]
+        public void AllSpecialsAddedToSpecial()
+        {
+            JurassicJava drink = new JurassicJava();
+            drink.AddIce();
+            drink.LeaveRoomForCream();
+            Assert.Equal("Add Ice", drink.Special[0]);
+            Assert.Equal("Leave Room For Cream", drink.Special[1]);
+        }
     }
 }

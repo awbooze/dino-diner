@@ -196,5 +196,31 @@ namespace MenuTest.Drinks
             Water drink = new Water();
             Assert.Empty(drink.Special);
         }
+
+        [Fact]
+        public void HoldIceAddsHoldIceToSpecial()
+        {
+            Water drink = new Water();
+            drink.HoldIce();
+            Assert.Equal("Hold Ice", drink.Special[0]);
+        }
+
+        [Fact]
+        public void AddLemonAddsLemonToSpecial()
+        {
+            Water drink = new Water();
+            drink.AddLemon();
+            Assert.Equal("Add Lemon", drink.Special[0]);
+        }
+
+        [Fact]
+        public void AllSpecialsAddedToSpecial()
+        {
+            Water drink = new Water();
+            drink.AddLemon();
+            drink.HoldIce();
+            Assert.Equal("Add Lemon", drink.Special[0]);
+            Assert.Equal("Hold Ice", drink.Special[1]);
+        }
     }
 }

@@ -120,5 +120,155 @@ namespace MenuTest.Entrees
             TRexKingBurger trex = new TRexKingBurger();
             Assert.Empty(trex.Special);
         }
+
+        [Fact]
+        public void HoldBunAddsHoldBunToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldBun();
+            Assert.Equal("Hold Bun", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldLettuceAddsHoldLettuceToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldLettuce();
+            Assert.Equal("Hold Lettuce", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldTomatoAddsHoldTomatoToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldTomato();
+            Assert.Equal("Hold Tomato", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldOnionAddsHoldOnionToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldOnion();
+            Assert.Equal("Hold Onion", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldPickleAddsHoldPickleToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldPickle();
+            Assert.Equal("Hold Pickle", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldKetchupAddsHoldKetchupToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldKetchup();
+            Assert.Equal("Hold Ketchup", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldMustardAddsHoldMustardToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldMustard();
+            Assert.Equal("Hold Mustard", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldMayoAddsHoldMayoToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldMayo();
+            Assert.Equal("Hold Mayo", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldBunAndLettuceAddsHoldBunAndHoldLettuceToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldBun();
+            entree.HoldLettuce();
+            Assert.Equal("Hold Bun", entree.Special[0]);
+            Assert.Equal("Hold Lettuce", entree.Special[1]);
+        }
+
+        [Fact]
+        public void HoldTomatoAndOnionAddsHoldTomatoAndHoldOnionToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldTomato();
+            entree.HoldOnion();
+            Assert.Equal("Hold Tomato", entree.Special[0]);
+            Assert.Equal("Hold Onion", entree.Special[1]);
+        }
+
+        [Fact]
+        public void HoldPickleAndKetchupAddsHoldPickleAndHoldKetchupToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldPickle();
+            entree.HoldKetchup();
+            Assert.Equal("Hold Pickle", entree.Special[0]);
+            Assert.Equal("Hold Ketchup", entree.Special[1]);
+        }
+
+        [Fact]
+        public void HoldMustardAndMayoAddsHoldMustardAndHoldMayoToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldMustard();
+            entree.HoldMayo();
+            Assert.Equal("Hold Mustard", entree.Special[0]);
+            Assert.Equal("Hold Mayo", entree.Special[1]);
+        }
+
+        [Fact]
+        public void HoldBunLettuceAndMayoAddsHoldBunHoldLettuceAndHoldMayoToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldBun();
+            entree.HoldLettuce();
+            entree.HoldMayo();
+            Assert.Equal("Hold Bun", entree.Special[0]);
+            Assert.Equal("Hold Lettuce", entree.Special[1]);
+            Assert.Equal("Hold Mayo", entree.Special[2]);
+        }
+
+        [Fact]
+        public void HoldKetchupMustardAndMayoAddsHoldKetchupHoldMustardAndHoldMayoToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldKetchup();
+            entree.HoldMustard();
+            entree.HoldMayo();
+            Assert.Equal("Hold Ketchup", entree.Special[0]);
+            Assert.Equal("Hold Mustard", entree.Special[1]);
+            Assert.Equal("Hold Mayo", entree.Special[2]);
+        }
+
+        [Fact]
+        public void AddAllSpecialsToSpecial()
+        {
+            TRexKingBurger entree = new TRexKingBurger();
+            entree.HoldBun();
+            entree.HoldLettuce();
+            entree.HoldTomato();
+            entree.HoldOnion();
+            entree.HoldPickle();
+            entree.HoldKetchup();
+            entree.HoldMustard();
+            entree.HoldMayo();
+            Assert.Equal("Hold Bun", entree.Special[0]);
+            Assert.Equal("Hold Lettuce", entree.Special[1]);
+            Assert.Equal("Hold Tomato", entree.Special[2]);
+            Assert.Equal("Hold Onion", entree.Special[3]);
+            Assert.Equal("Hold Pickle", entree.Special[4]);
+            Assert.Equal("Hold Ketchup", entree.Special[5]);
+            Assert.Equal("Hold Mustard", entree.Special[6]);
+            Assert.Equal("Hold Mayo", entree.Special[7]);
+        }
     }
 }

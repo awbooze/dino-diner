@@ -78,5 +78,71 @@ namespace MenuTest.Entrees
             SteakosaurusBurger sb = new SteakosaurusBurger();
             Assert.Empty(sb.Special);
         }
+
+        [Fact]
+        public void HoldBunAddsHoldBunToSpecial()
+        {
+            SteakosaurusBurger entree = new SteakosaurusBurger();
+            entree.HoldBun();
+            Assert.Equal("Hold Bun", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldPickleAddsHoldPickleToSpecial()
+        {
+            SteakosaurusBurger entree = new SteakosaurusBurger();
+            entree.HoldPickle();
+            Assert.Equal("Hold Pickle", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldKetchupAddsHoldKetchupToSpecial()
+        {
+            SteakosaurusBurger entree = new SteakosaurusBurger();
+            entree.HoldKetchup();
+            Assert.Equal("Hold Ketchup", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldMustardAddsHoldMustardToSpecial()
+        {
+            SteakosaurusBurger entree = new SteakosaurusBurger();
+            entree.HoldMustard();
+            Assert.Equal("Hold Mustard", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldBunAndKetchupAddsHoldBunAndHoldKetchupToSpecial()
+        {
+            SteakosaurusBurger entree = new SteakosaurusBurger();
+            entree.HoldBun();
+            entree.HoldKetchup();
+            Assert.Equal("Hold Bun", entree.Special[0]);
+            Assert.Equal("Hold Ketchup", entree.Special[1]);
+        }
+
+        [Fact]
+        public void HoldPickleAndMustardAddsHoldPickleAndHoldMustardToSpecial()
+        {
+            SteakosaurusBurger entree = new SteakosaurusBurger();
+            entree.HoldPickle();
+            entree.HoldMustard();
+            Assert.Equal("Hold Pickle", entree.Special[0]);
+            Assert.Equal("Hold Mustard", entree.Special[1]);
+        }
+
+        [Fact]
+        public void AddAllSpecialsToSpecial()
+        {
+            SteakosaurusBurger entree = new SteakosaurusBurger();
+            entree.HoldBun();
+            entree.HoldPickle();
+            entree.HoldKetchup();
+            entree.HoldMustard();
+            Assert.Equal("Hold Bun", entree.Special[0]);
+            Assert.Equal("Hold Pickle", entree.Special[1]);
+            Assert.Equal("Hold Ketchup", entree.Special[2]);
+            Assert.Equal("Hold Mustard", entree.Special[3]);
+        }
     }
 }

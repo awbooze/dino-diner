@@ -70,5 +70,41 @@ namespace MenuTest.Entrees
             VelociWrap vw = new VelociWrap();
             Assert.Empty(vw.Special);
         }
+
+        [Fact]
+        public void HoldDressingAddsHoldDressingToSpecial()
+        {
+            VelociWrap entree = new VelociWrap();
+            entree.HoldDressing();
+            Assert.Equal("Hold Dressing", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldLettuceAddsHoldLettuceToSpecial()
+        {
+            VelociWrap entree = new VelociWrap();
+            entree.HoldLettuce();
+            Assert.Equal("Hold Lettuce", entree.Special[0]);
+        }
+
+        [Fact]
+        public void HoldCheeseAddsHoldCheeseToSpecial()
+        {
+            VelociWrap entree = new VelociWrap();
+            entree.HoldCheese();
+            Assert.Equal("Hold Cheese", entree.Special[0]);
+        }
+
+        [Fact]
+        public void AddAllSpecialsToSpecial()
+        {
+            VelociWrap entree = new VelociWrap();
+            entree.HoldDressing();
+            entree.HoldLettuce();
+            entree.HoldCheese();
+            Assert.Equal("Hold Dressing", entree.Special[0]);
+            Assert.Equal("Hold Lettuce", entree.Special[1]);
+            Assert.Equal("Hold Cheese", entree.Special[2]);
+        }
     }
 }
