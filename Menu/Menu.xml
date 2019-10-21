@@ -49,6 +49,13 @@
             Gets or sets the size of the combo        
             </summary>        
         </member>
+        <member name="P:DinoDiner.Menu.CretaceousCombo.Special">
+            <summary>
+            Any special requirements for this order. Collects the specials when called instead of 
+            when things are changed because the combo has multiple parts, which are hard to keep 
+            track of simultaniously.
+            </summary>
+        </member>
         <member name="M:DinoDiner.Menu.CretaceousCombo.#ctor(DinoDiner.Menu.Entree)">
             <summary>
             Constructs a new combo with the specified entree.
@@ -313,7 +320,7 @@
             Whether or not the peppers are included in the brontowurst.
             </summary>
         </member>
-        <member name="F:DinoDiner.Menu.Brontowurst.onions">
+        <member name="F:DinoDiner.Menu.Brontowurst.onion">
             <summary>
             Whether or not the onions are included in the brontowurst.
             </summary>
@@ -665,6 +672,26 @@
             The list of ingredients for this menu item.
             </summary>
         </member>
+        <member name="T:DinoDiner.Menu.IOrderItem">
+            <summary>
+            An interface that all items that can be ordered need to implement through the MenuItem base class.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.IOrderItem.Price">
+            <summary>
+            The price of this order item.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.IOrderItem.Description">
+            <summary>
+            The description of this order item.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.IOrderItem.Special">
+            <summary>
+            Any special requirements for this order.
+            </summary>
+        </member>
         <member name="T:DinoDiner.Menu.Menu">
             <summary>
             A class which represents the entire menu.
@@ -733,12 +760,13 @@
         </member>
         <member name="P:DinoDiner.Menu.MenuItem.Description">
             <summary>
-            The description for this menu item.
+            The description for this menu item. Relies on all derived classes overriding the ToString method 
+            in their class.
             </summary>
         </member>
         <member name="P:DinoDiner.Menu.MenuItem.Special">
             <summary>
-            Any special requirements for this order.
+            Any special requirements for this order. Typically collects special information as things are changed.
             </summary>
         </member>
         <member name="M:DinoDiner.Menu.MenuItem.NotifyOfPropertyChanged(System.String)">
@@ -746,6 +774,38 @@
             Call to notify other listeners that a property described by the property name has changed.
             </summary>
             <param name="propertyName">The name of the property that has changed.</param>
+        </member>
+        <member name="T:DinoDiner.Menu.Order">
+            <summary>
+            A class that represents a customer order.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Order.Items">
+            <summary>
+            Stores all the items that the customer has currently added to the order as an ObservableCollection.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Order.SubtotalCost">
+            <summary>
+            Calculates a subtotal for the order by adding the cost of all items. The subtotal is never allowed 
+            to be zero.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Order.SalesTaxRate">
+            <summary>
+            Gets or sets the sales tax rate for Dino Diner.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Order.SalesTaxCost">
+            <summary>
+            Calculates the cost of the sales tax on the order by multiplying the subtotal cost and the 
+            sales tax rate.
+            </summary>
+        </member>
+        <member name="P:DinoDiner.Menu.Order.TotalCost">
+            <summary>
+            Calculates the total cost of the order by adding the subtotal cost and the sales tax cost.
+            </summary>
         </member>
         <member name="T:DinoDiner.Menu.Fryceritops">
             <summary>
