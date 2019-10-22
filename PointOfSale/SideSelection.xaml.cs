@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using Menu = DinoDiner.Menu;
 
 namespace PointOfSale
@@ -77,14 +78,60 @@ namespace PointOfSale
                 radioButton.SetValue(Grid.ColumnProperty, x++);
                 radioButton.SetValue(Grid.RowProperty, 0);
 
+                radioButton.Checked += RadioButton_Checked;
+
                 SizeGrid.Children.Add(radioButton);
+
+                // Not quite working at the moment.
+                /*if (DataContext is Order order)
+                {
+                    CollectionViewSource.GetDefaultView(order.Items).CurrentChanged += SideSelection_CurrentChanged;
+                }*/
             }
+        }
+
+        private void SideSelection_CurrentChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         // Performs any action required by clicking on one of the sides
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (sender is Button button && DataContext is Order order)
+            {
+                if (button.Name == App.CreateValidIdString(new Fryceritops().ToString()))
+                {
+                    order.Items.Add(new Fryceritops());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else
+                {
+                    throw new NotImplementedException();
+                }
+            }
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton radioButton && DataContext is Order order)
+            {
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
+                {
+                    if (radioButton.Name == Menu.Size.Small.ToString())
+                    {
+                        side.Size = Menu.Size.Small;
+                    }
+                    else if (radioButton.Name == Menu.Size.Medium.ToString())
+                    {
+                        side.Size = Menu.Size.Medium;
+                    }
+                    else if (radioButton.Name == Menu.Size.Large.ToString())
+                    {
+                        side.Size = Menu.Size.Large;
+                    }
+                }
+            }
         }
     }
 }
