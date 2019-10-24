@@ -23,7 +23,6 @@ namespace PointOfSale
 
             if (DataContext is Order order)
             {
-                order.Items.Add(new DinoNuggets());
                 order.Items.Add(new Sodasaurus());
                 order.Items.Add(new Triceritots()
                 {
@@ -33,6 +32,10 @@ namespace PointOfSale
                 burger.HoldBun();
                 burger.HoldMustard();
                 order.Items.Add(burger);
+                order.Items.Add(new MeteorMacAndCheese()
+                {
+                    Size = DinoDiner.Menu.Size.Medium
+                });
             }
         }
 

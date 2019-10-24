@@ -780,6 +780,11 @@
             A class that represents a customer order.
             </summary>
         </member>
+        <member name="E:DinoDiner.Menu.Order.PropertyChanged">
+            <summary>
+            The PropertyChangedEventHandler for NotifyOfPropertyChanged.
+            </summary>
+        </member>
         <member name="P:DinoDiner.Menu.Order.Items">
             <summary>
             Stores all the items that the customer has currently added to the order as an ObservableCollection.
@@ -806,6 +811,17 @@
             <summary>
             Calculates the total cost of the order by adding the subtotal cost and the sales tax cost.
             </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.Order.#ctor">
+            <summary>
+            Default no-argument contstructor for the Order object.
+            </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.Order.NotifyOfPropertyChanged(System.String)">
+            <summary>
+            Call to notify other listeners that a property described by the property name has changed.
+            </summary>
+            <param name="propertyName">The name of the property that has changed.</param>
         </member>
         <member name="T:DinoDiner.Menu.Fryceritops">
             <summary>

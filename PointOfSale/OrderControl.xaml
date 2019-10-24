@@ -21,13 +21,26 @@
         <TextBlock Text="Order" TextAlignment="Right" FontWeight="Bold"/>
         <TextBlock Text="#" Grid.Column="1" TextAlignment="Left" FontWeight="Bold" Margin="5, 0, 0, 0"/>
         <ListBox Name="OrderListBox" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" 
-                 ItemsSource="{Binding Path=Items}" IsSynchronizedWithCurrentItem="True">
+                 ItemsSource="{Binding Path=Items}" IsSynchronizedWithCurrentItem="True"
+                 SelectionChanged="OrderListBox_SelectionChanged" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Path=Description}"/>
-                        <ListView ItemsSource="{Binding Path=Special}" BorderBrush="White"/>
-                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Path=Description}" FontSize="13" 
+                                   VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        <Button Grid.Column="1" Click="RemoveButton_Click" Margin="0, 0, 0, 0" 
+                                FontSize="15">X</Button>
+                        <ListView Grid.Row="1" Grid.ColumnSpan="2" 
+                                  ItemsSource="{Binding Path=Special}" BorderBrush="White" FontSize="13"/>
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

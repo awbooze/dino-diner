@@ -105,9 +105,24 @@ namespace PointOfSale
                     order.Items.Add(new Fryceritops());
                     CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 }
+                else if (button.Name == App.CreateValidIdString(new Triceritots().ToString()))
+                {
+                    order.Items.Add(new Triceritots());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new MeteorMacAndCheese().ToString()))
+                {
+                    order.Items.Add(new MeteorMacAndCheese());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new MezzorellaSticks().ToString()))
+                {
+                    order.Items.Add(new MezzorellaSticks());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
                 else
                 {
-                    throw new NotImplementedException();
+                    throw new InvalidOperationException("Cannot add any other side with the buttons on this screen.");
                 }
             }
         }
