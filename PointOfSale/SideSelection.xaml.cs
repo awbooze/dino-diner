@@ -104,14 +104,26 @@ namespace PointOfSale
                     order.Items.Add(new MeteorMacAndCheese());
                     CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 }
-                else if (button.Name == App.CreateValidIdString(new MezzorellaSticks().ToString()))
+                else    // Mezzorella Sticks
                 {
                     order.Items.Add(new MezzorellaSticks());
                     CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 }
-                else
+
+                // Change side to correct size after adding item to order
+                RadioButton mediumRadio = SizeGrid.Children[1] as RadioButton;
+                RadioButton largeRadio = SizeGrid.Children[2] as RadioButton;
+
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
                 {
-                    throw new InvalidOperationException("Cannot add any other side with the buttons on this screen.");
+                    if ((bool)mediumRadio.IsChecked)
+                    {
+                        side.Size = Menu.Size.Medium;
+                    }
+                    else if ((bool)largeRadio.IsChecked)
+                    {
+                        side.Size = Menu.Size.Large;
+                    }
                 }
             }
         }

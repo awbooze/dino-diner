@@ -79,6 +79,38 @@ namespace PointOfSale
             }
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is Order order)
+            {
+                CollectionViewSource.GetDefaultView(order.Items).CurrentChanged += DrinkSelection_CurrentChanged;
+            }
+        }
+
+        // When the current item after the selection changes is a drink, change the buttons.
+        private void DrinkSelection_CurrentChanged(object sender, EventArgs e)
+        {
+            if (DataContext is Order order)
+            {
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus)
+                {
+                    ChangeToSodasaurusButtons();
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is JurassicJava)
+                {
+                    ChangeToJurassicJavaButtons();
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Tyrannotea)
+                {
+                    ChangeToTyrannoteaButtons();
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Water)
+                {
+                    ChangeToWaterButtons();
+                }
+            }
+        }
+
         /// <summary>
         /// Removes all buttons in the third row of the app, then re-adds buttons that are applicable to the 
         /// current drink.
@@ -87,204 +119,254 @@ namespace PointOfSale
         /// <param name="e">Any arguments about the event.</param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            if (button.Name == App.CreateValidIdString(new Sodasaurus().ToString()))
+            if (sender is Button button && DataContext is Order order)
             {
-                while (SpecialGrid.Children.Count > 0)
+                if (button.Name == App.CreateValidIdString(new Sodasaurus().ToString()))
                 {
-                    SpecialGrid.Children.RemoveAt(0);
+                    // Add Sodasaurus to order
+                    order.Items.Add(new Sodasaurus());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new JurassicJava().ToString()))
+                {
+                    // Add JurassicJava to order
+                    order.Items.Add(new JurassicJava());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new Tyrannotea().ToString()))
+                {
+                    // Add Tyrannotea to order
+                    order.Items.Add(new Tyrannotea());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else    // Water
+                {
+                    // Add Water to order
+                    order.Items.Add(new Water());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 }
 
-                Button holdIceButton = new Button
+                // Change side to correct size after adding item to order
+                RadioButton mediumRadio = SizeGrid.Children[1] as RadioButton;
+                RadioButton largeRadio = SizeGrid.Children[2] as RadioButton;
+
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
                 {
-                    Content = new TextBlock
+                    if ((bool)mediumRadio.IsChecked)
                     {
-                        Text = "Hold Ice",
-                        TextWrapping = TextWrapping.WrapWithOverflow,
-                        TextAlignment = TextAlignment.Center
-                    },
-                    Name = "holdIceButton",
-                };
-
-                holdIceButton.SetValue(Grid.ColumnProperty, 0);
-                holdIceButton.SetValue(Grid.ColumnSpanProperty, 3);
-
-                holdIceButton.Click += Soda_Click;
-                SpecialGrid.Children.Add(holdIceButton);
-
-                Button flavorButton = new Button
-                {
-                    Content = new TextBlock
+                        side.Size = Menu.Size.Medium;
+                    }
+                    else if ((bool)largeRadio.IsChecked)
                     {
-                        Text = "Flavor",
-                        TextWrapping = TextWrapping.WrapWithOverflow,
-                        TextAlignment = TextAlignment.Center
-                    },
-                    Name = "flavorButton",
-                };
-
-                flavorButton.SetValue(Grid.ColumnProperty, 3);
-                flavorButton.SetValue(Grid.ColumnSpanProperty, 3);
-
-                flavorButton.Click += Soda_Click;
-                SpecialGrid.Children.Add(flavorButton);
+                        side.Size = Menu.Size.Large;
+                    }
+                }
             }
-            else if (button.Name == App.CreateValidIdString(new JurassicJava().ToString()))
+        }
+
+        // Removes all buttons and adds buttons for Sodasaurus
+        private void ChangeToSodasaurusButtons()
+        {
+            RemoveAllSpecialButtons();
+
+            Button holdIceButton = new Button
             {
-                while (SpecialGrid.Children.Count > 0)
+                Content = new TextBlock
                 {
-                    SpecialGrid.Children.RemoveAt(0);
-                }
+                    Text = "Hold Ice",
+                    TextWrapping = TextWrapping.WrapWithOverflow,
+                    TextAlignment = TextAlignment.Center
+                },
+                Name = "holdIceButton",
+            };
 
-                Button addIceButton = new Button
-                {
-                    Content = new TextBlock
-                    {
-                        Text = "Add Ice",
-                        TextWrapping = TextWrapping.WrapWithOverflow,
-                        TextAlignment = TextAlignment.Center
-                    },
-                    Name = "addIceButton",
-                };
+            holdIceButton.SetValue(Grid.ColumnProperty, 0);
+            holdIceButton.SetValue(Grid.ColumnSpanProperty, 3);
 
-                addIceButton.SetValue(Grid.ColumnProperty, 0);
-                addIceButton.SetValue(Grid.ColumnSpanProperty, 2);
+            holdIceButton.Click += Soda_Click;
+            SpecialGrid.Children.Add(holdIceButton);
 
-                addIceButton.Click += Java_Click;
-                SpecialGrid.Children.Add(addIceButton);
-
-                Button roomForCreamButton = new Button
-                {
-                    Content = new TextBlock
-                    {
-                        Text = "Leave Room for Cream",
-                        TextWrapping = TextWrapping.WrapWithOverflow,
-                        TextAlignment = TextAlignment.Center
-                    },
-                    Name = "roomForCreamButton",
-                };
-
-                roomForCreamButton.SetValue(Grid.ColumnProperty, 2);
-                roomForCreamButton.SetValue(Grid.ColumnSpanProperty, 2);
-
-                roomForCreamButton.Click += Java_Click;
-                SpecialGrid.Children.Add(roomForCreamButton);
-
-                Button decalfButton = new Button
-                {
-                    Content = new TextBlock
-                    {
-                        Text = "Make Decalf",
-                        TextWrapping = TextWrapping.WrapWithOverflow,
-                        TextAlignment = TextAlignment.Center
-                    },
-                    Name = "decalfButton",
-                };
-
-                decalfButton.SetValue(Grid.ColumnProperty, 4);
-                decalfButton.SetValue(Grid.ColumnSpanProperty, 2);
-
-                decalfButton.Click += Java_Click;
-                SpecialGrid.Children.Add(decalfButton);
-            }
-            else if (button.Name == App.CreateValidIdString(new Tyrannotea().ToString()))
+            Button flavorButton = new Button
             {
-                while (SpecialGrid.Children.Count > 0)
+                Content = new TextBlock
                 {
-                    SpecialGrid.Children.RemoveAt(0);
-                }
+                    Text = "Flavor",
+                    TextWrapping = TextWrapping.WrapWithOverflow,
+                    TextAlignment = TextAlignment.Center
+                },
+                Name = "flavorButton",
+            };
 
-                Button holdIceButton = new Button
-                {
-                    Content = new TextBlock
-                    {
-                        Text = "Hold Ice",
-                        TextWrapping = TextWrapping.WrapWithOverflow,
-                        TextAlignment = TextAlignment.Center
-                    },
-                    Name = "holdIceButton",
-                };
+            flavorButton.SetValue(Grid.ColumnProperty, 3);
+            flavorButton.SetValue(Grid.ColumnSpanProperty, 3);
 
-                holdIceButton.SetValue(Grid.ColumnProperty, 0);
-                holdIceButton.SetValue(Grid.ColumnSpanProperty, 2);
+            flavorButton.Click += Soda_Click;
+            SpecialGrid.Children.Add(flavorButton);
+        }
 
-                holdIceButton.Click += Tea_Click;
-                SpecialGrid.Children.Add(holdIceButton);
+        // Removes all buttons and then adds buttons for JurassicJava
+        private void ChangeToJurassicJavaButtons()
+        {
+            RemoveAllSpecialButtons();
 
-                Button addLemonButton = new Button
-                {
-                    Content = new TextBlock
-                    {
-                        Text = "Add Lemon",
-                        TextWrapping = TextWrapping.WrapWithOverflow,
-                        TextAlignment = TextAlignment.Center
-                    },
-                    Name = "addLemonButton",
-                };
-
-                addLemonButton.SetValue(Grid.ColumnProperty, 2);
-                addLemonButton.SetValue(Grid.ColumnSpanProperty, 2);
-
-                addLemonButton.Click += Tea_Click;
-                SpecialGrid.Children.Add(addLemonButton);
-
-                Button makeSweetButton = new Button
-                {
-                    Content = new TextBlock
-                    {
-                        Text = "Make Sweet",
-                        TextWrapping = TextWrapping.WrapWithOverflow,
-                        TextAlignment = TextAlignment.Center
-                    },
-                    Name = "makeSweetButton",
-                };
-
-                makeSweetButton.SetValue(Grid.ColumnProperty, 4);
-                makeSweetButton.SetValue(Grid.ColumnSpanProperty, 2);
-
-                makeSweetButton.Click += Tea_Click;
-                SpecialGrid.Children.Add(makeSweetButton);
-            }
-            else    // Water
+            // Add buttons for JurassicJava
+            Button addIceButton = new Button
             {
-                while (SpecialGrid.Children.Count > 0)
+                Content = new TextBlock
                 {
-                    SpecialGrid.Children.RemoveAt(0);
-                }
+                    Text = "Add Ice",
+                    TextWrapping = TextWrapping.WrapWithOverflow,
+                    TextAlignment = TextAlignment.Center
+                },
+                Name = "addIceButton",
+            };
 
-                Button holdIceButton = new Button
+            addIceButton.SetValue(Grid.ColumnProperty, 0);
+            addIceButton.SetValue(Grid.ColumnSpanProperty, 2);
+
+            addIceButton.Click += Java_Click;
+            SpecialGrid.Children.Add(addIceButton);
+
+            Button roomForCreamButton = new Button
+            {
+                Content = new TextBlock
                 {
-                    Content = new TextBlock
-                    {
-                        Text = "Hold Ice",
-                        TextWrapping = TextWrapping.WrapWithOverflow,
-                        TextAlignment = TextAlignment.Center
-                    },
-                    Name = "holdIceButton",
-                };
+                    Text = "Leave Room for Cream",
+                    TextWrapping = TextWrapping.WrapWithOverflow,
+                    TextAlignment = TextAlignment.Center
+                },
+                Name = "roomForCreamButton",
+            };
 
-                holdIceButton.SetValue(Grid.ColumnProperty, 0);
-                holdIceButton.SetValue(Grid.ColumnSpanProperty, 3);
+            roomForCreamButton.SetValue(Grid.ColumnProperty, 2);
+            roomForCreamButton.SetValue(Grid.ColumnSpanProperty, 2);
 
-                holdIceButton.Click += Water_Click;
-                SpecialGrid.Children.Add(holdIceButton);
+            roomForCreamButton.Click += Java_Click;
+            SpecialGrid.Children.Add(roomForCreamButton);
 
-                Button addLemonButton = new Button
+            Button decalfButton = new Button
+            {
+                Content = new TextBlock
                 {
-                    Content = new TextBlock
-                    {
-                        Text = "Add Lemon",
-                        TextWrapping = TextWrapping.WrapWithOverflow,
-                        TextAlignment = TextAlignment.Center
-                    },
-                    Name = "addLemonButton",
-                };
+                    Text = "Make Decalf",
+                    TextWrapping = TextWrapping.WrapWithOverflow,
+                    TextAlignment = TextAlignment.Center
+                },
+                Name = "decalfButton",
+            };
 
-                addLemonButton.SetValue(Grid.ColumnProperty, 3);
-                addLemonButton.SetValue(Grid.ColumnSpanProperty, 3);
+            decalfButton.SetValue(Grid.ColumnProperty, 4);
+            decalfButton.SetValue(Grid.ColumnSpanProperty, 2);
 
-                addLemonButton.Click += Water_Click;
-                SpecialGrid.Children.Add(addLemonButton);
+            decalfButton.Click += Java_Click;
+            SpecialGrid.Children.Add(decalfButton);
+        }
+
+        // Removes all buttons and then adds buttons for Tyrannotea
+        private void ChangeToTyrannoteaButtons()
+        {
+            RemoveAllSpecialButtons();
+
+            // Add buttons for Tyrannotea
+            Button holdIceButton = new Button
+            {
+                Content = new TextBlock
+                {
+                    Text = "Hold Ice",
+                    TextWrapping = TextWrapping.WrapWithOverflow,
+                    TextAlignment = TextAlignment.Center
+                },
+                Name = "holdIceButton",
+            };
+
+            holdIceButton.SetValue(Grid.ColumnProperty, 0);
+            holdIceButton.SetValue(Grid.ColumnSpanProperty, 2);
+
+            holdIceButton.Click += Tea_Click;
+            SpecialGrid.Children.Add(holdIceButton);
+
+            Button addLemonButton = new Button
+            {
+                Content = new TextBlock
+                {
+                    Text = "Add Lemon",
+                    TextWrapping = TextWrapping.WrapWithOverflow,
+                    TextAlignment = TextAlignment.Center
+                },
+                Name = "addLemonButton",
+            };
+
+            addLemonButton.SetValue(Grid.ColumnProperty, 2);
+            addLemonButton.SetValue(Grid.ColumnSpanProperty, 2);
+
+            addLemonButton.Click += Tea_Click;
+            SpecialGrid.Children.Add(addLemonButton);
+
+            Button makeSweetButton = new Button
+            {
+                Content = new TextBlock
+                {
+                    Text = "Make Sweet",
+                    TextWrapping = TextWrapping.WrapWithOverflow,
+                    TextAlignment = TextAlignment.Center
+                },
+                Name = "makeSweetButton",
+            };
+
+            makeSweetButton.SetValue(Grid.ColumnProperty, 4);
+            makeSweetButton.SetValue(Grid.ColumnSpanProperty, 2);
+
+            makeSweetButton.Click += Tea_Click;
+            SpecialGrid.Children.Add(makeSweetButton);
+        }
+
+        // Removes all buttons and then adds buttons for Water
+        private void ChangeToWaterButtons()
+        {
+            RemoveAllSpecialButtons();
+
+            // Add buttons for Water
+            Button holdIceButton = new Button
+            {
+                Content = new TextBlock
+                {
+                    Text = "Hold Ice",
+                    TextWrapping = TextWrapping.WrapWithOverflow,
+                    TextAlignment = TextAlignment.Center
+                },
+                Name = "holdIceButton",
+            };
+
+            holdIceButton.SetValue(Grid.ColumnProperty, 0);
+            holdIceButton.SetValue(Grid.ColumnSpanProperty, 3);
+
+            holdIceButton.Click += Water_Click;
+            SpecialGrid.Children.Add(holdIceButton);
+
+            Button addLemonButton = new Button
+            {
+                Content = new TextBlock
+                {
+                    Text = "Add Lemon",
+                    TextWrapping = TextWrapping.WrapWithOverflow,
+                    TextAlignment = TextAlignment.Center
+                },
+                Name = "addLemonButton",
+            };
+
+            addLemonButton.SetValue(Grid.ColumnProperty, 3);
+            addLemonButton.SetValue(Grid.ColumnSpanProperty, 3);
+
+            addLemonButton.Click += Water_Click;
+            SpecialGrid.Children.Add(addLemonButton);
+        }
+
+        // Removes all current special buttons
+        private void RemoveAllSpecialButtons()
+        {
+            while (SpecialGrid.Children.Count > 0)
+            {
+                SpecialGrid.Children.RemoveAt(0);
             }
         }
 
@@ -318,6 +400,10 @@ namespace PointOfSale
             if (button.Name == "flavorButton")
             {
                 NavigationService.Navigate(new FlavorSelection());
+            }
+            else
+            {
+
             }
         }
 
