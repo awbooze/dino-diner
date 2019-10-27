@@ -19,6 +19,15 @@ namespace PointOfSale
         public MenuCategorySelection()
         {
             InitializeComponent();
+
+            // Remove back stack entries (will not be using them anyway)
+            if (NavigationService != null)
+            {
+                while (NavigationService.CanGoBack)
+                {
+                    NavigationService?.RemoveBackEntry();
+                }
+            }
         }
 
         // Navigates to the right page depending on the button clicked

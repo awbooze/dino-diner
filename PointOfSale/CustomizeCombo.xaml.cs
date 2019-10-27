@@ -76,5 +76,11 @@ namespace PointOfSale
                 NavigationService.Navigate(new DrinkSelection());
             }
         }
+
+        // Returns to the MenuCategorySelection screen when clicked.
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuCategorySelection());
+        }
     }
 }

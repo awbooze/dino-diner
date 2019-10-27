@@ -1,4 +1,8 @@
-﻿using DinoDiner.Menu;
+﻿/*  OrderControl.xaml.cs
+*   Author: Andrew Booze
+*/
+
+using DinoDiner.Menu;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -10,23 +14,27 @@ namespace PointOfSale
     /// </summary>
     public partial class OrderControl : UserControl
     {
+        /// <summary>
+        /// The Navigation Service for the OrderControl (not currently working)
+        /// </summary>
         public NavigationService NavigationService { get; set; }
 
+        /// <summary>
+        /// The constructor for this control. Builds the control from the attached XAML file. 
+        /// </summary>
         public OrderControl()
         {
             InitializeComponent();
         }
 
+        // Removes the appropriate item from the list when the remove button is clicked.
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataContext is Order order)
+            if (DataContext is Order order && sender is FrameworkElement element)
             {
-                if (sender is FrameworkElement element)
+                if (element.DataContext is IOrderItem item)
                 {
-                    if (element.DataContext is IOrderItem item)
-                    {
-                        order.Items.Remove(item);
-                    }
+                    order.Items.Remove(item);
                 }
             }
         }

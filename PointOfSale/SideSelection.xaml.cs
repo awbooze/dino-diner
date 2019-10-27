@@ -81,18 +81,7 @@ namespace PointOfSale
                 radioButton.Checked += RadioButton_Checked;
 
                 SizeGrid.Children.Add(radioButton);
-
-                // Not quite working at the moment.
-                /*if (DataContext is Order order)
-                {
-                    CollectionViewSource.GetDefaultView(order.Items).CurrentChanged += SideSelection_CurrentChanged;
-                }*/
             }
-        }
-
-        private void SideSelection_CurrentChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         // Performs any action required by clicking on one of the sides
@@ -147,6 +136,12 @@ namespace PointOfSale
                     }
                 }
             }
+        }
+
+        // Returns to the MenuCategorySelection screen when clicked.
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }

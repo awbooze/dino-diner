@@ -16,6 +16,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid x:Name="SideGrid" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
@@ -29,6 +30,15 @@
         </Grid>
         <Grid x:Name="SizeGrid" Grid.Column="0" Grid.Row="2">
             
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="HomeButton" Grid.Column="0" Grid.Row="0" Content="Home" 
+                FontSize="22" Margin="10, 5, 10, 5" Click="HomeButton_Click"/>
         </Grid>
     </Grid>
 </Page>

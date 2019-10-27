@@ -7,7 +7,15 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Drink Selection">
-
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Margin" Value="10, 10, 10, 10"/>
+            <Setter Property="MaxHeight" Value="350"/>
+            <Setter Property="MaxWidth" Value="400"/>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -16,6 +24,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid x:Name="DrinkGrid" Grid.Column="0" Grid.Row="0">
             
@@ -35,7 +44,17 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button x:Name="RemovableButton" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" Content="Choose a Drink"/>
+            <Button x:Name="RemovableButton" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" 
+                    Content="Choose a Drink" BorderBrush="White"/>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="HomeButton" Grid.Column="0" Grid.Row="0" Content="Home" 
+                FontSize="22" Margin="10, 5, 10, 5" Click="HomeButton_Click"/>
         </Grid>
     </Grid>
 </Page>

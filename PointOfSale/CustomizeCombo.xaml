@@ -20,6 +20,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Button x:Name="SideButton" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Click="ChangeButtons_Click">
             <TextBlock Text="Side: " TextAlignment="Center" TextWrapping="WrapWithOverflow"/>
@@ -27,5 +28,7 @@
         <Button x:Name="DrinkButton" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="3" Click="ChangeButtons_Click">
             <TextBlock Text="Drink: " TextAlignment="Center" TextWrapping="WrapWithOverflow"/>
         </Button>
+        <Button x:Name="HomeButton" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Content="Home" 
+                FontSize="22" Margin="10, 5, 10, 5" Click="HomeButton_Click"/>
     </Grid>
 </Page>

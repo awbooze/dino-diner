@@ -71,5 +71,14 @@ namespace PointOfSale
         {
             throw new NotImplementedException();
         }
+
+        // Returns to the DrinkSelection screen when clicked.
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
+        }
     }
 }

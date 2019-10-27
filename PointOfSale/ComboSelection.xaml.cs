@@ -64,5 +64,11 @@ namespace PointOfSale
             // No matter what, go to the customize combo screen
             NavigationService.Navigate(new CustomizeCombo());
         }
+
+        // Returns to the MenuCategorySelection screen when clicked.
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuCategorySelection());
+        }
     }
 }

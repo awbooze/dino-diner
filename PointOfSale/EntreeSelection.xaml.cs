@@ -6,6 +6,7 @@ using DinoDiner.Menu;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using Menu = DinoDiner.Menu.Menu;
 
 namespace PointOfSale
@@ -56,10 +57,57 @@ namespace PointOfSale
             }
         }
 
-        // Performs any actions necessary when an entree button is clicked
+        // Performs any actions necessary when an entree button is clicked.
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (sender is Button button && DataContext is Order order)
+            {
+                if (button.Name == App.CreateValidIdString(new Brontowurst().ToString()))
+                {
+                    order.Items.Add(new Brontowurst());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new DinoNuggets().ToString()))
+                {
+                    order.Items.Add(new DinoNuggets());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new PrehistoricPBJ().ToString()))
+                {
+                    order.Items.Add(new PrehistoricPBJ());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new PterodactylWings().ToString()))
+                {
+                    order.Items.Add(new PterodactylWings());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new SteakosaurusBurger().ToString()))
+                {
+                    order.Items.Add(new SteakosaurusBurger());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new TRexKingBurger().ToString()))
+                {
+                    order.Items.Add(new TRexKingBurger());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new VelociWrap().ToString()))
+                {
+                    order.Items.Add(new VelociWrap());
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else
+                {
+                    throw new InvalidOperationException("Cannot add any other entree with the buttons on this screen.");
+                }
+            }
+        }
+
+        // Returns to the MenuCategorySelection screen when clicked.
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }
