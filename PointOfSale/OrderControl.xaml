@@ -16,6 +16,7 @@
             <RowDefinition Height="10*"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Order" TextAlignment="Right" FontWeight="Bold"/>
@@ -46,9 +47,11 @@
         </ListBox>
         <TextBlock Text="Subtotal: $" Grid.Column="0" Grid.Row="2" TextAlignment="Right" FontWeight="Bold"/>
         <TextBlock Text="{Binding Path=SubtotalCost, StringFormat=N2}" Grid.Column="1" Grid.Row="2" FontWeight="Bold"/>
-        <TextBlock Text="Total: $" Grid.Column="0" Grid.Row="3" TextAlignment="Right" FontWeight="Bold"/>
-        <TextBlock Text="{Binding Path=TotalCost, StringFormat=N2}" Grid.Column="1" Grid.Row="3" FontWeight="Bold"/>
-        <Button Grid.Column="0" Grid.Row="4" Content="Cancel" Margin="0, 0, 0, 0" FontSize="20"/>
-        <Button Grid.Column="1" Grid.Row="4" Content="Pay" Margin="0, 0, 0, 0" FontSize="20"/>
+        <TextBlock Text="{Binding Path=SalesTaxRate, StringFormat=Tax at {0:N4}%: $}" Grid.Column="0" Grid.Row="3" TextAlignment="Right" FontWeight="Bold"/>
+        <TextBlock Text="{Binding Path=SalesTaxCost, StringFormat=N2}" Grid.Column="1" Grid.Row="3" FontWeight="Bold"/>
+        <TextBlock Text="Total: $" Grid.Column="0" Grid.Row="4" TextAlignment="Right" FontWeight="Bold"/>
+        <TextBlock Text="{Binding Path=TotalCost, StringFormat=N2}" Grid.Column="1" Grid.Row="4" FontWeight="Bold"/>
+        <Button Grid.Column="0" Grid.Row="5" Content="Cancel" Margin="0, 0, 0, 0" FontSize="20"/>
+        <Button Grid.Column="1" Grid.Row="5" Content="Pay" Margin="0, 0, 0, 0" FontSize="20"/>
     </Grid>
 </UserControl>
