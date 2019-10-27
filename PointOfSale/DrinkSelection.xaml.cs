@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using Menu = DinoDiner.Menu;
 
 namespace PointOfSale
@@ -71,6 +72,8 @@ namespace PointOfSale
                 SizeGrid.ColumnDefinitions.Add(new ColumnDefinition());
                 radioButton.SetValue(Grid.ColumnProperty, x++);
                 radioButton.SetValue(Grid.RowProperty, 0);
+
+                radioButton.Checked += RadioButton_Checked;
 
                 SizeGrid.Children.Add(radioButton);
             }
@@ -282,6 +285,29 @@ namespace PointOfSale
 
                 addLemonButton.Click += Water_Click;
                 SpecialGrid.Children.Add(addLemonButton);
+            }
+        }
+
+        // Changes drink size when appropriate.
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton radioButton && DataContext is Order order)
+            {
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Drink drink)
+                {
+                    if (radioButton.Name == Menu.Size.Small.ToString())
+                    {
+                        drink.Size = Menu.Size.Small;
+                    }
+                    else if (radioButton.Name == Menu.Size.Medium.ToString())
+                    {
+                        drink.Size = Menu.Size.Medium;
+                    }
+                    else if (radioButton.Name == Menu.Size.Large.ToString())
+                    {
+                        drink.Size = Menu.Size.Large;
+                    }
+                }
             }
         }
 

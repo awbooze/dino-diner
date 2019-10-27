@@ -116,6 +116,7 @@ namespace PointOfSale
             }
         }
 
+        // Changes side size when appropriate.
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             if (sender is RadioButton radioButton && DataContext is Order order)
