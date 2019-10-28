@@ -23,7 +23,8 @@
         <TextBlock Text="#" Grid.Column="1" TextAlignment="Left" FontWeight="Bold" Margin="5, 0, 0, 0"/>
         <ListBox Name="OrderListBox" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" 
                  ItemsSource="{Binding Path=Items}" IsSynchronizedWithCurrentItem="True"
-                 SelectionChanged="OrderListBox_SelectionChanged" HorizontalContentAlignment="Stretch">
+                 SelectionChanged="OrderListBox_SelectionChanged" HorizontalContentAlignment="Stretch"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -32,14 +33,14 @@
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="auto" MinHeight="40"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding Path=Description}" FontSize="13" 
+                        <TextBlock Grid.Column="0" Text="{Binding Path=Description}" FontSize="15" 
                                    VerticalAlignment="Center" TextWrapping="Wrap"/>
                         <Button Grid.Column="1" Click="RemoveButton_Click" Margin="0, 0, 0, 0" 
-                                FontSize="15">X</Button>
-                        <ListView Grid.Row="1" Grid.ColumnSpan="2" 
+                                FontSize="20">X</Button>
+                        <ListView Grid.Row="1" Grid.ColumnSpan="2"
                                   ItemsSource="{Binding Path=Special}" BorderBrush="White" FontSize="13"/>
                     </Grid>
                 </DataTemplate>
@@ -47,7 +48,8 @@
         </ListBox>
         <TextBlock Text="Subtotal: $" Grid.Column="0" Grid.Row="2" TextAlignment="Right" FontWeight="Bold"/>
         <TextBlock Text="{Binding Path=SubtotalCost, StringFormat=N2}" Grid.Column="1" Grid.Row="2" FontWeight="Bold"/>
-        <TextBlock Text="{Binding Path=SalesTaxRate, StringFormat=Tax at {0:N4}%: $}" Grid.Column="0" Grid.Row="3" TextAlignment="Right" FontWeight="Bold"/>
+        <TextBlock Text="{Binding Path=SalesTaxRate, StringFormat=Tax at {0:N4}%: $}" Grid.Column="0" Grid.Row="3" 
+                   TextAlignment="Right" FontWeight="Bold"/>
         <TextBlock Text="{Binding Path=SalesTaxCost, StringFormat=N2}" Grid.Column="1" Grid.Row="3" FontWeight="Bold"/>
         <TextBlock Text="Total: $" Grid.Column="0" Grid.Row="4" TextAlignment="Right" FontWeight="Bold"/>
         <TextBlock Text="{Binding Path=TotalCost, StringFormat=N2}" Grid.Column="1" Grid.Row="4" FontWeight="Bold"/>

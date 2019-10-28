@@ -21,7 +21,7 @@ namespace PointOfSale
         {
             InitializeComponent();
 
-            if (DataContext is Order order)
+            /*if (DataContext is Order order)
             {
                 order.Items.Add(new Sodasaurus());
                 order.Items.Add(new Triceritots()
@@ -36,7 +36,7 @@ namespace PointOfSale
                 {
                     Size = DinoDiner.Menu.Size.Medium
                 });
-            }
+            }*/
         }
 
         /// <summary>

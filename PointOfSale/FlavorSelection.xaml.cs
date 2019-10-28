@@ -148,7 +148,7 @@ namespace PointOfSale
                     CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda &&
                     soda.Flavor.HasFlag(flavor))
                 {
-                    button.Background = Brushes.LightSteelBlue;
+                    button.Background = Brushes.LightGreen;
                 }
 
                 button.Click += new RoutedEventHandler(Button_Click);

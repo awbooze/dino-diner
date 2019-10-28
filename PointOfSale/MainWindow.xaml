@@ -18,7 +18,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <local:OrderControl x:Name="OrderControl" Grid.Column="1" Background="LightSteelBlue"/>
+        <local:OrderControl x:Name="OrderControl" Grid.Column="1" Background="LightGreen"/>
         <Frame Name="OrderUi" Grid.Column="0" Source="MenuCategorySelection.xaml" 
                LoadCompleted="OrderUi_LoadCompleted" DataContextChanged="OrderUi_DataContextChanged" 
                NavigationUIVisibility="Hidden"/>
