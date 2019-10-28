@@ -79,6 +79,7 @@ namespace PointOfSale
             }
         }
 
+        // After the page is loaded, add an event handler that triggers whenever the selection changes.
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (DataContext is Order order)
@@ -87,7 +88,7 @@ namespace PointOfSale
             }
         }
 
-        // When the current item after the selection changes is a drink, change the buttons.
+        // When the current item after the selection changes is a drink, change the buttons to match.
         private void DrinkSelection_CurrentChanged(object sender, EventArgs e)
         {
             if (DataContext is Order order)
@@ -204,6 +205,26 @@ namespace PointOfSale
             SpecialGrid.Children.Add(flavorButton);
         }
 
+        // Performs soda-related actions when soda-related buttons are clicked
+        private void Soda_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                if (button.Name == "flavorButton")
+                {
+                    NavigationService.Navigate(new FlavorSelection());
+                }
+                else
+                {
+                    if (DataContext is Order order &&
+                        CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda)
+                    {
+                        soda.HoldIce();
+                    }
+                }
+            }
+        }
+
         // Removes all buttons and then adds buttons for JurassicJava
         private void ChangeToJurassicJavaButtons()
         {
@@ -260,6 +281,27 @@ namespace PointOfSale
 
             decalfButton.Click += Java_Click;
             SpecialGrid.Children.Add(decalfButton);
+        }
+
+        // Performs java-related actions when java-related buttons are clicked
+        private void Java_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && DataContext is Order order &&
+                CollectionViewSource.GetDefaultView(order.Items).CurrentItem is JurassicJava java)
+            {
+                if (button.Name == "addIceButton")
+                {
+                    java.AddIce();
+                }
+                else if (button.Name == "roomForCreamButton")
+                {
+                    java.LeaveRoomForCream();
+                }
+                else
+                {
+                    java.MakeDecaf();
+                }
+            }
         }
 
         // Removes all buttons and then adds buttons for Tyrannotea
@@ -320,6 +362,27 @@ namespace PointOfSale
             SpecialGrid.Children.Add(makeSweetButton);
         }
 
+        // Performs tea-related actions when tea-related buttons are clicked
+        private void Tea_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && DataContext is Order order &&
+                CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Tyrannotea tea)
+            {
+                if (button.Name == "holdIceButton")
+                {
+                    tea.HoldIce();
+                }
+                else if (button.Name == "addLemonButton")
+                {
+                    tea.AddLemon();
+                }
+                else
+                {
+                    tea.MakeSweet();
+                }
+            }
+        }
+
         // Removes all buttons and then adds buttons for Water
         private void ChangeToWaterButtons()
         {
@@ -361,6 +424,23 @@ namespace PointOfSale
             SpecialGrid.Children.Add(addLemonButton);
         }
 
+        // Performs water-related actions when water-related buttons are clicked
+        private void Water_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && DataContext is Order order &&
+                CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Water water)
+            {
+                if (button.Name == "holdIceButton")
+                {
+                    water.HoldIce();
+                }
+                else
+                {
+                    water.AddLemon();
+                }
+            }
+        }
+
         // Removes all current special buttons
         private void RemoveAllSpecialButtons()
         {
@@ -391,38 +471,6 @@ namespace PointOfSale
                     }
                 }
             }
-        }
-
-        // Performs soda-related actions when soda-related buttons are clicked
-        private void Soda_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
-            if (button.Name == "flavorButton")
-            {
-                NavigationService.Navigate(new FlavorSelection());
-            }
-            else
-            {
-
-            }
-        }
-
-        // Performs java-related actions when java-related buttons are clicked
-        private void Java_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        // Performs tea-related actions when tea-related buttons are clicked
-        private void Tea_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        // Performs water-related actions when water-related buttons are clicked
-        private void Water_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         // Returns to the MenuCategorySelection screen when clicked.
