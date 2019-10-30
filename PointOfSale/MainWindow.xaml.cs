@@ -20,23 +20,9 @@ namespace PointOfSale
         public MainWindow()
         {
             InitializeComponent();
-
-            /*if (DataContext is Order order)
-            {
-                order.Items.Add(new Sodasaurus());
-                order.Items.Add(new Triceritots()
-                {
-                    Size = DinoDiner.Menu.Size.Large
-                });
-                SteakosaurusBurger burger = new SteakosaurusBurger();
-                burger.HoldBun();
-                burger.HoldMustard();
-                order.Items.Add(burger);
-                order.Items.Add(new MeteorMacAndCheese()
-                {
-                    Size = DinoDiner.Menu.Size.Medium
-                });
-            }*/
+            
+            // Make sure the OrderControl can access the NavigationService of the frame.
+            OrderControl.NavigationService = OrderUi.NavigationService;
         }
 
         /// <summary>

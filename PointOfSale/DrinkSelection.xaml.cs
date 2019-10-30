@@ -31,7 +31,7 @@ namespace PointOfSale
                 Menu.Size.Large
             };
 
-            // Adds buttons for each entree to the menu programatically.
+            // Adds buttons for each drink to the menu programatically.
             Menu.Menu menu = new Menu.Menu();
             DrinkGrid.RowDefinitions.Add(new RowDefinition());
             int x = 0;
@@ -85,6 +85,24 @@ namespace PointOfSale
             if (DataContext is Order order)
             {
                 CollectionViewSource.GetDefaultView(order.Items).CurrentChanged += DrinkSelection_CurrentChanged;
+
+                // Assign correct buttons if created because of the user clicking on a drink
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus)
+                {
+                    ChangeToSodasaurusButtons();
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is JurassicJava)
+                {
+                    ChangeToJurassicJavaButtons();
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Tyrannotea)
+                {
+                    ChangeToTyrannoteaButtons();
+                }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Water)
+                {
+                    ChangeToWaterButtons();
+                }
             }
         }
 

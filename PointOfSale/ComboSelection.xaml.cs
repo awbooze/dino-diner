@@ -3,8 +3,10 @@
 */
 
 using DinoDiner.Menu;
+using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using Menu = DinoDiner.Menu.Menu;
 
 namespace PointOfSale
@@ -58,8 +60,48 @@ namespace PointOfSale
         // Navigates to the CustomizeCombo screen when any button pressed.
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // Placeholder for adding combo information later.
-            Button buttonClicked = sender as Button;
+            if (sender is Button button && DataContext is Order order)
+            {
+                if (button.Name == App.CreateValidIdString(new Brontowurst().ToString()))
+                {
+                    order.Items.Add(new CretaceousCombo(new Brontowurst()));
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new DinoNuggets().ToString()))
+                {
+                    order.Items.Add(new CretaceousCombo(new DinoNuggets()));
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new PrehistoricPBJ().ToString()))
+                {
+                    order.Items.Add(new CretaceousCombo(new PrehistoricPBJ()));
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new PterodactylWings().ToString()))
+                {
+                    order.Items.Add(new CretaceousCombo(new PterodactylWings()));
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new SteakosaurusBurger().ToString()))
+                {
+                    order.Items.Add(new CretaceousCombo(new SteakosaurusBurger()));
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new TRexKingBurger().ToString()))
+                {
+                    order.Items.Add(new CretaceousCombo(new TRexKingBurger()));
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else if (button.Name == App.CreateValidIdString(new VelociWrap().ToString()))
+                {
+                    order.Items.Add(new CretaceousCombo(new VelociWrap()));
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                }
+                else
+                {
+                    throw new InvalidOperationException("Cannot add any other entree with the buttons on this screen.");
+                }
+            }
 
             // No matter what, go to the customize combo screen
             NavigationService.Navigate(new CustomizeCombo());

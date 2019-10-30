@@ -39,20 +39,33 @@ namespace PointOfSale
             }
         }
 
-        // Might want to remove this on Saturday because it creates an entirely new page every time.
+        /// <summary>
+        /// When the selection is changed, navigate to the correct page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OrderListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (OrderListBox.SelectedItem is Side side)
+            if (OrderListBox.Items.Count <= 0 && !(NavigationService.Content is MenuCategorySelection))
+            {
+                NavigationService?.Navigate(new MenuCategorySelection());
+            }
+            else if (OrderListBox.SelectedItem is Side && !(NavigationService.Content is SideSelection))
             {
                 NavigationService?.Navigate(new SideSelection());
             }
-            else if (OrderListBox.SelectedItem is Entree entree)
+            else if (OrderListBox.SelectedItem is Entree && !(NavigationService.Content is EntreeSelection))
             {
                 NavigationService?.Navigate(new EntreeSelection());
             }
-            else if (OrderListBox.SelectedItem is Drink drink)
+            else if (OrderListBox.SelectedItem is Drink && !(NavigationService.Content is DrinkSelection))
             {
                 NavigationService?.Navigate(new DrinkSelection());
+            }
+            else if (OrderListBox.SelectedItem is CretaceousCombo && 
+                !(NavigationService.Content is CustomizeCombo))
+            {
+                NavigationService?.Navigate(new CustomizeCombo());
             }
         }
     }

@@ -3,9 +3,11 @@
 */
 
 using DinoDiner.Menu;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Navigation;
 using Menu = DinoDiner.Menu;
 
@@ -57,6 +59,8 @@ namespace PointOfSale
                 radioButton.SetValue(Grid.RowProperty, 1);
                 radioButton.SetValue(Grid.ColumnSpanProperty, 2);
 
+                radioButton.Checked += RadioButton_Checked;
+
                 CustomizeGrid.Children.Add(radioButton);
 
                 x += 2;
@@ -74,6 +78,28 @@ namespace PointOfSale
             else
             {
                 NavigationService.Navigate(new DrinkSelection());
+            }
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton radioButton && DataContext is Order order)
+            {
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    if (radioButton.Name == Menu.Size.Small.ToString())
+                    {
+                        combo.Size = Menu.Size.Small;
+                    }
+                    else if (radioButton.Name == Menu.Size.Medium.ToString())
+                    {
+                        combo.Size = Menu.Size.Medium;
+                    }
+                    else if (radioButton.Name == Menu.Size.Large.ToString())
+                    {
+                        combo.Size = Menu.Size.Large;
+                    }
+                }
             }
         }
 
