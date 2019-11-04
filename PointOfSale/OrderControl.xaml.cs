@@ -6,6 +6,7 @@ using DinoDiner.Menu;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using MenuItem = DinoDiner.Menu.MenuItem;
 
 namespace PointOfSale
 {
@@ -32,7 +33,7 @@ namespace PointOfSale
         {
             if (DataContext is Order order && sender is FrameworkElement element)
             {
-                if (element.DataContext is IOrderItem item)
+                if (element.DataContext is MenuItem item)
                 {
                     order.Items.Remove(item);
                 }

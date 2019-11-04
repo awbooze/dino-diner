@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
@@ -9,11 +11,33 @@ namespace DinoDiner.Menu
     {
         // Private backing variables
         private Size size;
+        private Drink drink;
+        private Side side;
 
         /// <summary>
         /// Gets and sets the drink
         /// </summary>
-        public Drink Drink { get; set; } = new Sodasaurus();
+        public Drink Drink
+        {
+            get
+            {
+                return drink;
+            }
+            set
+            {
+                if (drink != null)
+                {
+                    drink.PropertyChanged -= ComboItemPropertyChanged;
+                }
+                value.PropertyChanged += ComboItemPropertyChanged;
+                drink = value;
+
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Price");
+            }
+        }
 
         /// <summary>
         /// Gets and sets the entree
@@ -23,7 +47,27 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Gets and sets the side
         /// </summary>
-        public Side Side { get; set; } = new Fryceritops();
+        public Side Side 
+        { 
+            get
+            {
+                return side;
+            }
+            set
+            {
+                if (side != null)
+                {
+                    side.PropertyChanged -= ComboItemPropertyChanged;
+                }
+                value.PropertyChanged += ComboItemPropertyChanged;
+                side = value;
+
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Price");
+            }
+        }
 
         /// <summary>
         /// Gets the toy
@@ -78,6 +122,9 @@ namespace DinoDiner.Menu
                 size = value;
                 Drink.Size = value;
                 Side.Size = value;
+
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Description");
             }
         }
 
@@ -106,8 +153,25 @@ namespace DinoDiner.Menu
         /// <param name="entree">The entree to use.</param>
         public CretaceousCombo(Entree entree)
         {
+            entree.PropertyChanged += ComboItemPropertyChanged;
             Entree = entree;
+            Side = new Fryceritops();
+            Drink = new Sodasaurus();
             Toy = "Dinosaur Toy";
+        }
+
+        // When an item in the combo has a proprety changed, this checks and rebroadcasts the 
+        // PropertyChanged event as the combo's own event.
+        private void ComboItemPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Description")
+            {
+                NotifyOfPropertyChanged("Special");
+            }
+            else
+            {
+                NotifyOfPropertyChanged(e.PropertyName);
+            }
         }
 
         /// <summary>

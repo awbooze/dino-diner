@@ -21,7 +21,7 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Stores all the items that the customer has currently added to the order as an ObservableCollection.
         /// </summary>
-        public ObservableCollection<IOrderItem> Items { get; set; } = new ObservableCollection<IOrderItem>();
+        public ObservableCollection<MenuItem> Items { get; set; } = new ObservableCollection<MenuItem>();
 
         /// <summary>
         /// Calculates a subtotal for the order by adding the cost of all items. The subtotal is never allowed 
@@ -94,6 +94,7 @@ namespace DinoDiner.Menu
             }
             // End adapted code
 
+            NotifyOfPropertyChanged("Items");
             NotifyOfPropertyChanged("SubtotalCost");
             NotifyOfPropertyChanged("SalesTaxCost");
             NotifyOfPropertyChanged("TotalCost");
