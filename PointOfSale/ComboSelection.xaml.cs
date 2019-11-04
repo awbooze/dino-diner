@@ -105,11 +105,11 @@ namespace PointOfSale
                 if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo && 
                     combo.Entree is PterodactylWings)
                 {
-                    NavigationService.Navigate(new CustomizeCombo());
+                    NavigationService?.Navigate(new CustomizeCombo());
                 }
                 else
                 {
-                    NavigationService.Navigate(new CustomizeEntree());
+                    NavigationService?.Navigate(new CustomizeEntree());
                 }
             }
         }
@@ -117,7 +117,16 @@ namespace PointOfSale
         // Returns to the MenuCategorySelection screen when clicked.
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService?.Navigate(new MenuCategorySelection());
+        }
+
+        // Goes back in the page hierarchy.
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
         }
     }
 }

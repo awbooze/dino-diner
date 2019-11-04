@@ -17,6 +17,9 @@ namespace PointOfSale
     /// </summary>
     public partial class SideSelection : Page
     {
+        // Private backing variable.
+        bool shouldChangeCombo = false;
+
         /// <summary>
         /// The constructor for this page. Adds buttons for all the sides and radio buttons for the sizes.
         /// </summary>
@@ -84,46 +87,112 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Another constructor for this page. Allows me to determine whether this is from a combo or a regular page.
+        /// </summary>
+        /// <param name="fromCombo">Whether this page is instantiated from a combo page.</param>
+        public SideSelection(bool fromCombo) : this()
+        {
+            shouldChangeCombo = fromCombo;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is Order order)
+            {
+                CollectionViewSource.GetDefaultView(order.Items).CurrentChanged += SideSelection_CurrentChanged;
+
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
+                {
+                    // Assign correct buttons if created because of the user clicking on a side
+                    UpdateRadioButtons(side);
+                }
+            }
+        }
+
+        private void SideSelection_CurrentChanged(object sender, EventArgs e)
+        {
+            if (DataContext is Order order)
+            {
+                CollectionViewSource.GetDefaultView(order.Items).CurrentChanged += SideSelection_CurrentChanged;
+
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
+                {
+                    // Assign correct buttons if created because of the user clicking on a side
+                    UpdateRadioButtons(side);
+                }
+            }
+        }
+
+        // Change radio buttons to correct size
+        private void UpdateRadioButtons(Side side)
+        {
+            RadioButton smallRadio = SizeGrid.Children[0] as RadioButton;
+            RadioButton mediumRadio = SizeGrid.Children[1] as RadioButton;
+            RadioButton largeRadio = SizeGrid.Children[2] as RadioButton;
+
+            if (side.Size == Menu.Size.Small)
+            {
+                smallRadio.IsChecked = true;
+            }
+            else if (side.Size == Menu.Size.Medium)
+            {
+                mediumRadio.IsChecked = true;
+            }
+            else
+            {
+                largeRadio.IsChecked = true;
+            }
+        }
+
         // Performs any action required by clicking on one of the sides
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && DataContext is Order order)
             {
+                Side side;
                 if (button.Name == App.CreateValidIdString(new Fryceritops().ToString()))
                 {
-                    order.Items.Add(new Fryceritops());
-                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                    side = new Fryceritops();
                 }
                 else if (button.Name == App.CreateValidIdString(new Triceritots().ToString()))
                 {
-                    order.Items.Add(new Triceritots());
-                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                    side = new Triceritots();
                 }
                 else if (button.Name == App.CreateValidIdString(new MeteorMacAndCheese().ToString()))
                 {
-                    order.Items.Add(new MeteorMacAndCheese());
-                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                    side = new MeteorMacAndCheese();
                 }
                 else    // Mezzorella Sticks
                 {
-                    order.Items.Add(new MezzorellaSticks());
-                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                    side = new MezzorellaSticks();
                 }
 
                 // Change side to correct size after adding item to order
                 RadioButton mediumRadio = SizeGrid.Children[1] as RadioButton;
                 RadioButton largeRadio = SizeGrid.Children[2] as RadioButton;
 
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
+                if ((bool)mediumRadio.IsChecked)
                 {
-                    if ((bool)mediumRadio.IsChecked)
-                    {
-                        side.Size = Menu.Size.Medium;
-                    }
-                    else if ((bool)largeRadio.IsChecked)
-                    {
-                        side.Size = Menu.Size.Large;
-                    }
+                    side.Size = Menu.Size.Medium;
+                }
+                else if ((bool)largeRadio.IsChecked)
+                {
+                    side.Size = Menu.Size.Large;
+                }
+
+                if (shouldChangeCombo && 
+                    CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    combo.Side = side;
+                }
+                else
+                {
+                    // Add the drink to the order
+                    order.Items.Add(side);
+
+                    // Focus on the new drink
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 }
             }
         }
@@ -154,7 +223,16 @@ namespace PointOfSale
         // Returns to the MenuCategorySelection screen when clicked.
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService?.Navigate(new MenuCategorySelection());
+        }
+
+        // Goes back in the page hierarchy.
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
         }
     }
 }

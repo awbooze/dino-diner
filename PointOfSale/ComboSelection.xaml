@@ -28,7 +28,9 @@
             <RowDefinition/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <Button x:Name="HomeButton" Grid.Column="0" Grid.Row="3" Content="Home" 
+        <Button x:Name="BackButton" Grid.Column="0" Grid.Row="3" Content="Back" 
+                FontSize="22" Margin="10, 5, 10, 5" Click="BackButton_Click"/>
+        <Button x:Name="HomeButton" Grid.Column="1" Grid.Row="3" Content="Home" 
                 FontSize="22" Margin="10, 5, 10, 5" Click="HomeButton_Click"/>
     </Grid>
 </Page>

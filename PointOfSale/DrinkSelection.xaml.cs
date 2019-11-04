@@ -17,6 +17,9 @@ namespace PointOfSale
     /// </summary>
     public partial class DrinkSelection : Page
     {
+        // Private backing variable.
+        bool shouldChangeCombo = false;
+
         /// <summary>
         /// The constructor for this page. Adds a button for each drink and the radio buttons for the sizes.
         /// </summary>
@@ -79,6 +82,15 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Another constructor for this page. Allows me to determine whether this is from a combo or a regular page
+        /// </summary>
+        /// <param name="fromCombo">Whether this page is instantiated from a combo page.</param>
+        public DrinkSelection(bool fromCombo) : this()
+        {
+            shouldChangeCombo = fromCombo;
+        }
+
         // After the page is loaded, add an event handler that triggers whenever the selection changes.
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -86,22 +98,47 @@ namespace PointOfSale
             {
                 CollectionViewSource.GetDefaultView(order.Items).CurrentChanged += DrinkSelection_CurrentChanged;
 
-                // Assign correct buttons if created because of the user clicking on a drink
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus)
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Drink drink)
                 {
-                    ChangeToSodasaurusButtons();
+                    // Assign correct buttons if created because of the user clicking on a drink
+                    if (drink is Sodasaurus)
+                    {
+                        ChangeToSodasaurusButtons();
+                    }
+                    else if (drink is JurassicJava)
+                    {
+                        ChangeToJurassicJavaButtons();
+                    }
+                    else if (drink is Tyrannotea)
+                    {
+                        ChangeToTyrannoteaButtons();
+                    }
+                    else if (drink is Water)
+                    {
+                        ChangeToWaterButtons();
+                    }
                 }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is JurassicJava)
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
                 {
-                    ChangeToJurassicJavaButtons();
-                }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Tyrannotea)
-                {
-                    ChangeToTyrannoteaButtons();
-                }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Water)
-                {
-                    ChangeToWaterButtons();
+                    // Assign correct buttons if created because of the user clicking on a combo
+                    if (combo.Drink is Sodasaurus)
+                    {
+                        ChangeToSodasaurusButtons();
+                    }
+                    else if (combo.Drink is JurassicJava)
+                    {
+                        ChangeToJurassicJavaButtons();
+                    }
+                    else if (combo.Drink is Tyrannotea)
+                    {
+                        ChangeToTyrannoteaButtons();
+                    }
+                    else if (combo.Drink is Water)
+                    {
+                        ChangeToWaterButtons();
+                    }
+
+                    UpdateRadioButtons(combo.Drink);
                 }
             }
         }
@@ -111,28 +148,74 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus)
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Drink drink)
                 {
-                    ChangeToSodasaurusButtons();
+                    // Assign correct buttons if created because of the user clicking on a drink
+                    if (drink is Sodasaurus)
+                    {
+                        ChangeToSodasaurusButtons();
+                    }
+                    else if (drink is JurassicJava)
+                    {
+                        ChangeToJurassicJavaButtons();
+                    }
+                    else if (drink is Tyrannotea)
+                    {
+                        ChangeToTyrannoteaButtons();
+                    }
+                    else if (drink is Water)
+                    {
+                        ChangeToWaterButtons();
+                    }
                 }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is JurassicJava)
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
                 {
-                    ChangeToJurassicJavaButtons();
-                }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Tyrannotea)
-                {
-                    ChangeToTyrannoteaButtons();
-                }
-                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Water)
-                {
-                    ChangeToWaterButtons();
+                    // Assign correct buttons if created because of the user clicking on a combo
+                    if (combo.Drink is Sodasaurus)
+                    {
+                        ChangeToSodasaurusButtons();
+                    }
+                    else if (combo.Drink is JurassicJava)
+                    {
+                        ChangeToJurassicJavaButtons();
+                    }
+                    else if (combo.Drink is Tyrannotea)
+                    {
+                        ChangeToTyrannoteaButtons();
+                    }
+                    else if (combo.Drink is Water)
+                    {
+                        ChangeToWaterButtons();
+                    }
+
+                    UpdateRadioButtons(combo.Drink);
                 }
             }
         }
 
+        // Change radio buttons to correct size
+        private void UpdateRadioButtons(Drink drink)
+        {
+            RadioButton smallRadio = SizeGrid.Children[0] as RadioButton;
+            RadioButton mediumRadio = SizeGrid.Children[1] as RadioButton;
+            RadioButton largeRadio = SizeGrid.Children[2] as RadioButton;
+
+            if (drink.Size == Menu.Size.Small)
+            {
+                smallRadio.IsChecked = true;
+            }
+            else if (drink.Size == Menu.Size.Medium)
+            {
+                mediumRadio.IsChecked = true;
+            }
+            else
+            {
+                largeRadio.IsChecked = true;
+            }
+        }
+
         /// <summary>
-        /// Removes all buttons in the third row of the app, then re-adds buttons that are applicable to the 
-        /// current drink.
+        /// Adds the drink to the order or the combo, as appropriate.
         /// </summary>
         /// <param name="sender">The button that was pressed.</param>
         /// <param name="e">Any arguments about the event.</param>
@@ -140,45 +223,57 @@ namespace PointOfSale
         {
             if (sender is Button button && DataContext is Order order)
             {
+                Drink drink;
                 if (button.Name == App.CreateValidIdString(new Sodasaurus().ToString()))
                 {
                     // Add Sodasaurus to order
-                    order.Items.Add(new Sodasaurus());
-                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                    drink = new Sodasaurus();
+                    ChangeToSodasaurusButtons();
                 }
                 else if (button.Name == App.CreateValidIdString(new JurassicJava().ToString()))
                 {
                     // Add JurassicJava to order
-                    order.Items.Add(new JurassicJava());
-                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                    drink = new JurassicJava();
+                    ChangeToJurassicJavaButtons();
                 }
                 else if (button.Name == App.CreateValidIdString(new Tyrannotea().ToString()))
                 {
                     // Add Tyrannotea to order
-                    order.Items.Add(new Tyrannotea());
-                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                    drink = new Tyrannotea();
+                    ChangeToTyrannoteaButtons();
                 }
                 else    // Water
                 {
                     // Add Water to order
-                    order.Items.Add(new Water());
-                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
+                    drink = new Water();
+                    ChangeToWaterButtons();
                 }
 
                 // Change side to correct size after adding item to order
                 RadioButton mediumRadio = SizeGrid.Children[1] as RadioButton;
                 RadioButton largeRadio = SizeGrid.Children[2] as RadioButton;
 
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Side side)
+                if ((bool)mediumRadio.IsChecked)
                 {
-                    if ((bool)mediumRadio.IsChecked)
-                    {
-                        side.Size = Menu.Size.Medium;
-                    }
-                    else if ((bool)largeRadio.IsChecked)
-                    {
-                        side.Size = Menu.Size.Large;
-                    }
+                    drink.Size = Menu.Size.Medium;
+                }
+                else if ((bool)largeRadio.IsChecked)
+                {
+                    drink.Size = Menu.Size.Large;
+                }
+
+                if (shouldChangeCombo && 
+                    CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    combo.Drink = drink;
+                }
+                else
+                {
+                    // Add the drink to the order
+                    order.Items.Add(drink);
+
+                    // Focus on the new drink
+                    CollectionViewSource.GetDefaultView(order.Items).MoveCurrentToLast();
                 }
             }
         }
@@ -226,18 +321,22 @@ namespace PointOfSale
         // Performs soda-related actions when soda-related buttons are clicked
         private void Soda_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button)
+            if (sender is Button button && DataContext is Order order)
             {
                 if (button.Name == "flavorButton")
                 {
-                    NavigationService.Navigate(new FlavorSelection());
+                    NavigationService?.Navigate(new FlavorSelection());
                 }
                 else
                 {
-                    if (DataContext is Order order &&
-                        CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda)
+                    if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda)
                     {
                         soda.HoldIce();
+                    }
+                    else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo && 
+                        combo.Drink is Sodasaurus drink)
+                    {
+                        drink.HoldIce();
                     }
                 }
             }
@@ -304,20 +403,38 @@ namespace PointOfSale
         // Performs java-related actions when java-related buttons are clicked
         private void Java_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && DataContext is Order order &&
-                CollectionViewSource.GetDefaultView(order.Items).CurrentItem is JurassicJava java)
+            if (sender is Button button && DataContext is Order order)
             {
-                if (button.Name == "addIceButton")
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is JurassicJava java)
                 {
-                    java.AddIce();
+                    if (button.Name == "addIceButton")
+                    {
+                        java.AddIce();
+                    }
+                    else if (button.Name == "roomForCreamButton")
+                    {
+                        java.LeaveRoomForCream();
+                    }
+                    else
+                    {
+                        java.MakeDecaf();
+                    }
                 }
-                else if (button.Name == "roomForCreamButton")
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo &&
+                        combo.Drink is JurassicJava drink)
                 {
-                    java.LeaveRoomForCream();
-                }
-                else
-                {
-                    java.MakeDecaf();
+                    if (button.Name == "addIceButton")
+                    {
+                        drink.AddIce();
+                    }
+                    else if (button.Name == "roomForCreamButton")
+                    {
+                        drink.LeaveRoomForCream();
+                    }
+                    else
+                    {
+                        drink.MakeDecaf();
+                    }
                 }
             }
         }
@@ -383,20 +500,38 @@ namespace PointOfSale
         // Performs tea-related actions when tea-related buttons are clicked
         private void Tea_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && DataContext is Order order &&
-                CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Tyrannotea tea)
+            if (sender is Button button && DataContext is Order order)
             {
-                if (button.Name == "holdIceButton")
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Tyrannotea tea)
                 {
-                    tea.HoldIce();
+                    if (button.Name == "holdIceButton")
+                    {
+                        tea.HoldIce();
+                    }
+                    else if (button.Name == "addLemonButton")
+                    {
+                        tea.AddLemon();
+                    }
+                    else
+                    {
+                        tea.MakeSweet();
+                    }
                 }
-                else if (button.Name == "addLemonButton")
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo &&
+                        combo.Drink is Tyrannotea drink)
                 {
-                    tea.AddLemon();
-                }
-                else
-                {
-                    tea.MakeSweet();
+                    if (button.Name == "holdIceButton")
+                    {
+                        drink.HoldIce();
+                    }
+                    else if (button.Name == "addLemonButton")
+                    {
+                        drink.AddLemon();
+                    }
+                    else
+                    {
+                        drink.MakeSweet();
+                    }
                 }
             }
         }
@@ -445,16 +580,30 @@ namespace PointOfSale
         // Performs water-related actions when water-related buttons are clicked
         private void Water_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && DataContext is Order order &&
-                CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Water water)
+            if (sender is Button button && DataContext is Order order)
             {
-                if (button.Name == "holdIceButton")
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Water water)
                 {
-                    water.HoldIce();
+                    if (button.Name == "holdIceButton")
+                    {
+                        water.HoldIce();
+                    }
+                    else
+                    {
+                        water.AddLemon();
+                    }
                 }
-                else
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo &&
+                        combo.Drink is Water drink)
                 {
-                    water.AddLemon();
+                    if (button.Name == "holdIceButton")
+                    {
+                        drink.HoldIce();
+                    }
+                    else
+                    {
+                        drink.AddLemon();
+                    }
                 }
             }
         }
@@ -494,7 +643,16 @@ namespace PointOfSale
         // Returns to the MenuCategorySelection screen when clicked.
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService?.Navigate(new MenuCategorySelection());
+        }
+
+        // Goes back in the page hierarchy.
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
         }
     }
 }

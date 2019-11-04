@@ -55,9 +55,13 @@ namespace PointOfSale
             {
                 NavigationService?.Navigate(new SideSelection());
             }
-            else if (OrderListBox.SelectedItem is Entree && !(NavigationService.Content is EntreeSelection))
+            else if (OrderListBox.SelectedItem is PterodactylWings && !(NavigationService.Content is EntreeSelection))
             {
                 NavigationService?.Navigate(new EntreeSelection());
+            }
+            else if (OrderListBox.SelectedItem is Entree && !(NavigationService.Content is CustomizeEntree))
+            {
+                NavigationService?.Navigate(new CustomizeEntree());
             }
             else if (OrderListBox.SelectedItem is Drink && !(NavigationService.Content is DrinkSelection))
             {

@@ -37,13 +37,7 @@ namespace PointOfSale
             };
             int x = 0;
 
-            // Change text of button for Sides
-            TextBlock sideText = SideButton.Content as TextBlock;
-            sideText.Text = "Side: " + App.CorrectDrinkAndSideNames(combo.Side.ToString());
-
-            // Change text of button for Drinks
-            TextBlock drinkText = DrinkButton.Content as TextBlock;
-            drinkText.Text = "Drink: " + App.CorrectDrinkAndSideNames(combo.Drink.ToString());
+            UpdateDrinkAndSideButtons(combo);
 
             // Add sizes
             foreach (Menu.Size size in sizes)
@@ -67,17 +61,73 @@ namespace PointOfSale
             }
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is Order order)
+            {
+                CollectionViewSource.GetDefaultView(order.Items).CurrentChanged += CustomizeCombo_CurrentChanged;
+
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+                {
+                    UpdateDrinkAndSideButtons(combo);
+                    UpdateRadioButtons(combo);
+                }
+            }
+        }
+
+        private void CustomizeCombo_CurrentChanged(object sender, EventArgs e)
+        {
+            if (DataContext is Order order && 
+                CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+            {
+                UpdateDrinkAndSideButtons(combo);
+                UpdateRadioButtons(combo);
+            }
+        }
+
+        private void UpdateDrinkAndSideButtons(CretaceousCombo combo)
+        {
+            // Change text of button for Sides
+            TextBlock sideText = SideButton.Content as TextBlock;
+            sideText.Text = "Side: " + combo.Side.ToString();
+
+            // Change text of button for Drinks
+            TextBlock drinkText = DrinkButton.Content as TextBlock;
+            drinkText.Text = "Drink: " + combo.Drink.ToString();
+        }
+
+        // Change radio buttons to correct size
+        private void UpdateRadioButtons(CretaceousCombo combo)
+        {
+            RadioButton smallRadio = CustomizeGrid.Children[4] as RadioButton;
+            RadioButton mediumRadio = CustomizeGrid.Children[5] as RadioButton;
+            RadioButton largeRadio = CustomizeGrid.Children[6] as RadioButton;
+
+            if (combo.Size == Menu.Size.Small)
+            {
+                smallRadio.IsChecked = true;
+            }
+            else if (combo.Size == Menu.Size.Medium)
+            {
+                mediumRadio.IsChecked = true;
+            }
+            else
+            {
+                largeRadio.IsChecked = true;
+            }
+        }
+
         // Navigates to either the SideSelection or DrinkSelection screens based on the button pressed
         private void ChangeButtons_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
             if (button.Name == "SideButton")
             {
-                NavigationService.Navigate(new SideSelection());
+                NavigationService?.Navigate(new SideSelection(true));
             }
             else
             {
-                NavigationService.Navigate(new DrinkSelection());
+                NavigationService?.Navigate(new DrinkSelection(true));
             }
         }
 

@@ -102,13 +102,14 @@ namespace PointOfSale
                     throw new InvalidOperationException("Cannot add any other entree with the buttons on this screen.");
                 }
 
-                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo)
+                // Go to customize page if not Pterodactyl Wings.
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is PterodactylWings)
                 {
-                    NavigationService.Navigate(new CustomizeCombo());
+                    NavigationService?.Navigate(new MenuCategorySelection());
                 }
                 else
                 {
-                    NavigationService.Navigate(new MenuCategorySelection());
+                    NavigationService?.Navigate(new CustomizeEntree());
                 }
             }
         }
@@ -116,7 +117,16 @@ namespace PointOfSale
         // Returns to the MenuCategorySelection screen when clicked.
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService?.Navigate(new MenuCategorySelection());
+        }
+
+        // Goes back in the page hierarchy.
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
         }
     }
 }

@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:PointOfSale"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Customize Combo">
+      Title="Customize Combo"
+      Loaded="Page_Loaded">
 
     <Grid x:Name="CustomizeGrid">
         <Grid.ColumnDefinitions>

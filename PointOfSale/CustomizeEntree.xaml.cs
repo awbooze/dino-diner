@@ -1,18 +1,13 @@
-﻿using DinoDiner.Menu;
+﻿/*  CustomizeEntree.xaml.cs
+*   Author: Andrew Booze
+*/
+
+using DinoDiner.Menu;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PointOfSale
 {
@@ -65,42 +60,106 @@ namespace PointOfSale
                         //ChangeToVelociWrapButtons();
                     }
                 }
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Entree entree)
+                {
+                    if (entree is Brontowurst)
+                    {
+                        ChangeToBrontowurstButtons();
+                    }
+                    else if (entree is DinoNuggets)
+                    {
+                        //ChangeToDinoNuggetsButtons();
+                    }
+                    else if (entree is PrehistoricPBJ)
+                    {
+                        //ChangeToPrehistoricPBJButtons();
+                    }
+                    else if (entree is PterodactylWings)
+                    {
+                        //ChangeToPterodactylWingsButtons();
+                    }
+                    else if (entree is SteakosaurusBurger)
+                    {
+                        //ChangeToSteakosaurusBurgerButtons();
+                    }
+                    else if (entree is TRexKingBurger)
+                    {
+                        //ChangeToTRexKingBurgerButtons();
+                    }
+                    else if (entree is VelociWrap)
+                    {
+                        //ChangeToVelociWrapButtons();
+                    }
+                }
             }
         }
 
         // When the selection changes, change to the correct buttons.
         private void EntreeSelection_CurrentChanged(object sender, EventArgs e)
         {
-            if (DataContext is Order order && 
-                CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
+            if (DataContext is Order order)
             {
-                if (combo.Entree is Brontowurst)
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo)
                 {
-                    ChangeToBrontowurstButtons();
+                    if (combo.Entree is Brontowurst)
+                    {
+                        ChangeToBrontowurstButtons();
+                    }
+                    else if (combo.Entree is DinoNuggets)
+                    {
+                        //ChangeToDinoNuggetsButtons();
+                    }
+                    else if (combo.Entree is PrehistoricPBJ)
+                    {
+                        //ChangeToPrehistoricPBJButtons();
+                    }
+                    else if (combo.Entree is PterodactylWings)
+                    {
+                        //ChangeToPterodactylWingsButtons();
+                    }
+                    else if (combo.Entree is SteakosaurusBurger)
+                    {
+                        //ChangeToSteakosaurusBurgerButtons();
+                    }
+                    else if (combo.Entree is TRexKingBurger)
+                    {
+                        //ChangeToTRexKingBurgerButtons();
+                    }
+                    else if (combo.Entree is VelociWrap)
+                    {
+                        //ChangeToVelociWrapButtons();
+                    }
                 }
-                else if (combo.Entree is DinoNuggets)
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Entree entree)
                 {
-                    //ChangeToDinoNuggetsButtons();
-                }
-                else if (combo.Entree is PrehistoricPBJ)
-                {
-                    //ChangeToPrehistoricPBJButtons();
-                }
-                else if (combo.Entree is PterodactylWings)
-                {
-                    //ChangeToPterodactylWingsButtons();
-                }
-                else if (combo.Entree is SteakosaurusBurger)
-                {
-                    //ChangeToSteakosaurusBurgerButtons();
-                }
-                else if (combo.Entree is TRexKingBurger)
-                {
-                    //ChangeToTRexKingBurgerButtons();
-                }
-                else if (combo.Entree is VelociWrap)
-                {
-                    //ChangeToVelociWrapButtons();
+                    if (entree is Brontowurst)
+                    {
+                        ChangeToBrontowurstButtons();
+                    }
+                    else if (entree is DinoNuggets)
+                    {
+                        //ChangeToDinoNuggetsButtons();
+                    }
+                    else if (entree is PrehistoricPBJ)
+                    {
+                        //ChangeToPrehistoricPBJButtons();
+                    }
+                    else if (entree is PterodactylWings)
+                    {
+                        //ChangeToPterodactylWingsButtons();
+                    }
+                    else if (entree is SteakosaurusBurger)
+                    {
+                        //ChangeToSteakosaurusBurgerButtons();
+                    }
+                    else if (entree is TRexKingBurger)
+                    {
+                        //ChangeToTRexKingBurgerButtons();
+                    }
+                    else if (entree is VelociWrap)
+                    {
+                        //ChangeToVelociWrapButtons();
+                    }
                 }
             }
         }

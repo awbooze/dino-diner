@@ -56,42 +56,82 @@ namespace PointOfSale
                 SodasaurusFlavor.Grape
             };
 
-            if (sender is Button button && DataContext is Order order && 
-                CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda)
+            if (sender is Button button && DataContext is Order order)
             {
-                if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Cola.ToString()))
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda)
                 {
-                    // Swaps the flavor: If it already exists then the operation removes it, otherwise, 
-                    // the operation adds it.
-                    soda.Flavor ^= SodasaurusFlavor.Cola;
+                    if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Cola.ToString()))
+                    {
+                        // Swaps the flavor: If it already exists then the operation removes it, otherwise, 
+                        // the operation adds it.
+                        soda.Flavor ^= SodasaurusFlavor.Cola;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Orange.ToString()))
+                    {
+                        soda.Flavor ^= SodasaurusFlavor.Orange;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Vanilla.ToString()))
+                    {
+                        soda.Flavor ^= SodasaurusFlavor.Vanilla;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Chocolate.ToString()))
+                    {
+                        soda.Flavor ^= SodasaurusFlavor.Chocolate;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.RootBeer.ToString()))
+                    {
+                        soda.Flavor ^= SodasaurusFlavor.RootBeer;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Cherry.ToString()))
+                    {
+                        soda.Flavor ^= SodasaurusFlavor.Cherry;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Lime.ToString()))
+                    {
+                        soda.Flavor ^= SodasaurusFlavor.Lime;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Grape.ToString()))
+                    {
+                        soda.Flavor ^= SodasaurusFlavor.Grape;
+                    }
                 }
-                else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Orange.ToString()))
+                else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo &&
+                    combo.Drink is Sodasaurus drink)
                 {
-                    soda.Flavor ^= SodasaurusFlavor.Orange;
-                }
-                else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Vanilla.ToString()))
-                {
-                    soda.Flavor ^= SodasaurusFlavor.Vanilla;
-                }
-                else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Chocolate.ToString()))
-                {
-                    soda.Flavor ^= SodasaurusFlavor.Chocolate;
-                }
-                else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.RootBeer.ToString()))
-                {
-                    soda.Flavor ^= SodasaurusFlavor.RootBeer;
-                }
-                else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Cherry.ToString()))
-                {
-                    soda.Flavor ^= SodasaurusFlavor.Cherry;
-                }
-                else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Lime.ToString()))
-                {
-                    soda.Flavor ^= SodasaurusFlavor.Lime;
-                }
-                else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Grape.ToString()))
-                {
-                    soda.Flavor ^= SodasaurusFlavor.Grape;
+                    if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Cola.ToString()))
+                    {
+                        // Swaps the flavor: If it already exists then the operation removes it, otherwise, 
+                        // the operation adds it.
+                        drink.Flavor ^= SodasaurusFlavor.Cola;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Orange.ToString()))
+                    {
+                        drink.Flavor ^= SodasaurusFlavor.Orange;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Vanilla.ToString()))
+                    {
+                        drink.Flavor ^= SodasaurusFlavor.Vanilla;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Chocolate.ToString()))
+                    {
+                        drink.Flavor ^= SodasaurusFlavor.Chocolate;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.RootBeer.ToString()))
+                    {
+                        drink.Flavor ^= SodasaurusFlavor.RootBeer;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Cherry.ToString()))
+                    {
+                        drink.Flavor ^= SodasaurusFlavor.Cherry;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Lime.ToString()))
+                    {
+                        drink.Flavor ^= SodasaurusFlavor.Lime;
+                    }
+                    else if (button.Name == App.CreateValidIdString(SodasaurusFlavor.Grape.ToString()))
+                    {
+                        drink.Flavor ^= SodasaurusFlavor.Grape;
+                    }
                 }
             }
 
@@ -144,16 +184,29 @@ namespace PointOfSale
                     x = 0;
                 }
 
-                if (DataContext is Order order &&
-                    CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda &&
-                    soda.Flavor.HasFlag(flavor))
+                if (DataContext is Order order)
                 {
-                    button.Background = Brushes.LightGreen;
+                    if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is Sodasaurus soda &&
+                    soda.Flavor.HasFlag(flavor))
+                    {
+                        button.Background = Brushes.LightGreen;
+                    }
+                    else if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo && 
+                        combo.Drink is Sodasaurus drink && drink.Flavor.HasFlag(flavor))
+                    {
+                        button.Background = Brushes.LightGreen;
+                    }
                 }
 
                 button.Click += new RoutedEventHandler(Button_Click);
                 FlavorGrid.Children.Add(button);
             }
+        }
+
+        // Returns to the MenuCategorySelection screen when clicked.
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new MenuCategorySelection());
         }
 
         // Returns to the DrinkSelection screen when clicked.
