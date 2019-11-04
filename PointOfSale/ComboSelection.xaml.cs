@@ -101,10 +101,17 @@ namespace PointOfSale
                 {
                     throw new InvalidOperationException("Cannot add any other entree with the buttons on this screen.");
                 }
-            }
 
-            // No matter what, go to the customize combo screen
-            NavigationService.Navigate(new CustomizeCombo());
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo combo && 
+                    combo.Entree is PterodactylWings)
+                {
+                    NavigationService.Navigate(new CustomizeCombo());
+                }
+                else
+                {
+                    NavigationService.Navigate(new CustomizeEntree());
+                }
+            }
         }
 
         // Returns to the MenuCategorySelection screen when clicked.

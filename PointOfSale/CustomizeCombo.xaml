@@ -28,7 +28,9 @@
         <Button x:Name="DrinkButton" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="3" Click="ChangeButtons_Click">
             <TextBlock Text="Drink: " TextAlignment="Center" TextWrapping="WrapWithOverflow"/>
         </Button>
-        <Button x:Name="HomeButton" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Content="Home" 
+        <Button x:Name="BackButton" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Back" 
+                FontSize="22" Margin="10, 5, 10, 5" Click="BackButton_Click"/>
+        <Button x:Name="HomeButton" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" Content="Home" 
                 FontSize="22" Margin="10, 5, 10, 5" Click="HomeButton_Click"/>
     </Grid>
 </Page>

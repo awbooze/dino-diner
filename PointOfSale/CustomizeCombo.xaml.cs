@@ -106,7 +106,16 @@ namespace PointOfSale
         // Returns to the MenuCategorySelection screen when clicked.
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService?.Navigate(new MenuCategorySelection());
+        }
+
+        // Goes back to the customize entree screen.
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
         }
     }
 }

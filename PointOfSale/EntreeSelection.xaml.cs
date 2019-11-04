@@ -101,6 +101,15 @@ namespace PointOfSale
                 {
                     throw new InvalidOperationException("Cannot add any other entree with the buttons on this screen.");
                 }
+
+                if (CollectionViewSource.GetDefaultView(order.Items).CurrentItem is CretaceousCombo)
+                {
+                    NavigationService.Navigate(new CustomizeCombo());
+                }
+                else
+                {
+                    NavigationService.Navigate(new MenuCategorySelection());
+                }
             }
         }
 
