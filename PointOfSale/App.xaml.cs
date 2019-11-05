@@ -23,13 +23,13 @@ namespace PointOfSale
         }
 
         /// <summary>
-        /// Removes the "Small" from the string returned by Drink or Side ToString methods.
+        /// Removes the size descriptor from the string returned by Drink or Side ToString methods.
         /// </summary>
-        /// <param name="name">A string with "Small" in it.</param>
-        /// <returns>The same string without the "Small" in-front of it.</returns>
+        /// <param name="name">A string with a size descriptor in it.</param>
+        /// <returns>The same string without the size descriptor in-front of it.</returns>
         public static string CorrectDrinkAndSideNames(string name)
         {
-            return name.Replace("Small ", "");
+            return name.Replace("Small ", "").Replace("Medium ", "").Replace("Large ", "");
         }
     }
 }

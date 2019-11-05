@@ -89,11 +89,11 @@ namespace PointOfSale
         {
             // Change text of button for Sides
             TextBlock sideText = SideButton.Content as TextBlock;
-            sideText.Text = "Side: " + combo.Side.ToString();
+            sideText.Text = "Side: " + App.CorrectDrinkAndSideNames(combo.Side.ToString());
 
             // Change text of button for Drinks
             TextBlock drinkText = DrinkButton.Content as TextBlock;
-            drinkText.Text = "Drink: " + combo.Drink.ToString();
+            drinkText.Text = "Drink: " + App.CorrectDrinkAndSideNames(combo.Drink.ToString());
         }
 
         // Change radio buttons to correct size
