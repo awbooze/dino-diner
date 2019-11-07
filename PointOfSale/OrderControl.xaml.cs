@@ -16,7 +16,7 @@ namespace PointOfSale
     public partial class OrderControl : UserControl
     {
         /// <summary>
-        /// The Navigation Service for the OrderControl (not currently working)
+        /// The Navigation Service for the OrderControl
         /// </summary>
         public NavigationService NavigationService { get; set; }
 
@@ -71,6 +71,22 @@ namespace PointOfSale
                 !(NavigationService.Content is CustomizeCombo))
             {
                 NavigationService?.Navigate(new CustomizeCombo());
+            }
+        }
+
+        private void BottomButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && DataContext is Order order)
+            {
+                if (button.Name == "CancelButton")
+                {
+                    order.Items.Clear();
+                }
+                else    // Pay button
+                {
+                    // Also clear all items for the moment
+                    order.Items.Clear();
+                }
             }
         }
     }
