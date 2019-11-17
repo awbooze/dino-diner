@@ -7,7 +7,6 @@ html, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 0;
     margin: 0;
-    min-height: 100%;
 }
 
 /* Navbar */
@@ -71,6 +70,14 @@ h1, h2 {
     margin: auto;
 }
 
+h3 {
+    margin: auto;
+}
+
+ul {
+    margin: 0;
+}
+
 #body-content {
     padding: 0;
     margin: 2em auto;
@@ -80,6 +87,29 @@ h1, h2 {
     #body-content a {
         color: lightgreen;
     }
+
+.menu-item-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu-item {
+    display: inline-block;
+    vertical-align: top;
+    margin: 1em auto;
+    flex-basis: 30%;
+}
+
+.menu-item p {
+    margin: 0.5em 0 0 0;
+}
+
+.menu-description {
+    margin: auto;
+    text-align: center;
+}
 /* End Content styles */
 
 /* Footer */
@@ -88,11 +118,7 @@ footer {
     background-color: lightgreen;
     font-size: 0.75em;
     padding: 0.5em 1em;
-    margin: auto 0 0 0;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    margin: 0 0 0 0;
     display: flex;
 }
 
@@ -116,9 +142,21 @@ footer {
     }
 }
 
+@media screen and (max-width: 55em) {
+    .menu-item {
+        flex-basis: 40%;
+    }
+}
+
 @media screen and (max-width: 45em) {
     #body-content {
         margin: 2em 5%;
+    }
+}
+
+@media screen and (max-width: 31em) {
+    .menu-item {
+        flex-basis: 100%;
     }
 }
 
