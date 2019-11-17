@@ -1,0 +1,54 @@
+﻿@page
+@model Website.Pages.MenuModel
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<h1>Menu</h1>
+
+<h2>Combos</h2>
+
+@foreach (var combo in Model.ComboList)
+{
+    <div class="menu-item">
+        <div class="menu-description"><h3>@combo.Description</h3></div>
+        <div class="menu-price">$@combo.Price.ToString("N2")</div>
+        <div class="menu-calories">@combo.Calories Calories</div>
+        <div class="menu-ingredients">
+            <p>Ingredients</p>
+            <ul>
+                @foreach (var ingredient in combo.Ingredients)
+                {
+                    <li>@ingredient</li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+<h2>Entrees</h2>
+
+@foreach (var entree in Model.EntreeList)
+{
+    <div class="menu-item">
+
+    </div>
+}
+
+<h2>Sides</h2>
+
+@foreach (var side in Model.SideList)
+{
+    <div class="menu-item">
+
+    </div>
+}
+
+<h2>Drinks</h2>
+
+@foreach (var drink in Model.DrinkList)
+{
+    <div class="menu-item">
+
+    </div>
+}
