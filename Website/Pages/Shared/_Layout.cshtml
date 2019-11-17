@@ -1,34 +1,46 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dino-Diner - @ViewData["Title"]</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - Dino Diner</title>
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
-</head>
-<body>
+        <environment include="Development">
+            <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+        </environment>
+        <environment exclude="Development">
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        </environment>
+    </head>
+    <body>
     
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2019 - DinoDiner</p>
-        </footer>
-    </div>
+        <div class="container content">
+            <header>
+                <nav role="navigation">
+                    <a asp-page="Index"><img src="~/images/DinoDiner-3-cropped-recolored.png"/></a>
+                    <ul id="mainnav">
+                        <li><a asp-page="About">About</a></li>
+                        <li><a asp-page="Menu">Menu</a></li>
+                        <li><a asp-page="Privacy">Privacy Policy</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="container" id="body-content">
+                @RenderBody()
+            </div>
+            <footer>
+                <p>&copy; 2019 Dino Diner</p>
+                <p class="small">This website is fictional and Dino Diner does not exist in real life.</p>
+            </footer>
+        </div>
 
-    <environment include="Development">
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+        <environment include="Development">
+            <script src="~/js/site.js" asp-append-version="true"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>
 
-    @RenderSection("Scripts", required: false)
-</body>
+        @RenderSection("Scripts", required: false)
+    </body>
 </html>

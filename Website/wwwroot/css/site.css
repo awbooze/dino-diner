@@ -1,14 +1,129 @@
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification 
 for details on configuring this project to bundle and minify static web assets. */
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+
+html, body {
+    background-color: white;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+    min-height: 100%;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+/* Navbar */
+nav {
+    display: block;
+    background-color: white;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 0.25em 0.25em lightgrey;
 }
 
+    nav > a {
+        display: inline-block;
+        margin: 0 1em;
+        vertical-align: middle;
+        border: none;
+        text-decoration: none;
+    }
+
+        nav > a img {
+            width: 18em;
+        }
+
+    nav ul {
+        display: inline-block;
+        padding: 0;
+    }
+
+        nav ul li {
+            font-size: 1.25em;
+            display: inline-block;
+            margin: 0.625em;
+            vertical-align: middle;
+        }
+
+            nav ul li a {
+                text-decoration: none;
+                color: lightgreen;
+                font-weight: 700;
+            }
+
+                nav ul li a:visited {
+                    text-decoration: none;
+                }
+
+                nav ul li a:hover {
+                    color: lightgreen;
+                }
+
+                nav ul li a:active {
+                    text-decoration: none;
+                    color: lightgreen;
+                    font-style: normal;
+                }
+/* End Navbar */
+
+/* Content styles */
+h1, h2 {
+    text-align: center;
+    margin: auto;
+}
+
+#body-content {
+    padding: 0;
+    margin: 2em auto;
+    max-width: 70em;
+}
+
+    #body-content a {
+        color: lightgreen;
+    }
+/* End Content styles */
+
+/* Footer */
+footer {
+    clear: both;
+    background-color: lightgreen;
+    font-size: 0.75em;
+    padding: 0.5em 1em;
+    margin: auto 0 0 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+}
+
+    footer p {
+        padding: 0.25em 1em;
+        margin: auto;
+        color: black;
+        max-width: 70em;
+        text-align: right;
+    }
+
+        footer p.small {
+            font-size: 0.5em;
+        }
+/* End Footer */
+
+/* Rules for mobile-friendly operation */
+@media screen and (max-width: 65em) {
+    #body-content {
+        margin: 2em 3%;
+    }
+}
+
+@media screen and (max-width: 45em) {
+    #body-content {
+        margin: 2em 5%;
+    }
+}
+
+@media screen and (max-width: 21em) {
+    nav > a img {
+        width: 100%;
+    }
+}

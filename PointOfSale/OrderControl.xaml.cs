@@ -74,6 +74,7 @@ namespace PointOfSale
             }
         }
 
+        // Does the appropriate action when one of the Pay or Cancel buttons are clicked
         private void BottomButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && DataContext is Order order)
