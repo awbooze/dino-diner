@@ -136,7 +136,7 @@ footer {
 /* End Footer */
 
 /* Rules for mobile-friendly operation */
-@media screen and (max-width: 65em) {
+@media screen and (max-width: 72em) {
     #body-content {
         margin: 2em 3%;
     }
