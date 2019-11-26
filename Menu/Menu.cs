@@ -3,6 +3,7 @@
 */
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DinoDiner.Menu
 {
@@ -96,6 +97,25 @@ namespace DinoDiner.Menu
                 }
 
                 return combos;
+            }
+        }
+
+        /// <summary>
+        /// Creates and returns a list of all ingredients of all menu items without duplicates.
+        /// </summary>
+        public List<string> PossibleIngredients
+        {
+            get
+            {
+                HashSet<string> ingredientsWithoutDuplication = new HashSet<string>();
+
+                foreach (MenuItem item in AvailableMenuItems)
+                {
+                    ingredientsWithoutDuplication.UnionWith(item.Ingredients);
+                }
+
+                List<string> toReturn = ingredientsWithoutDuplication.OrderBy(ingredient => ingredient).ToList();
+                return toReturn;
             }
         }
 
