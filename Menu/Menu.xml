@@ -722,6 +722,38 @@
             Generates and returns a list of all available combos on the menu.
             </summary>
         </member>
+        <member name="P:DinoDiner.Menu.Menu.PossibleIngredients">
+            <summary>
+            Creates and returns a list of all ingredients of all menu items without duplicates.
+            </summary>
+        </member>
+        <member name="M:DinoDiner.Menu.Menu.Search``1(System.Collections.Generic.List{``0},System.String)">
+            <summary>
+            Searches the description of the menu item for the specified search term.
+            </summary>
+            <typeparam name="T">Any derived class of MenuItem.</typeparam>
+            <param name="menuItems">A list of menu items.</param>
+            <param name="searchTerm">The search term.</param>
+            <returns>A new list of the same type of items which satisfies the condition.</returns>
+        </member>
+        <member name="M:DinoDiner.Menu.Menu.FilterByMinimumPrice``1(System.Collections.Generic.List{``0},System.Single)">
+            <summary>
+            Filters the provided list of menu items by their minimum price.
+            </summary>
+            <typeparam name="T">Any derived class of MenuItem.</typeparam>
+            <param name="menuItems">A list of menu items.</param>
+            <param name="min">The minimum price to filter by.</param>
+            <returns>A new list of the same type of items which satisfies the condition.</returns>
+        </member>
+        <member name="M:DinoDiner.Menu.Menu.FilterByMaximumPrice``1(System.Collections.Generic.List{``0},System.Single)">
+            <summary>
+            Filters the provided list of menu items by their maximum price.
+            </summary>
+            <typeparam name="T">Any derived class of MenuItem.</typeparam>
+            <param name="menuItems">A list of menu items.</param>
+            <param name="max">The maximum price to filter by.</param>
+            <returns>A new list of the same type of items which satisfies the condition.</returns>
+        </member>
         <member name="M:DinoDiner.Menu.Menu.ToString">
             <summary>
             Returns the entire contents of the menu separated by new line characters.

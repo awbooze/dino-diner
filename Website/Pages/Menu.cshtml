@@ -9,7 +9,7 @@
 <h2>Combos</h2>
 
 <div class="menu-item-list">
-    @foreach (var item in Model.Menu.AvailableCombos)
+    @foreach (var item in Model.AvailableCombos)
     {
         <div class="menu-item">
             <div class="menu-description"><h3>@item.Description</h3></div>
@@ -32,7 +32,7 @@
 <h2>Entrees</h2>
 
 <div class="menu-item-list">
-    @foreach (var item in Model.Menu.AvailableEntrees)
+    @foreach (var item in Model.AvailableEntrees)
     {
         <div class="menu-item">
             <div class="menu-description"><h3>@item.Description</h3></div>
@@ -55,7 +55,7 @@
 <h2>Sides</h2>
 
 <div class="menu-item-list">
-    @foreach (var item in Model.Menu.AvailableSides)
+    @foreach (var item in Model.AvailableSides)
     {
         <div class="menu-item">
             <div class="menu-description"><h3>@item.Description</h3></div>
@@ -78,7 +78,7 @@
 <h2>Drinks</h2>
 
 <div class="menu-item-list">
-    @foreach (var item in Model.Menu.AvailableDrinks)
+    @foreach (var item in Model.AvailableDrinks)
     {
         <div class="menu-item">
             <div class="menu-description"><h3>@item.Description</h3></div>

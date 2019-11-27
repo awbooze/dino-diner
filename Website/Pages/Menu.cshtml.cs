@@ -14,10 +14,15 @@ namespace Website.Pages
     /// </summary>
     public class MenuModel : PageModel
     {
-        /// <summary>
-        /// A reference to the Menu object created by the OnGet() method and set through the private setter.
-        /// </summary>
-        public Menu Menu { get; private set; } = new Menu();
+        private Menu menu { get; set; } = null;
+
+        public List<CretaceousCombo> AvailableCombos { get; private set; } = null;
+
+        public List<Entree> AvailableEntrees { get; private set; } = null;
+
+        public List<Side> AvailableSides { get; private set; } = null;
+
+        public List<Drink> AvailableDrinks { get; private set; } = null;
 
         /// <summary>
         /// The search term when a search is executed through the search and filter button.
@@ -55,7 +60,15 @@ namespace Website.Pages
         /// </summary>
         public void OnGet()
         {
-            
+            if (menu == null)
+            {
+                menu = new Menu();
+            }
+
+            AvailableCombos = menu.AvailableCombos;
+            AvailableEntrees = menu.AvailableEntrees;
+            AvailableSides = menu.AvailableSides;
+            AvailableDrinks = menu.AvailableDrinks;
         }
 
         /// <summary>
@@ -64,7 +77,40 @@ namespace Website.Pages
         /// </summary>
         public void OnPost()
         {
-            
+            if (menu == null)
+            {
+                menu = new Menu();
+            }
+
+            AvailableCombos = menu.AvailableCombos;
+            AvailableEntrees = menu.AvailableEntrees;
+            AvailableSides = menu.AvailableSides;
+            AvailableDrinks = menu.AvailableDrinks;
+
+            if (search != null)
+            {
+                Menu.Search(AvailableCombos, search);
+            }
+
+            if (menuCategory.Count > 0)
+            {
+                
+            }
+
+            if (minimumPrice is float min)
+            {
+
+            }
+
+            if (maximumPrice is float max)
+            {
+
+            }
+
+            if (excludedIngredients.Count > 0)
+            {
+
+            }
         }
     }
 }

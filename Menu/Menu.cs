@@ -2,6 +2,7 @@
 *   Author: Andrew Booze
 */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -117,6 +118,72 @@ namespace DinoDiner.Menu
                 List<string> toReturn = ingredientsWithoutDuplication.OrderBy(ingredient => ingredient).ToList();
                 return toReturn;
             }
+        }
+
+        /// <summary>
+        /// Searches the description of the menu item for the specified search term.
+        /// </summary>
+        /// <typeparam name="T">Any derived class of MenuItem.</typeparam>
+        /// <param name="menuItems">A list of menu items.</param>
+        /// <param name="searchTerm">The search term.</param>
+        /// <returns>A new list of the same type of items which satisfies the condition.</returns>
+        public static List<T> Search<T>(List<T> menuItems, string searchTerm) where T : MenuItem
+        {
+            List<T> results = new List<T>();
+
+            foreach (T item in menuItems)
+            {
+                if (item.Description.ToLower().Contains(searchTerm.ToLower()))
+                {
+                    results.Add(item);
+                }
+            }
+
+            return results;
+        }
+
+        /// <summary>
+        /// Filters the provided list of menu items by their minimum price.
+        /// </summary>
+        /// <typeparam name="T">Any derived class of MenuItem.</typeparam>
+        /// <param name="menuItems">A list of menu items.</param>
+        /// <param name="min">The minimum price to filter by.</param>
+        /// <returns>A new list of the same type of items which satisfies the condition.</returns>
+        public static List<T> FilterByMinimumPrice<T>(List<T> menuItems, float min) where T : MenuItem
+        {
+            List<T> results = new List<T>();
+
+            foreach (T item in menuItems)
+            {
+                if (item.Price >= min)
+                {
+                    results.Add(item);
+                }
+            }
+
+            return results;
+        }
+
+        /// <summary>
+        /// Filters the provided list of menu items by their maximum price.
+        /// </summary>
+        /// <typeparam name="T">Any derived class of MenuItem.</typeparam>
+        /// <param name="menuItems">A list of menu items.</param>
+        /// <param name="max">The maximum price to filter by.</param>
+        /// <returns>A new list of the same type of items which satisfies the condition.</returns>
+        public static List<T> FilterByMaximumPrice<T>(List<T> menuItems, float max) where T : MenuItem
+        {
+            List<T> results = new List<T>();
+
+            foreach (T item in menuItems)
+            {
+                if (item.Price <= max)
+                {
+                    results.Add(item);
+                }
+            }
+
+            return results;
         }
 
         /// <summary>
