@@ -8,96 +8,109 @@
 
 <div class="form-container">
     <div class="menu-container">
-        <h2>Combos</h2>
+        @if (Model.AvailableCombos != null && Model.AvailableCombos.Count > 0)
+        {
+            <h2>Combos</h2>
 
-        <div class="menu-item-list">
-            @foreach (var item in Model.AvailableCombos)
-            {
-                <div class="menu-item">
-                    <div class="menu-description"><h3>@item.Description</h3></div>
-                    <div class="menu-price">$@item.Price.ToString("N2")</div>
-                    <div class="menu-calories">@item.Calories Calories</div>
-                    <div class="menu-ingredients">
-                        <p>Ingredients</p>
-                        <ul>
-                            @foreach (var ingredient in item.Ingredients)
-                            {
-                                <li>@ingredient</li>
-                            }
-                        </ul>
+            <div class="menu-item-list">
+                @foreach (var item in Model.AvailableCombos)
+                {
+                    <div class="menu-item">
+                        <div class="menu-description"><h3>@item.Description</h3></div>
+                        <div class="menu-price">$@item.Price.ToString("N2")</div>
+                        <div class="menu-calories">@item.Calories Calories</div>
+                        <div class="menu-ingredients">
+                            <p>Ingredients</p>
+                            <ul>
+                                @foreach (var ingredient in item.Ingredients)
+                                {
+                                    <li>@ingredient</li>
+                                }
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
+        }
 
-        <hr />
-        <h2>Entrees</h2>
+        @if (Model.AvailableEntrees != null && Model.AvailableEntrees.Count > 0)
+        {
+            <hr />
+            <h2>Entrees</h2>
 
-        <div class="menu-item-list">
-            @foreach (var item in Model.AvailableEntrees)
-            {
-                <div class="menu-item">
-                    <div class="menu-description"><h3>@item.Description</h3></div>
-                    <div class="menu-price">$@item.Price.ToString("N2")</div>
-                    <div class="menu-calories">@item.Calories Calories</div>
-                    <div class="menu-ingredients">
-                        <p>Ingredients</p>
-                        <ul>
-                            @foreach (var ingredient in item.Ingredients)
-                            {
-                                <li>@ingredient</li>
-                            }
-                        </ul>
+            <div class="menu-item-list">
+                @foreach (var item in Model.AvailableEntrees)
+                {
+                    <div class="menu-item">
+                        <div class="menu-description"><h3>@item.Description</h3></div>
+                        <div class="menu-price">$@item.Price.ToString("N2")</div>
+                        <div class="menu-calories">@item.Calories Calories</div>
+                        <div class="menu-ingredients">
+                            <p>Ingredients</p>
+                            <ul>
+                                @foreach (var ingredient in item.Ingredients)
+                                {
+                                    <li>@ingredient</li>
+                                }
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
+        }
 
-        <hr />
-        <h2>Sides</h2>
 
-        <div class="menu-item-list">
-            @foreach (var item in Model.AvailableSides)
-            {
-                <div class="menu-item">
-                    <div class="menu-description"><h3>@item.Description</h3></div>
-                    <div class="menu-price">$@item.Price.ToString("N2")</div>
-                    <div class="menu-calories">@item.Calories Calories</div>
-                    <div class="menu-ingredients">
-                        <p>Ingredients</p>
-                        <ul>
-                            @foreach (var ingredient in item.Ingredients)
-                            {
-                                <li>@ingredient</li>
-                            }
-                        </ul>
+        @if (Model.AvailableSides != null && Model.AvailableSides.Count > 0)
+        {
+            <hr />
+            <h2>Sides</h2>
+
+            <div class="menu-item-list">
+                @foreach (var item in Model.AvailableSides)
+                {
+                    <div class="menu-item">
+                        <div class="menu-description"><h3>@item.Description</h3></div>
+                        <div class="menu-price">$@item.Price.ToString("N2")</div>
+                        <div class="menu-calories">@item.Calories Calories</div>
+                        <div class="menu-ingredients">
+                            <p>Ingredients</p>
+                            <ul>
+                                @foreach (var ingredient in item.Ingredients)
+                                {
+                                    <li>@ingredient</li>
+                                }
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
+        }
 
-        <hr />
-        <h2>Drinks</h2>
+        @if (Model.AvailableDrinks != null && Model.AvailableDrinks.Count > 0)
+        {
+            <hr />
+            <h2>Drinks</h2>
 
-        <div class="menu-item-list">
-            @foreach (var item in Model.AvailableDrinks)
-            {
-                <div class="menu-item">
-                    <div class="menu-description"><h3>@item.Description</h3></div>
-                    <div class="menu-price">$@item.Price.ToString("N2")</div>
-                    <div class="menu-calories">@item.Calories Calories</div>
-                    <div class="menu-ingredients">
-                        <p>Ingredients</p>
-                        <ul>
-                            @foreach (var ingredient in item.Ingredients)
-                            {
-                                <li>@ingredient</li>
-                            }
-                        </ul>
+            <div class="menu-item-list">
+                @foreach (var item in Model.AvailableDrinks)
+                {
+                    <div class="menu-item">
+                        <div class="menu-description"><h3>@item.Description</h3></div>
+                        <div class="menu-price">$@item.Price.ToString("N2")</div>
+                        <div class="menu-calories">@item.Calories Calories</div>
+                        <div class="menu-ingredients">
+                            <p>Ingredients</p>
+                            <ul>
+                                @foreach (var ingredient in item.Ingredients)
+                                {
+                                    <li>@ingredient</li>
+                                }
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
+        }
     </div>
     <form method="post">
         <h2>Search and Filter</h2>
