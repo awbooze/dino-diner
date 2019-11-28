@@ -99,8 +99,6 @@ form {
     flex-direction: column;
     padding: 0.25em;
     margin: 0.25em;
-    height: auto;
-    overflow: auto;
 }
 
     form h2 {

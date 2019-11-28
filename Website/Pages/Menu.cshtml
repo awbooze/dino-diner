@@ -8,6 +8,14 @@
 
 <div class="form-container">
     <div class="menu-container">
+        @if ((Model.AvailableCombos == null || Model.AvailableCombos.Count == 0) && (Model.AvailableEntrees == null || 
+            Model.AvailableEntrees.Count == 0) && (Model.AvailableSides == null || Model.AvailableSides.Count == 0) && 
+            (Model.AvailableDrinks == null || Model.AvailableDrinks.Count == 0))
+        {
+            <p>
+                No menu items available.
+            </p>
+        }
         @if (Model.AvailableCombos != null && Model.AvailableCombos.Count > 0)
         {
             <h2>Combos</h2>
@@ -115,6 +123,7 @@
             <h3>Search</h3>
             <input type="text" id="search" name="search" placeholder="Enter search query" value="@Model.search" />
         </div>
+        <input type="submit" value="Search and Filter" />
         <div class="form-group">
             <h3>Filter by Type</h3>
             <label>
@@ -141,12 +150,12 @@
         <div class="form-group">
             <h3>Filter by Price</h3>
             <label>
-                Minimum Price: 
+                Minimum Price:
                 <input type="number" min="0" step="0.01" id="minimum-price" name="minimumPrice"
                        value="@Model.minimumPrice" />
             </label>
             <label>
-                Maximum Price: 
+                Maximum Price:
                 <input type="number" min="0" step="0.01" id="maximum-price" name="maximumPrice"
                        value="@Model.maximumPrice" />
             </label>
@@ -158,13 +167,12 @@
                 @foreach (var ingredient in Model.Menu.PossibleIngredients)
                 {
                     <label>
-                        <input type="checkbox" class="exclude-ingredient" value="@ingredient" name="excludeIngredient"
+                        <input type="checkbox" class="exclude-ingredient" value="@ingredient" name="excludedIngredients"
                                checked="@Model.excludedIngredients.Contains(ingredient)" />
                         @ingredient
                     </label>
                 }
             </div>
         }
-        <input type="submit" value="Search and Filter" />
     </form>
 </div>

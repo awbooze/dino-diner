@@ -151,7 +151,10 @@ namespace Website.Pages
 
             if (excludedIngredients.Count > 0)
             {
-
+                AvailableCombos = Menu.FilterByExcludedIngredients(AvailableCombos, excludedIngredients);
+                AvailableEntrees = Menu.FilterByExcludedIngredients(AvailableEntrees, excludedIngredients);
+                AvailableSides = Menu.FilterByExcludedIngredients(AvailableSides, excludedIngredients);
+                AvailableDrinks = Menu.FilterByExcludedIngredients(AvailableDrinks, excludedIngredients);
             }
         }
     }

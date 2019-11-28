@@ -187,6 +187,41 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
+        /// Filters the provided list of menu items to exclude menu items which contain ingredients in 
+        /// the provided list.
+        /// </summary>
+        /// <typeparam name="T">Any derived class of MenuItem.</typeparam>
+        /// <param name="menuItems">A list of menu items.</param>
+        /// <param name="excludedIngredients">A list of the ingredients to exclude.</param>
+        /// <returns>A new list of the same type of items which satisfies the condition.</returns>
+        public static List<T> FilterByExcludedIngredients<T>(List<T> menuItems, List<string> excludedIngredients) 
+            where T : MenuItem
+        {
+            List<T> results = new List<T>();
+
+            foreach (T item in menuItems)
+            {
+                bool passesFilter = true;
+
+                foreach (string ingredient in excludedIngredients)
+                {
+                    if (item.Ingredients.Contains(ingredient))
+                    {
+                        passesFilter = false;
+                        break;
+                    }
+                }
+
+                if (passesFilter)
+                {
+                    results.Add(item);
+                }
+            }
+
+            return results;
+        }
+
+        /// <summary>
         /// Returns the entire contents of the menu separated by new line characters.
         /// </summary>
         /// <returns>A list of all menu contents separated by new line characters.</returns>
