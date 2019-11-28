@@ -14,7 +14,7 @@ namespace Website.Pages
     /// </summary>
     public class MenuModel : PageModel
     {
-        private Menu menu { get; set; } = null;
+        public Menu Menu { get; private set; } = null;
 
         public List<CretaceousCombo> AvailableCombos { get; private set; } = null;
 
@@ -60,15 +60,15 @@ namespace Website.Pages
         /// </summary>
         public void OnGet()
         {
-            if (menu == null)
+            if (Menu == null)
             {
-                menu = new Menu();
+                Menu = new Menu();
             }
 
-            AvailableCombos = menu.AvailableCombos;
-            AvailableEntrees = menu.AvailableEntrees;
-            AvailableSides = menu.AvailableSides;
-            AvailableDrinks = menu.AvailableDrinks;
+            AvailableCombos = Menu.AvailableCombos;
+            AvailableEntrees = Menu.AvailableEntrees;
+            AvailableSides = Menu.AvailableSides;
+            AvailableDrinks = Menu.AvailableDrinks;
         }
 
         /// <summary>
@@ -77,19 +77,22 @@ namespace Website.Pages
         /// </summary>
         public void OnPost()
         {
-            if (menu == null)
+            if (Menu == null)
             {
-                menu = new Menu();
+                Menu = new Menu();
             }
 
-            AvailableCombos = menu.AvailableCombos;
-            AvailableEntrees = menu.AvailableEntrees;
-            AvailableSides = menu.AvailableSides;
-            AvailableDrinks = menu.AvailableDrinks;
+            AvailableCombos = Menu.AvailableCombos;
+            AvailableEntrees = Menu.AvailableEntrees;
+            AvailableSides = Menu.AvailableSides;
+            AvailableDrinks = Menu.AvailableDrinks;
 
             if (search != null)
             {
-                Menu.Search(AvailableCombos, search);
+                AvailableCombos = Menu.Search(AvailableCombos, search);
+                AvailableEntrees = Menu.Search(AvailableEntrees, search);
+                AvailableSides = Menu.Search(AvailableSides, search);
+                AvailableDrinks = Menu.Search(AvailableDrinks, search);
             }
 
             if (menuCategory.Count > 0)
@@ -99,12 +102,18 @@ namespace Website.Pages
 
             if (minimumPrice is float min)
             {
-
+                AvailableCombos = Menu.FilterByMinimumPrice(AvailableCombos, min);
+                AvailableEntrees = Menu.FilterByMinimumPrice(AvailableEntrees, min);
+                AvailableSides = Menu.FilterByMinimumPrice(AvailableSides, min);
+                AvailableDrinks = Menu.FilterByMinimumPrice(AvailableDrinks, min);
             }
 
             if (maximumPrice is float max)
             {
-
+                AvailableCombos = Menu.FilterByMaximumPrice(AvailableCombos, max);
+                AvailableEntrees = Menu.FilterByMaximumPrice(AvailableEntrees, max);
+                AvailableSides = Menu.FilterByMaximumPrice(AvailableSides, max);
+                AvailableDrinks = Menu.FilterByMaximumPrice(AvailableDrinks, max);
             }
 
             if (excludedIngredients.Count > 0)
