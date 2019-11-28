@@ -14,14 +14,29 @@ namespace Website.Pages
     /// </summary>
     public class MenuModel : PageModel
     {
+        /// <summary>
+        /// The menu object created for this menu page.
+        /// </summary>
         public Menu Menu { get; private set; } = null;
 
+        /// <summary>
+        /// A list of available combos for the menu page.
+        /// </summary>
         public List<CretaceousCombo> AvailableCombos { get; private set; } = null;
 
+        /// <summary>
+        /// A list of available entrees for the menu page.
+        /// </summary>
         public List<Entree> AvailableEntrees { get; private set; } = null;
 
+        /// <summary>
+        /// A list of available sides for the menu page.
+        /// </summary>
         public List<Side> AvailableSides { get; private set; } = null;
 
+        /// <summary>
+        /// A list of available drinks for the menu page.
+        /// </summary>
         public List<Drink> AvailableDrinks { get; private set; } = null;
 
         /// <summary>
@@ -97,7 +112,25 @@ namespace Website.Pages
 
             if (menuCategory.Count > 0)
             {
-                
+                if (!menuCategory.Contains("Combo"))
+                {
+                    AvailableCombos = new List<CretaceousCombo>();
+                }
+
+                if (!menuCategory.Contains("Entree"))
+                {
+                    AvailableEntrees = new List<Entree>();
+                }
+
+                if (!menuCategory.Contains("Side"))
+                {
+                    AvailableSides = new List<Side>();
+                }
+
+                if (!menuCategory.Contains("Drink"))
+                {
+                    AvailableDrinks = new List<Drink>();
+                }
             }
 
             if (minimumPrice is float min)

@@ -122,11 +122,16 @@ form {
         display: block;
     }
 
+.menu-container div:last-child {
+    border-bottom: none;
+}
+
 .menu-item-list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    border-bottom: 0.1em solid black;
 }
 
 .menu-item {
