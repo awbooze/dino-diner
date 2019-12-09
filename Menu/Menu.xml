@@ -754,6 +754,16 @@
             <param name="max">The maximum price to filter by.</param>
             <returns>A new list of the same type of items which satisfies the condition.</returns>
         </member>
+        <member name="M:DinoDiner.Menu.Menu.FilterByExcludedIngredients``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{System.String})">
+            <summary>
+            Filters the provided list of menu items to exclude menu items which contain ingredients in 
+            the provided list.
+            </summary>
+            <typeparam name="T">Any derived class of MenuItem.</typeparam>
+            <param name="menuItems">A list of menu items.</param>
+            <param name="excludedIngredients">A list of the ingredients to exclude.</param>
+            <returns>A new list of the same type of items which satisfies the condition.</returns>
+        </member>
         <member name="M:DinoDiner.Menu.Menu.ToString">
             <summary>
             Returns the entire contents of the menu separated by new line characters.

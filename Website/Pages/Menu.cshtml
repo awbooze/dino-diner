@@ -8,17 +8,17 @@
 
 <div class="form-container">
     <div class="menu-container">
-        @if ((Model.AvailableCombos == null || Model.AvailableCombos.Count == 0) && (Model.AvailableEntrees == null || 
-            Model.AvailableEntrees.Count == 0) && (Model.AvailableSides == null || Model.AvailableSides.Count == 0) && 
-            (Model.AvailableDrinks == null || Model.AvailableDrinks.Count == 0))
+        @if ((Model.AvailableCombos == null || Model.AvailableCombos.Count() == 0) && (Model.AvailableEntrees == null || 
+            Model.AvailableEntrees.Count() == 0) && (Model.AvailableSides == null || Model.AvailableSides.Count() == 0) && 
+            (Model.AvailableDrinks == null || Model.AvailableDrinks.Count() == 0))
         {
             <p>
                 No menu items available.
             </p>
         }
-        @if (Model.AvailableCombos != null && Model.AvailableCombos.Count > 0)
+        @if (Model.AvailableCombos != null && Model.AvailableCombos.Count() > 0)
         {
-            <h2>Combos</h2>
+        <h2>Cretaceous Combos</h2>
 
             <div class="menu-item-list">
                 @foreach (var item in Model.AvailableCombos)
@@ -41,7 +41,7 @@
             </div>
         }
 
-        @if (Model.AvailableEntrees != null && Model.AvailableEntrees.Count > 0)
+        @if (Model.AvailableEntrees != null && Model.AvailableEntrees.Count() > 0)
         {
             <h2>Entrees</h2>
 
@@ -67,7 +67,7 @@
         }
 
 
-        @if (Model.AvailableSides != null && Model.AvailableSides.Count > 0)
+        @if (Model.AvailableSides != null && Model.AvailableSides.Count() > 0)
         {
             <h2>Sides</h2>
 
@@ -92,7 +92,7 @@
             </div>
         }
 
-        @if (Model.AvailableDrinks != null && Model.AvailableDrinks.Count > 0)
+        @if (Model.AvailableDrinks != null && Model.AvailableDrinks.Count() > 0)
         {
             <h2>Drinks</h2>
 

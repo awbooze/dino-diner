@@ -5,7 +5,9 @@
 using DinoDiner.Menu;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Website.Pages
 {
@@ -22,22 +24,22 @@ namespace Website.Pages
         /// <summary>
         /// A list of available combos for the menu page.
         /// </summary>
-        public List<CretaceousCombo> AvailableCombos { get; private set; } = null;
+        public IEnumerable<CretaceousCombo> AvailableCombos { get; private set; } = null;
 
         /// <summary>
         /// A list of available entrees for the menu page.
         /// </summary>
-        public List<Entree> AvailableEntrees { get; private set; } = null;
+        public IEnumerable<Entree> AvailableEntrees { get; private set; } = null;
 
         /// <summary>
         /// A list of available sides for the menu page.
         /// </summary>
-        public List<Side> AvailableSides { get; private set; } = null;
+        public IEnumerable<Side> AvailableSides { get; private set; } = null;
 
         /// <summary>
         /// A list of available drinks for the menu page.
         /// </summary>
-        public List<Drink> AvailableDrinks { get; private set; } = null;
+        public IEnumerable<Drink> AvailableDrinks { get; private set; } = null;
 
         /// <summary>
         /// The search term when a search is executed through the search and filter button.
@@ -104,10 +106,21 @@ namespace Website.Pages
 
             if (search != null)
             {
-                AvailableCombos = Menu.Search(AvailableCombos, search);
-                AvailableEntrees = Menu.Search(AvailableEntrees, search);
-                AvailableSides = Menu.Search(AvailableSides, search);
-                AvailableDrinks = Menu.Search(AvailableDrinks, search);
+                //AvailableCombos = Menu.Search(AvailableCombos, search);
+                AvailableCombos = AvailableCombos.Where(item => item.Description.Contains(search, 
+                    StringComparison.CurrentCultureIgnoreCase));
+
+                //AvailableEntrees = Menu.Search(AvailableEntrees, search);
+                AvailableEntrees = AvailableEntrees.Where(item => item.Description.Contains(search,
+                    StringComparison.CurrentCultureIgnoreCase));
+
+                //AvailableSides = Menu.Search(AvailableSides, search);
+                AvailableSides = AvailableSides.Where(item => item.Description.Contains(search,
+                    StringComparison.CurrentCultureIgnoreCase));
+
+                //AvailableDrinks = Menu.Search(AvailableDrinks, search);
+                AvailableDrinks = AvailableDrinks.Where(item => item.Description.Contains(search,
+                    StringComparison.CurrentCultureIgnoreCase));
             }
 
             if (menuCategory.Count > 0)
@@ -135,26 +148,90 @@ namespace Website.Pages
 
             if (minimumPrice is float min)
             {
-                AvailableCombos = Menu.FilterByMinimumPrice(AvailableCombos, min);
-                AvailableEntrees = Menu.FilterByMinimumPrice(AvailableEntrees, min);
-                AvailableSides = Menu.FilterByMinimumPrice(AvailableSides, min);
-                AvailableDrinks = Menu.FilterByMinimumPrice(AvailableDrinks, min);
+                //AvailableCombos = Menu.FilterByMinimumPrice(AvailableCombos, min);
+                AvailableCombos = AvailableCombos.Where(item => item.Price >= min);
+
+                //AvailableEntrees = Menu.FilterByMinimumPrice(AvailableEntrees, min);
+                AvailableEntrees = AvailableEntrees.Where(item => item.Price >= min);
+
+                //AvailableSides = Menu.FilterByMinimumPrice(AvailableSides, min);
+                AvailableSides = AvailableSides.Where(item => item.Price >= min);
+
+                //AvailableDrinks = Menu.FilterByMinimumPrice(AvailableDrinks, min);
+                AvailableDrinks = AvailableDrinks.Where(item => item.Price >= min);
             }
 
             if (maximumPrice is float max)
             {
-                AvailableCombos = Menu.FilterByMaximumPrice(AvailableCombos, max);
-                AvailableEntrees = Menu.FilterByMaximumPrice(AvailableEntrees, max);
-                AvailableSides = Menu.FilterByMaximumPrice(AvailableSides, max);
-                AvailableDrinks = Menu.FilterByMaximumPrice(AvailableDrinks, max);
+                //AvailableCombos = Menu.FilterByMaximumPrice(AvailableCombos, max);
+                AvailableCombos = AvailableCombos.Where(item => item.Price <= max);
+
+                //AvailableEntrees = Menu.FilterByMaximumPrice(AvailableEntrees, max);
+                AvailableEntrees = AvailableEntrees.Where(item => item.Price <= max);
+
+                //AvailableSides = Menu.FilterByMaximumPrice(AvailableSides, max);
+                AvailableSides = AvailableSides.Where(item => item.Price <= max);
+
+                //AvailableDrinks = Menu.FilterByMaximumPrice(AvailableDrinks, max);
+                AvailableDrinks = AvailableDrinks.Where(item => item.Price <= max);
             }
 
             if (excludedIngredients.Count > 0)
             {
-                AvailableCombos = Menu.FilterByExcludedIngredients(AvailableCombos, excludedIngredients);
-                AvailableEntrees = Menu.FilterByExcludedIngredients(AvailableEntrees, excludedIngredients);
-                AvailableSides = Menu.FilterByExcludedIngredients(AvailableSides, excludedIngredients);
-                AvailableDrinks = Menu.FilterByExcludedIngredients(AvailableDrinks, excludedIngredients);
+                //AvailableCombos = Menu.FilterByExcludedIngredients(AvailableCombos, excludedIngredients);
+                AvailableCombos = AvailableCombos.Where(item =>
+                {
+                    foreach (string ingredient in excludedIngredients)
+                    {
+                        if (item.Ingredients.Contains(ingredient)) {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                });
+
+                //AvailableEntrees = Menu.FilterByExcludedIngredients(AvailableEntrees, excludedIngredients);
+                AvailableEntrees = AvailableEntrees.Where(item =>
+                {
+                    foreach (string ingredient in excludedIngredients)
+                    {
+                        if (item.Ingredients.Contains(ingredient))
+                        {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                });
+
+                //AvailableSides = Menu.FilterByExcludedIngredients(AvailableSides, excludedIngredients);
+                AvailableSides = AvailableSides.Where(item =>
+                {
+                    foreach (string ingredient in excludedIngredients)
+                    {
+                        if (item.Ingredients.Contains(ingredient))
+                        {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                });
+
+                //AvailableDrinks = Menu.FilterByExcludedIngredients(AvailableDrinks, excludedIngredients);
+                AvailableDrinks = AvailableDrinks.Where(item =>
+                {
+                    foreach (string ingredient in excludedIngredients)
+                    {
+                        if (item.Ingredients.Contains(ingredient))
+                        {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                });
             }
         }
     }
