@@ -129,23 +129,33 @@ form {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    border-bottom: 0.1em solid black;
+    border-bottom: 0.1em solid green;
 }
 
 .menu-item {
     display: inline-block;
-    vertical-align: top;
     margin: 1em auto;
     flex-basis: 30%;
+}
+
+.menu-description {
+    margin: auto;
+    text-align: center;
 }
 
 .menu-item p {
     margin: 0.5em 0 0 0;
 }
 
-.menu-description {
-    margin: auto;
+table, th, td {
+    border: 0.1em solid green;
+    border-collapse: collapse;
     text-align: center;
+}
+
+table {
+    margin: 0.5em auto;
+    width: 95%;
 }
 /* End Content styles */
 

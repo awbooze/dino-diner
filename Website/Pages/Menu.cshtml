@@ -25,8 +25,28 @@
                 {
                     <div class="menu-item">
                         <div class="menu-description"><h3>@item.Description</h3></div>
-                        <div class="menu-price">$@item.Price.ToString("N2")</div>
-                        <div class="menu-calories">@item.Calories Calories</div>
+                        <div class="menu-size-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Size</th>
+                                        <th>Price</th>
+                                        <th>Calories</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var size in Model.Sizes)
+                                    {
+                                        item.Size = size;
+                                        <tr>
+                                            <th>@item.Size</th>
+                                            <td>$@item.Price.ToString("N2")</td>
+                                            <td>@item.Calories</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="menu-ingredients">
                             <p>Ingredients</p>
                             <ul>
@@ -50,8 +70,24 @@
                 {
                     <div class="menu-item">
                         <div class="menu-description"><h3>@item.Description</h3></div>
-                        <div class="menu-price">$@item.Price.ToString("N2")</div>
-                        <div class="menu-calories">@item.Calories Calories</div>
+                        <div class="menu-size-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Size</th>
+                                        <th>Price</th>
+                                        <th>Calories</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Entree</th>
+                                        <td>$@item.Price.ToString("N2")</td>
+                                        <td>@item.Calories</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="menu-ingredients">
                             <p>Ingredients</p>
                             <ul>
@@ -75,9 +111,29 @@
                 @foreach (var item in Model.AvailableSides)
                 {
                     <div class="menu-item">
-                        <div class="menu-description"><h3>@item.Description</h3></div>
-                        <div class="menu-price">$@item.Price.ToString("N2")</div>
-                        <div class="menu-calories">@item.Calories Calories</div>
+                        <div class="menu-description"><h3>@item.Description.Replace("Small", "")</h3></div>
+                        <div class="menu-size-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Size</th>
+                                        <th>Price</th>
+                                        <th>Calories</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var size in Model.Sizes)
+                                    {
+                                        item.Size = size;
+                                        <tr>
+                                            <th>@item.Size</th>
+                                            <td>$@item.Price.ToString("N2")</td>
+                                            <td>@item.Calories</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="menu-ingredients">
                             <p>Ingredients</p>
                             <ul>
@@ -100,9 +156,29 @@
                 @foreach (var item in Model.AvailableDrinks)
                 {
                     <div class="menu-item">
-                        <div class="menu-description"><h3>@item.Description</h3></div>
-                        <div class="menu-price">$@item.Price.ToString("N2")</div>
-                        <div class="menu-calories">@item.Calories Calories</div>
+                        <div class="menu-description"><h3>@item.Description.Replace("Small", "")</h3></div>
+                        <div class="menu-size-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Size</th>
+                                        <th>Price</th>
+                                        <th>Calories</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var size in Model.Sizes)
+                                    {
+                                        item.Size = size;
+                                        <tr>
+                                            <th>@item.Size</th>
+                                            <td>$@item.Price.ToString("N2")</td>
+                                            <td>@item.Calories</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="menu-ingredients">
                             <p>Ingredients</p>
                             <ul>

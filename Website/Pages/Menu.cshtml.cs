@@ -41,6 +41,8 @@ namespace Website.Pages
         /// </summary>
         public IEnumerable<Drink> AvailableDrinks { get; private set; } = null;
 
+        public List<Size> Sizes { get; } = new List<Size> { Size.Small, Size.Medium, Size.Large };
+
         /// <summary>
         /// The search term when a search is executed through the search and filter button.
         /// </summary>
@@ -107,20 +109,20 @@ namespace Website.Pages
             if (search != null)
             {
                 //AvailableCombos = Menu.Search(AvailableCombos, search);
-                AvailableCombos = AvailableCombos.Where(item => item.Description.Contains(search, 
-                    StringComparison.CurrentCultureIgnoreCase));
+                AvailableCombos = AvailableCombos.Where(item => item.Description.Replace("Small", "")
+                    .Contains(search, StringComparison.CurrentCultureIgnoreCase));
 
                 //AvailableEntrees = Menu.Search(AvailableEntrees, search);
-                AvailableEntrees = AvailableEntrees.Where(item => item.Description.Contains(search,
-                    StringComparison.CurrentCultureIgnoreCase));
+                AvailableEntrees = AvailableEntrees.Where(item => item.Description.Replace("Small", "")
+                    .Contains(search, StringComparison.CurrentCultureIgnoreCase));
 
                 //AvailableSides = Menu.Search(AvailableSides, search);
-                AvailableSides = AvailableSides.Where(item => item.Description.Contains(search,
-                    StringComparison.CurrentCultureIgnoreCase));
+                AvailableSides = AvailableSides.Where(item => item.Description.Replace("Small", "")
+                    .Contains(search, StringComparison.CurrentCultureIgnoreCase));
 
                 //AvailableDrinks = Menu.Search(AvailableDrinks, search);
-                AvailableDrinks = AvailableDrinks.Where(item => item.Description.Contains(search,
-                    StringComparison.CurrentCultureIgnoreCase));
+                AvailableDrinks = AvailableDrinks.Where(item => item.Description.Replace("Small", "")
+                    .Contains(search, StringComparison.CurrentCultureIgnoreCase));
             }
 
             if (menuCategory.Count > 0)
